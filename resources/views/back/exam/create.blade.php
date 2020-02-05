@@ -29,7 +29,12 @@
                                         <input type="text" name="country" class="form-control"
                                                placeholder=" کشور را وارد کنید...">
                                     </div>
-                                    <button type="submit" class="btn btn-success pull-left mt-3 mb-3">ذخیره
+                                    <div class="form-group">
+                                        <label for="photo">تصویر</label>
+                                        <input type="hidden" name="photo_id[]" id="product-photo">
+                                        <div id="photo" class="dropzone"></div>
+                                    </div>
+                                    <button type="submit" onclick="productGallery()" class="btn-sm btn-success pull-left">ذخیره
                                     </button><br>
                                 </form>
                             </div>
@@ -43,4 +48,32 @@
 @endsection
 @section('script')
     <script type="text/javascript" src="{{asset('/back/ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/front/js/dropzone.min.js')}}"></script>
+
+    <script>
+        Dropzone.autoDiscover = false;
+        var photosGallery = []
+        var drop = new Dropzone('#photo', {
+            addRemoveLinks: true,
+            url: "{{route('photos.store')}}",
+            sending: function (file, xhr, formData) {
+                formData.append("_token", "{{csrf_token()}}")
+            },
+            success: function (file, response) {
+                photosGallery.push(response.photo_id)
+            }
+        });
+        productGallery = function () {
+            document.getElementById('product-photo').value = photosGallery
+        }
+        CKEDITOR.replace('textareaDes', {
+            customConfig: 'config.js',
+            language: 'fa',
+            toolbar: 'simple',
+            removePlugins: 'cloudservices , easyimage'
+        })
+
+    </script>
+
 @endsection
+

@@ -15,6 +15,7 @@
                             <th class="text-center">نام</th>
                             <th class="text-center">تاریخ</th>
                             <th class="text-center">عملیات</th>
+                            <th class="text-center btn-sm btn-primary"><a href="{{route('downloadtime')}}" class="text-white">دانلود </a></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -24,8 +25,7 @@
                                 <td class="text-center"> {{$consul->name}}</td>
                                 <td class="text-center" style="text-align:center "> {!!$consul->created_at!!}</td>
                                 <td class="text-center">
-                                    <a href="{{route('download')}}"><button class="btn btn-success">Download Excel xls</button></a>
-
+                                
                                 </td>
                             </tr>
                         @endforeach

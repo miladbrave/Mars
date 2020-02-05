@@ -32,7 +32,7 @@ class photosController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -40,14 +40,14 @@ class photosController extends Controller
         $uploadfile = $request->file('file');
         $filename = time() . $uploadfile->getClientOriginalName();
         $original_name = $uploadfile->getClientOriginalName();
-//        $uploadfile->move('image',$original_name);
-        Storage::disk('local')->putFileAs(
-            'public/photos', $uploadfile, $filename
-        );
+        $uploadfile->move('photo', $filename);
+//        Storage::disk('local')->putFileAs(
+//            'public/photos', $uploadfile, $filename
+//        );
         $photo = new photo();
         $photo->original_name = $original_name;
         $photo->path = $filename;
-        $photo->user_id = 1;
+        $photo->user_id = Auth()->user()->id;
         $photo->save();
 
         return response()->json([
@@ -58,7 +58,7 @@ class photosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -69,7 +69,7 @@ class photosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,8 +80,8 @@ class photosController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -92,11 +92,13 @@ class photosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+
     }
+
+
 }

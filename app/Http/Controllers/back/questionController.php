@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\back;
 
+use App\comment;
+use App\news;
 use App\question;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,13 +14,19 @@ class questionController extends Controller
 
     public function index()
     {
+        $news2 = news::all()->count();
+        $com = comment::all()->count();
+        $user = User::all()->count();
         $question = question::paginate(10);
-        return view('back.question.index',compact('question'));
+        return view('back.question.index',compact('question','news2','com','user'));
     }
 
     public function create()
     {
-        return view('back.question.create');
+        $news2 = news::all()->count();
+        $com = comment::all()->count();
+        $user = User::all()->count();
+        return view('back.question.create',compact('news2','com','user'));
 
     }
 
@@ -39,8 +48,11 @@ class questionController extends Controller
 
     public function edit($id)
     {
+        $news2 = news::all()->count();
+        $com = comment::all()->count();
+        $user = User::all()->count();
         $question = question::findorFail($id);
-        return view('back.question.edit',compact('question'));
+        return view('back.question.edit',compact('question','news2','com','user'));
     }
 
 

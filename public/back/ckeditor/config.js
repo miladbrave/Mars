@@ -15,14 +15,14 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'links' },
 		{ name: 'insert' },
 		{ name: 'forms' },
-		{ name: 'tools' },
+		{ name: 'tools' , groups: [ 'tools' ] },
 		{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
 		{ name: 'others' },
 		'/',
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
 		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
-		{ name: 'styles' },
-		{ name: 'colors' },
+		{ name: 'styles' ,groups: [ 'styles' ]},
+		{ name: 'colors' , groups: [ 'colors' ]},
 		{ name: 'about' }
 	];
 
@@ -37,5 +37,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
     config.language = 'fa';
-    config.uiColor = '#dc6e00';
+    config.uiColor = '#dc6a00';
 };

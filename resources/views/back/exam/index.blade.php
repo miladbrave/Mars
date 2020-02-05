@@ -25,7 +25,7 @@
                                 <tr>
                                     <td class="text-center">{{$exams->id}}</td>
                                     <td class="text-center"> {{$exams->title}}</td>
-                                    <td class="text-center" style="text-align:center "> {!!$exams->description!!}</td>
+                                    <td class="text-center" style="text-align:center "> {!!str_limit($exams->description,100)!!}</td>
                                     <td class="text-center">
                                         <form method="post" action="{{route('exam.destroy',$exams->id)}}"
                                               style="display: inline">

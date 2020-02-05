@@ -1,13 +1,13 @@
 @extends('front.master.master')
 
 @section('nav')
-    <header class="site-header header-style-2 mobile-sider-drawer-menu">
+    <header class="site-header header-style-2 mobile-sider-drawer-menu"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <div class="main-bar-wraper  navbar-expand-lg">
             <div class="main-bar bg-white">
                 <div class="container">
                     <div class="logo-header">
                         <div class="logo-header-inner logo-header-one">
-                            <a href="index.html">
+                            <a href="{{route('main')}}">
                                 <img src="{{asset('/image/logo.jpg')}}" width="130px" height="80px" alt=""/>
                             </a>
                         </div>
@@ -38,20 +38,22 @@
                             <li class="">
                                 <a href="{{route('main')}}">خانه</a>
                             </li>
+                            <li class="">
+                                <a href="javascript:;">کشور ها</a>
+                                <ul class="sub-menu">
+                                    @foreach($country as $countries)
+                                        <li>
+                                            <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             <li>
                                 <a href="javascript:;">آزمون ها</a>
                                 <ul class="sub-menu">
-                                    @foreach($examCountry as $examCountrys)
-                                        <li><a href="javascript:;">{{$examCountrys->country}}</a>
-                                            <ul class="sub-menu">
-                                                @foreach($exam as $exams)
-                                                    @if($exams->country == $examCountrys->country)
-                                                        <li>
-                                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                    @foreach($exam as $exams)
+                                        <li>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -60,16 +62,8 @@
                                 <a href="javascript:;">دانشگاه ها</a>
                                 <ul class="sub-menu">
                                     @foreach($uniCountry as $uniCountrys)
-                                        <li><a href="javascript:;">{{$uniCountrys->country}}</a>
-                                            <ul class="sub-menu">
-                                                @foreach($uniName as $uniNames)
-                                                    @if($uniNames->country == $uniCountrys->country)
-                                                        <li>
-                                                            <a href="{{route('uni',['name' => $uniNames->title])}}">{{$uniNames->title}}</a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                        <li>
+                                            <a href="{{route('countryuni',['name' => $uniCountrys->country])}}">{{$uniCountrys->country}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -123,45 +117,35 @@
             <div class="section-content">
                 <div class="section-head text-center">
                     <span class="wt-separator-icon"><i class="sl-icon-location "></i></span>
-                    <h2>چطور کار می کنیم</h2>
+                    <h2>موسسه مشاوره ای مارس</h2>
                     <div class="wt-separator sep-gradient-light"></div>
-                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.</p>
+                    <p>برای موفقیت در هر زمینه ای نیاز به متخصص آن دارید.ما کنار شما هستیم در همه مراحل مهاجرتتان</p>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="how-it-right">
-                            <h3 class="wt-title m-t0">موفقیت معمولاً برای کسانی صورت می گیرد که مشغول جستجوی آن هستند</h3>
-                            <p><strong>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</strong></p>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد</p>
-                            <ol class="list-num-count  m-b30">
-                                <li>
-                                    <span>۱</span>
-                                    <h5> پیش برد زندگی و تحویل مراقبت های بهداشتی.</h5></li>
-                                <li>
-                                    <span>۲</span>
-                                    <h5> متعهد به بهبود زندگی بیماران در سراسر جهان است.</h5></li>
-                                <li>
-                                    <span>۳</span>
-                                    <h5> ایجاد ایده ها و ساخت مارک هایی که واقعاً مهم هستند.</h5></li>
-                                <li>
-                                    <span>۴</span>
-                                    <h5> هر داستان بی نظیر است. هر خانه متفاوت است.</h5></li>
-                            </ol>
-                            <div class="text-left">
-                                <a href="#" class="site-button-secondry site-btn-effect" data-hover="Read More">مشاهده همه</a>
-                            </div>
+                            <h3 class="wt-title m-t0">موفقیت معمولاً برای کسانی صورت می گیرد که مشغول جستجوی آن
+                                هستند</h3>
+                            <p>
+                                موسسه مشاوره ای مارس به شماره ثبت 4707 با پیشینه ای درخشان در امر مشاوره تحصیلی و اخذ
+                                پذیرش و بورسیه تحصیلی با تیم پشتیبانی متخصص که خود از فارغ التحصیلان و استادان بنام
+                                دانشگاه های معتبر دنیا هستند، در خدمت عزیزانی است که می‌خواهند با انتخاب درست مسیر،
+                                آینده ای درخشان برای خود و کشور عزیزمان ترسیم کنند
+                                این موسسه با رویکردی حرفه‌ای، مشخصات و شرایط دانشگاه‌های معتبر دنیا، رشته‌های تحصیلی و
+                                بازار کار را بررسی کرده و بر اساس شرایط علمی و خواسته‌های فرد متقاضی به‌روزترین و دقیق
+                                ترین اطلاعات را جهت انتخاب رشته تحصیلی، دانشگاه و کشور مطلوب به متقاضیان ارائه می‌دهد
+                                امید است این مجموعه با تیم پشتیبانی بزرگ و توانمند نقشی کوچک در آینده درخشان شما داشته
+                                باشد
+                            </p>
+
+
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="how-it-work">
                             <div class="video-section-dark">
-                                <img src="{{asset('/front/images/video-pic.png')}}" alt="">
-                                <div class="video-btn-position">
-                                    <a href="https://www.youtube.com/watch?v=qfRw6x5dWdE" class="mfp-video play-now">
-                                        <i class="icon fa fa-play"></i>
-                                        <span class="ripple"></span>
-                                    </a>
-                                </div>
+                                <img src="{{asset('/image/main.png')}}" alt="">
+
                             </div>
                         </div>
                     </div>
@@ -169,128 +153,5 @@
             </div>
         </div>
     </div>
-
-
-    <div class="section-full bg-orange-light">
-        <div class="container">
-            <div class="section-content">
-                <div class="section-content">
-                    <div class="section-content p-tb10 owl-btn-vertical-center">
-                        <div class="owl-carousel home-client-carousel-2 ">
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w1.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w2.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w3.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w4.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w5.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w6.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w1.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w2.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w3.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w4.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w5.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w6.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w1.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w2.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w3.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w4.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w5.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ow-client-logo">
-                                    <div class="client-logo client-logo-media">
-                                        <a href="javascript:void(0);"><img src="{{asset('/front/images/client-logo/w6.png')}}" alt=""></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 @endsection

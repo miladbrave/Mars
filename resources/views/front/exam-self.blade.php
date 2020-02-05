@@ -7,8 +7,8 @@
                 <div class="container">
                     <div class="logo-header">
                         <div class="logo-header-inner logo-header-one">
-                            <a href="index.html">
-                                <img src="{{asset('/image/logo.jpg')}}" width="130px" height="80px" alt=""/>
+                            <a href="{{route('main')}}">
+                                <img src="{{asset('/image/main.png')}}" width="130px" height="80px" alt=""/>
                             </a>
                         </div>
                     </div>
@@ -38,18 +38,22 @@
                             <li class="">
                                 <a href="{{route('main')}}">خانه</a>
                             </li>
+                            <li class="">
+                                <a href="">کشور ها</a>
+                                <ul class="sub-menu">
+                                    @foreach($country as $countries)
+                                        <li>
+                                            <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             <li>
                                 <a href="javascript:;">آزمون ها</a>
                                 <ul class="sub-menu">
-                                    @foreach($examCountry as $examCountrys)
-                                        <li><a href="javascript:;">{{$examCountrys->country}}</a>
-                                            <ul class="sub-menu">
-                                                @foreach($exam as $exams)
-                                                    @if($exams->country == $examCountrys->country)
-                                                        <li><a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a></li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                    @foreach($exam as $exams)
+                                        <li>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -58,14 +62,8 @@
                                 <a href="javascript:;">دانشگاه ها</a>
                                 <ul class="sub-menu">
                                     @foreach($uniCountry as $uniCountrys)
-                                        <li><a href="javascript:;">{{$uniCountrys->country}}</a>
-                                            <ul class="sub-menu">
-                                                @foreach($uniName as $uniNames)
-                                                    @if($uniNames->country == $uniCountrys->country)
-                                                        <li><a href="{{route('uni',['name' => $uniNames->title])}}">{{$uniNames->title}}</a></li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                        <li>
+                                            <a href="{{route('countryuni',['name' => $uniCountrys->country])}}">{{$uniCountrys->country}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -131,25 +129,25 @@
                                         <h4 class="wt-list-panel-title m-t0">{{$exams->title}}</h4>
                                         <div class="wt-separator sep-gradient-light"></div>
                                     </div>
-                                    <p>{!! $exams->description !!}</p>
+                                    <p style="text-align: justify;">{!! $exams->description !!}</p>
                                 </div>
                             </div>
                         @endforeach
                         <hr class="bg-danger mt-5 mb-5">
-                            <div class="m-b30 text-left">
-                                <h4 class="wt-list-panel-title m-t0 text-danger">  اخبار : {{$exams->title}}</h4>
-                            </div>
-                        @foreach($news as $newses)
-                                <div class=" wt-list-panel mt-5 m-b30  p-a20 bg-white shadow">
-                                    <div class="wt-list-single-about-detail">
-                                        <div class="m-b30 text-left">
-                                            <h4 class="wt-list-panel-title m-t0">{{$newses->title}}</h4>
-                                            <div class="wt-separator sep-gradient-light"></div>
-                                        </div>
-                                        <p>{!! $newses->description !!}</p>
-                                    </div>
-                                </div>
-                        @endforeach
+{{--                            <div class="m-b30 text-left">--}}
+{{--                                <h4 class="wt-list-panel-title m-t0 text-danger">  اخبار : {{$exams->title}}</h4>--}}
+{{--                            </div>--}}
+{{--                        @foreach($news as $newses)--}}
+{{--                                <div class=" wt-list-panel mt-5 m-b30  p-a20 bg-white shadow">--}}
+{{--                                    <div class="wt-list-single-about-detail">--}}
+{{--                                        <div class="m-b30 text-left">--}}
+{{--                                            <h4 class="wt-list-panel-title m-t0">{{$newses->title}}</h4>--}}
+{{--                                            <div class="wt-separator sep-gradient-light"></div>--}}
+{{--                                        </div>--}}
+{{--                                        <p>{!! $newses->description !!}</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                        @endforeach--}}
                     </div>
 
                     @if(Session::has('comment'))

@@ -7,8 +7,8 @@
                 <div class="container">
                     <div class="logo-header">
                         <div class="logo-header-inner logo-header-one">
-                            <a href="index.html">
-                                <img src="{{asset('/image/logo.jpg')}}" width="130px" height="80px" alt=""/>
+                            <a href="{{route('main')}}">
+                                <img src="{{asset('/image/main.png')}}" width="130px" height="80px" alt=""/>
                             </a>
                         </div>
                     </div>
@@ -38,20 +38,22 @@
                             <li class="">
                                 <a href="{{route('main')}}">خانه</a>
                             </li>
+                            <li class="">
+                                <a href="">کشور ها</a>
+                                <ul class="sub-menu">
+                                    @foreach($country as $countries)
+                                        <li>
+                                            <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             <li>
                                 <a href="javascript:;">آزمون ها</a>
                                 <ul class="sub-menu">
-                                    @foreach($examCountry as $examCountrys)
-                                        <li><a href="javascript:;">{{$examCountrys->country}}</a>
-                                            <ul class="sub-menu">
-                                                @foreach($exam as $exams)
-                                                    @if($exams->country == $examCountrys->country)
-                                                        <li>
-                                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                    @foreach($exam as $exams)
+                                        <li>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -60,16 +62,8 @@
                                 <a href="javascript:;">دانشگاه ها</a>
                                 <ul class="sub-menu">
                                     @foreach($uniCountry as $uniCountrys)
-                                        <li><a href="javascript:;">{{$uniCountrys->country}}</a>
-                                            <ul class="sub-menu">
-                                                @foreach($uniName as $uniNames)
-                                                    @if($uniNames->country == $uniCountrys->country)
-                                                        <li>
-                                                            <a href="{{route('uni',['name' => $uniNames->title])}}">{{$uniNames->title}}</a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                        <li>
+                                            <a href="{{route('countryuni',['name' => $uniCountrys->country])}}">{{$uniCountrys->country}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -88,8 +82,6 @@
                             </li>
                         </ul>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -117,27 +109,25 @@
 
 
 @section('content')
-
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-4 col-md-6 col-sm-12 m-b30">
                 <div
                     class="blog-post blog-grid-1 overlay-wraper post-overlay  large-date bg-cover bg-no-repeat bg-top-center"
-                    style="background-image:url(images/blog/latest-blog/pic1.jpg)">
+                    style="background-image:url({{asset('/image/exam.jpg')}})">
                     <div class="overlay-main overlay-gradient"></div>
-                    <div class="blog-category"><span class="clr-red">داخلی</span></div>
+                    <div class="blog-category"><span class="clr-red">آزمون</span></div>
                     <div class="wt-post-info text-white">
                         <div class="post-overlay-position">
                             <div class="post-content-outer p-a30">
-
                                 <div class="wt-post-title ">
                                     <h4 class="post-title"><a
-                                            href="{{route('news-self',['sel' => 'اخبار-داخلی-آموزشگاه'])}}"
-                                            class="text-white text-capitalize">اخبار داخلی آموزشگاه</a></h4>
+                                            href="{{route('news-category',['sel' => 'اخبار-آزمون ها'])}}"
+                                            class="text-white text-capitalize">اخبار آزمون های بین المللی</a></h4>
                                 </div>
                                 <div class="wt-post-meta ">
                                     <ul>
-                                        <li class="post-date  site-text-secondry">آخرین اخبار آموزشگاه</li>
+                                        <li class="post-date  site-text-secondry">آخرین اخبار آزمون ها</li>
                                         <li class="post-author"></li>
                                     </ul>
                                 </div>
@@ -149,21 +139,20 @@
             <div class="col-lg-4 col-md-6 col-sm-12 m-b30">
                 <div
                     class="blog-post blog-grid-1 overlay-wraper post-overlay  large-date bg-cover bg-no-repeat bg-top-center"
-                    style="background-image:url(images/blog/latest-blog/pic1.jpg)">
+                    style="background-image:url({{asset('/image/uni.jpg')}})">
                     <div class="overlay-main overlay-gradient"></div>
-                    <div class="blog-category"><span class="clr-red">ترکیه</span></div>
+                    <div class="blog-category"><span class="clr-red">دانشگاه ها</span></div>
                     <div class="wt-post-info text-white">
                         <div class="post-overlay-position">
                             <div class="post-content-outer p-a30">
-
                                 <div class="wt-post-title ">
                                     <h4 class="post-title"><a
-                                            href="{{route('news-self',['sel' => 'اخبار-تحصیلی-کشور-ترکیه'])}}"
-                                            class="text-white text-capitalize">اخبار تحصیلی کشور ترکیه</a></h4>
+                                            href="{{route('news-category',['sel' => 'اخبار-دانشگاه-ها'])}}"
+                                            class="text-white text-capitalize">اخبار دانشگاه ها</a></h4>
                                 </div>
                                 <div class="wt-post-meta ">
                                     <ul>
-                                        <li class="post-date  site-text-secondry">آخبار آموزش ترکیه</li>
+                                        <li class="post-date  site-text-secondry">آخرین اخبار دانشگاه ها</li>
                                         <li class="post-author"></li>
                                     </ul>
                                 </div>
@@ -175,21 +164,20 @@
             <div class="col-lg-4 col-md-6 col-sm-12 m-b30">
                 <div
                     class="blog-post blog-grid-1 overlay-wraper post-overlay  large-date bg-cover bg-no-repeat bg-top-center"
-                    style="background-image:url(images/blog/latest-blog/pic1.jpg)">
+                    style="background-image:url({{asset('/image/d.jpg')}})">
                     <div class="overlay-main overlay-gradient"></div>
-                    <div class="blog-category"><span class="clr-red">سایر کشورها</span></div>
+                    <div class="blog-category"><span class="clr-red">دوره ها</span></div>
                     <div class="wt-post-info text-white">
                         <div class="post-overlay-position">
                             <div class="post-content-outer p-a30">
-
                                 <div class="wt-post-title ">
                                     <h4 class="post-title"><a
-                                            href="{{route('news-self',['sel' => 'اخبار-تحصیلی-دانشگاه-ها'])}}"
-                                            class="text-white text-capitalize">اخبار تحصیلی دانشگاه ها</a></h4>
+                                            href="{{route('news-category',['sel' => 'اخبار-دوره ها'])}}"
+                                            class="text-white text-capitalize">اخبار دوره ها</a></h4>
                                 </div>
                                 <div class="wt-post-meta ">
                                     <ul>
-                                        <li class="post-date  site-text-secondry">اخبار دانشگاه های سراسر جهان</li>
+                                        <li class="post-date  site-text-secondry">آخرین اخبار دوره ها</li>
                                         <li class="post-author"></li>
                                     </ul>
                                 </div>
@@ -200,44 +188,5 @@
             </div>
         </div>
     </div>
-
-    <div class="section-full p-t0 p-b80">
-        <div class="container ">
-
-            <div class="section-content site-bg-secondry radius-md bg-no-repeat bg-top-right"
-                 style="background-image:url({{asset('/front/images/background/news-letter-bg.png')}})">
-                <div class="newsletter-section  text-white  p-a40">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-lg-6 col-md-12">
-                            <div class="newsletter-title">
-                                <h3 class="m-t0">اشتراک در خبرنامه</h3>
-                                <span>برای دریافت به روزرسانی و اطلاعات مشترک شوید. نگران نباشید ، ما اسپم ارسال نمی کنیم!</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <div class="newsletter-input">
-                                <form method="post" action="{{route('message')}}">
-                                    <div class="input-group">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fa fa-envelope-o "></i></span>
-                                        </div>
-                                        <input id="email" type="text" class="form-control" name="email"
-                                               placeholder="ایمیل خود را وارد کنید">
-                                        <div class="input-group-append">
-                                            <button type="submit"
-                                                    class="input-group-text nl-search-btn text-white site-bg-primary">
-                                                اشتراک
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 @endsection

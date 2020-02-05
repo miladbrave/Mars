@@ -66,7 +66,6 @@
         });
         productGallery = function () {
             document.getElementById('product-photo').value = photosGallery
-
         }
         CKEDITOR.replace('textareaDes', {
             customConfig: 'config.js',

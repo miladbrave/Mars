@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content=""/>
-    <meta name="author" content=""/>
-    <meta name="robots" content=""/>
-    <meta name="description" content=""/>
-    {{--    <link rel="icon" href="{{asset('/image/logo.jpg')}}" type="image/x-icon" />--}}
+        <link rel="icon" href="{{asset('/image/mars-icon2.ico')}}" type="image/x-icon" />
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/front/images/favicon.png')}}"/>
     <title>MarsHolding</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="keywords" content="mars holding,mars,مارس هلدینگ,مارس,">
+      <meta name="description" content="مارس هلدینگ موسسه مشاوره تحصیلی و علمی در زمینه تحصیل در خارج از کشور و کمک ومشاوره برا ی متقاضیان تحصیل در خارج از کشور می باشد"/>
+      <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+      <link rel="canonical" href="http://www.marsholdingco.com/" />
+      <meta name="subject" content="education web مارس هلدینگ">
+      <meta name="copyright" content="مارس هلدینگ مارس هلدینگ marsholding">
+      <meta name="language" content="FA">
+      <meta property="og:locale" content="fa_IR" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="marsholding مارس هلدینگ " />
+      <meta property="og:description" content="موسسه مشاوره یمارس هلدینگ موسسه مشاوره تحصیلی و علمی در زمینه تحصیل در خارج از کشور و کمک ومشاوره برا ی متقاضیان تحصیل در خارج از کشور می باشد " />
+      <meta property="og:url" content="http://marsholdingco.com/" />
+      <meta property="og:site_name" content="مارس هلدینگ,marsholding" />      
+    
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('front/css/fontawesome/css/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('front/css/font-awesome-4.7.0/css/font-awesome.min.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/range-slider.min.css')}}">
@@ -20,7 +30,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/magnific-popup.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/loader.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/dropzone.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/flaticon.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/cluster-css.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/self.css')}}">
@@ -28,8 +37,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('front/plugins/revolution/revolution/css/navigation.css')}}">
     <link href="{{asset('/front/fancybox/dist/jquery.fancybox.min.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('/front/css/dropzone.min.css')}}">
-
+    <link rel="stylesheet" type="text/css" href="{{asset('/back/dropzone.min.css')}}">
 </head>
 
 <body>
@@ -38,23 +46,17 @@
     <header class="site-header header-style-1 mobile-sider-drawer-menu">
         <div class="top-bar site-bg-primary">
             <div class="container">
-                <div class="d-flex justify-content-between" style="height: 45px">
+                <div class="d-flex justify-content-between" >
                     <div class="wt-topbar-left d-flex flex-wrap align-content-center">
                         <ul class="wt-topbar-info e-p-bx site-text-secondry">
-                            <li><i class="fa fa-envelope text-white"></i>info@marsholdingco.com</li>
+                            <li><i class="fa fa-envelope text-white"></i>marsholdingco@gmail.com</li>
                             <li><i class="fa fa-phone text-white"></i>984133340136+ | 989360369313+</li>
                         </ul>
                     </div>
                     <div class="wt-topbar-right d-flex flex-wrap align-content-center">
-                        <ul class="social-bx list-inline d-flex site-text-white">
-                            <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
-                            <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
-                            <li><a href="javascript:void(0);" class="fa fa-linkedin"></a></li>
-                        </ul>
                         <ul class="list-unstyled e-p-bx login-controls">
                             <li><a href="javascript:;" class="sign-up-btn" data-toggle="modal"
                                    data-target=".sign-in-modal"><i class="sl-icon-login m-r10"></i>ورود</a></li>
-
                         </ul>
                     </div>
                 </div>
@@ -70,19 +72,15 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="widget widget_about">
                             <div class="logo-footer clearfix p-b15">
-                                <a href="{{route('main')}}"><img src="{{asset('/image/logo.jpg')}}" alt=""></a>
+                                <a href="{{route('main')}}"><img src="{{asset('/image/main.png')}}" alt=""></a>
                             </div>
-                            <p class="mt-3" style="text-align: justify">هلدینگ آموزشی مارس با اتکا به تجارب خود طی سال
+                            <p class="mt-3" style="text-align: justify;padding-left: 70px">هلدینگ آموزشی مارس با اتکا به تجارب خود طی سال
                                 ها فعالیت در زمینه های آموزش و اعزام دانشجو به کشورهای مختلف توانسته سابقه درخشانی از
                                 خود برجای گذارد.</p>
                             <div class="widget_social_inks">
                                 <ul class="social-icons social-square social-darkest">
-                                    <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
-                                    <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
-                                    <li><a href="javascript:void(0);" class="fa fa-linkedin"></a></li>
-                                    <li><a href="javascript:void(0);" class="fa fa-rss"></a></li>
-                                    <li><a href="javascript:void(0);" class="fa fa-youtube"></a></li>
-                                    <li><a href="javascript:void(0);" class="fa fa-instagram"></a></li>
+                                    <li><a href="javascript:void(0);" class="fa fa-telegram" ></a></li>
+                                    <li><a href="https://www.instagram.com/marsholding" class="fa fa-instagram"></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -108,7 +106,7 @@
                                 </li>
                                 <li><i class="sl-icon-envelope-open "></i>marsholdingco@gmail.com</li>
                                 <li><i class="sl-icon-phone "></i>984133340136+</li>
-                                <li><i class="sl-icon-phone "></i>989360369313++</li>
+                                <li><i class="sl-icon-phone "></i>989360369313+</li>
                             </ul>
                         </div>
                     </div>
@@ -162,21 +160,9 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="d-flex justify-content-between">
-                    <div class="wt-footer-bot-left">
-                        <ul class="copyrights-nav">
-                            <li><a href="javascript:void(0);">شرایط و ضوابط</a></li>
-                            <li><a href="javascript:void(0);">سیاست حفظ حریم خصوصی</a></li>
-                            <li><a href="javascript:void(0);">تماس با ما</a></li>
-                        </ul>
+                    <div class="wt-footer-bot">
                         <span class="copyrights-text">© 2019 شرکت MarsHolding. کلیه حقوق محفوظ است.</span>
                     </div>
-                    <ul class="footer-payments">
-                        <li><a href="javascript:;"><i class="fa fa-cc-amex"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-cc-visa "></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-credit-card"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-cc-mastercard"></i></a></li>
-                        <li><a href="javascript:;"><i class="fa fa-cc-paypal"></i></a></li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -294,7 +280,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 <div class="loading-area">
     <div class="loading-box"></div>
@@ -317,7 +303,7 @@
 <script src="{{asset('front/js/isotope.pkgd.min.js')}}"></script><!-- MASONRY  -->
 <script src="{{asset('front/js/owl.carousel.min.js')}}"></script><!-- OWL  SLIDER  -->
 <script src="{{asset('front/js/stellar.min.js')}}"></script><!-- PARALLAX BG IMAGE   -->
-<script src="{{asset('front/js/dropzone.js')}}"></script><!-- IMAGE UPLOAD  -->
+<script src="{{asset('/back/dropzone.js')}}"></script><!-- IMAGE UPLOAD  -->
 
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_8C7p0Ws2gUu7wo0b6pK9Qu7LuzX2iWY&amp;libraries=places&amp;"></script>
@@ -325,9 +311,7 @@
 <script src="{{asset('front/js/markerclusterer.js')}}"></script><!-- MAP CLUSTER  -->
 <script src="{{asset('front/js/maps.js')}}"></script><!-- MAP CLUSTER  -->
 <script src="{{asset('front/js/map-cluster-rating.js')}}"></script><!-- MAP CLUSTER  -->
-
 <script src="{{asset('front/js/m-custom-scrollbar.min.js')}}"></script><!-- my account left panel scroller -->
-<!-- Timing Countdown -->
 <script src="{{asset('front/js/kinetic.js')}}"></script>
 <script src="{{asset('front/js/jquery.final-countdown.js')}}"></script>
 <script src="{{asset('front/js/custom.js')}}"></script><!-- CUSTOM FUCTIONS  -->
@@ -337,7 +321,7 @@
 <script src="{{asset('front/js/rev-script-2.js')}}"></script>
 <script src="{{asset('front/js/self.js')}}"></script>
 <script src="{{asset('/front/fancybox/dist/jquery.fancybox.min.js')}}"></script>
-<script src="{{asset('/front/js/dropzone.min.js')}}"></script><!-- IMAGE UPLOAD  -->
+<script src="{{asset('back/dropzone.min.js')}}"></script><!-- IMAGE UPLOAD  -->
 
 <script>@yield('script')</script>
 

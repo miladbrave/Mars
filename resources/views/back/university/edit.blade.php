@@ -37,16 +37,16 @@
                                         <div class="row">
                                             @foreach($university->photos as $photo)
                                                 <div class="col-sm-3" id="photo_{{$photo->id}}" style="margin:2%">
-                                                    <img class="img-responsive" src="{{ asset( $photo->path) }}"
+                                                    <img class="img-responsive" src="{{( $photo->path) }}"
                                                          alt="image">
-                                                    <button type="button" class="btn btn-danger"
-                                                            onclick="removeImages({{$photo->id}})">حذف
-                                                    </button>
+                                                        <a href="{{route('uni',$photo->id)}}" >حذف</a>
                                                 </div>
+{{--                                                onclick="removeImages({{$photo->id}})"--}}
                                             @endforeach
                                         </div>
                                     </div>
                                     <hr>
+
                                     <button type="submit" onclick="productGallery({{$university->photos->pluck('id')}})"
                                             class="btn-sm btn-success pull-left">ذخیره
                                     </button>
@@ -80,9 +80,9 @@
             }
         });
         productGallery = function (photos) {
-            if(photos){
-            document.getElementById('product-photo').value = photosGallery.concat(photos)
-            }else{
+            if (photos) {
+                document.getElementById('product-photo').value = photosGallery.concat(photos)
+            } else {
                 document.getElementById('product-photo').value = photosGallery
             }
         }
@@ -93,9 +93,9 @@
             removePlugins: 'cloudservices , easyimage'
         })
         removeImages = function (id) {
-            var index = photo.indexOf(id)
-            photo.splice(index , 1);
-            document.getElementById('photo_' + id).remove();
+            // var index = photo.indexOf(id)
+            // photo.splice(index , 1);
+            // document.getElementById('photo_' + id).remove();
         }
 
     </script>

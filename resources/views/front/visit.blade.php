@@ -1,13 +1,13 @@
 @extends('front.master.master')
 @section('nav')
-    <header class="site-header header-style-2 mobile-sider-drawer-menu">
+    <header class="site-header header-style-2 mobile-sider-drawer-menu"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <div class="main-bar-wraper  navbar-expand-lg">
             <div class="main-bar bg-white">
                 <div class="container">
                     <div class="logo-header">
                         <div class="logo-header-inner logo-header-one">
-                            <a href="index.html">
-                                <img src="{{asset('/image/logo.jpg')}}" width="130px" height="80px" alt=""/>
+                            <a href="{{route('main')}}">
+                                <img src="{{asset('/image/main.png')}}" width="130px" height="80px" alt=""/>
                             </a>
                         </div>
                     </div>
@@ -37,20 +37,22 @@
                             <li class="">
                                 <a href="{{route('main')}}">خانه</a>
                             </li>
+                            <li class="">
+                                <a href="">کشور ها</a>
+                                <ul class="sub-menu">
+                                    @foreach($country2 as $countries)
+                                        <li>
+                                            <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             <li>
                                 <a href="javascript:;">آزمون ها</a>
                                 <ul class="sub-menu">
-                                    @foreach($examCountry as $examCountrys)
-                                        <li><a href="javascript:;">{{$examCountrys->country}}</a>
-                                            <ul class="sub-menu">
-                                                @foreach($exam as $exams)
-                                                    @if($exams->country == $examCountrys->country)
-                                                        <li>
-                                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                    @foreach($exam as $exams)
+                                        <li>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -59,16 +61,8 @@
                                 <a href="javascript:;">دانشگاه ها</a>
                                 <ul class="sub-menu">
                                     @foreach($uniCountry as $uniCountrys)
-                                        <li><a href="javascript:;">{{$uniCountrys->country}}</a>
-                                            <ul class="sub-menu">
-                                                @foreach($uniName as $uniNames)
-                                                    @if($uniNames->country == $uniCountrys->country)
-                                                        <li>
-                                                            <a href="{{route('uni',['name' => $uniNames->title])}}">{{$uniNames->title}}</a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                        <li>
+                                            <a href="{{route('countryuni',['name' => $uniCountrys->country])}}">{{$uniCountrys->country}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -116,16 +110,28 @@
 
 @section('content')
 
-    @if(Session::has('val'))
-        <div class="alert alert-success container" style="float: right;text-align: center;width: 100%">
-            <div>{{ Session('val') }}</div>
-        </div>
-    @endif
-
     <div class="container visit">
         <div class="section-head text-center mt-5">
             <h2 class="m-t0">فرم مشخصات پذیرش از مقطع کارشناسی به بالا</h2>
             <div class="wt-separator sep-gradient-light"></div>
+            @if(Session::has('evade'))
+                <div class="alert alert-success container" style="float: right;text-align: center;width: 100%">
+                    <div>{{ Session('evade') }}</div>
+                </div>
+            @endif
+
+            @if ($errors->any())
+		    <div class="alert alert-danger">
+		    	<strong>لطفا موارد زیر را تصحیح فرماید</strong>
+						<br/>
+		        <ul>
+		            @foreach ($errors->all() as $error)
+		                <li>{{ $error }}</li>
+		            @endforeach
+		        </ul>
+		    </div>
+		@endif
+
         </div>
         <div class="container col-lg-12 col-md-12 col-sm-12 mb-4 border border-dark rounded-lg p-5">
             <form  method="post" action="{{route('valid')}}">
@@ -135,81 +141,103 @@
                         <div class="form-group">
                             <input name="name" type="text" required class="form-control"
                                    placeholder="نام و نام خانوادگی">
+                            @error('name')
+					            <span class="text-danger">{{ $message }}</span>
+				        	@enderror
+
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-2">
                         <div class="form-group">
                             <input name="date" type="text" class="form-control" required placeholder="تاریخ تولد">
+                             @error('date')
+					            <span class="text-danger">{{ $message }}</span>
+				        	@enderror
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2">
                         <div class="form-group">
-                            <input name="phone" type="number" class="form-control" required placeholder="تلفن ثابت">
+                            <input name="phone" type="number" class="form-control" placeholder="تلفن ثابت">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="cell" type="number" class="form-control" required placeholder="تلفن همراه">
+                            <input name="cell" type="number" class="form-control" max=99999999999 required placeholder="تلفن همراه">
+                             @error('cell')
+					            <span class="text-danger">{{ $message }}</span>
+				        	@enderror
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div class="form-group">
                             <input name="email" type="text" required class="form-control" placeholder="ایمیل">
+                             @error('email')
+					            <span class="text-danger">{{ $message }}</span>
+				        	@enderror
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div class="form-group">
                             <input name="sub" type="text" required class="form-control"
                                    placeholder="رشته های تحصیلی مد نظر برای ادامه تحصیل ">
+                                    @error('sub')
+					                     <span class="text-danger">{{ $message }}</span>
+				                	@enderror
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div class="form-group">
                             <input name="country" type="text" required class="form-control"
                                    placeholder="کشور های مد نظر برای ادامه تحصیل">
+                                    @error('country')
+					                 <span class="text-danger">{{ $message }}</span>
+				                	@enderror
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="tofel" type="number" class="form-control" required placeholder="نمره TOEFL">
+                            <input name="tofel" type="number" class="form-control"  placeholder="نمره TOEFL">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="ilets" type="number" class="form-control" required placeholder="نمره IELTS ">
+                            <input name="ilets" type="number" class="form-control"  placeholder="نمره IELTS ">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="gre" type="number" class="form-control" required placeholder="نمره GRE">
+                            <input name="gre" type="number" class="form-control"  placeholder="نمره GRE">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="gmat" type="number" class="form-control" required placeholder="نمره GMAT">
+                            <input name="gmat" type="number" class="form-control"  placeholder="نمره GMAT">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="essay" type="number" class="form-control" required
+                            <input name="essay" type="text" class="form-control"
                                    placeholder="تعداد مقالات علمی">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="check" type="text" class="form-control" required
+                            <input name="grade" type="text" class="form-control" required
                                    placeholder="مقطع مورد نظر برای ادامه تحصیل">
+                                    @error('grade')
+					                     <span class="text-danger">{{ $message }}</span>
+				                	@enderror
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 mt-2">
                         <div class="wt-filter-features-wrap wt-full-width-filter-features">
                             <label class="d-inline-block m-r15">آیا قبلا برای اخذ ویزا اقدام کرده اید؟</label>
                             <div class="checkbox wt-radio-checkbox">
-                                <input id="Accessories_1" name="visa" value="five" type="checkbox">
+                                <input id="Accessories_1" name="visa" value="بله" type="checkbox">
                                 <label for="Accessories_1">بله</label>
                             </div>
                             <div class="checkbox wt-radio-checkbox">
-                                <input id="credit_1" name="visa" value="five" type="checkbox">
+                                <input id="credit_1" name="visa"  value="خیر" type="checkbox">
                                 <label for="credit_1">خیر</label>
                             </div>
                         </div>
@@ -220,14 +248,13 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-{{--                        <div class="form-group">--}}
-{{--                            <label for="photo">رزومه</label>--}}
-{{--                            <input type="hidden" name="photo_id[]" id="product-photo">--}}
-{{--                            <div id="photo" class="dropzone"></div>--}}
-{{--                        </div>--}}
+                        <div class="form-group">
+                            <label for="photo">رزومه</label>
+                            <input type="hidden" name="photo_id[]" id="product-photo">
+                            <div id="photo" class="dropzone"></div>
+                        </div>
                     </div>
                     <hr style="width: 80%;background-color: black">
-
                     <div class="col-md-12 form-group">
                         <label class="d-inline-block m-r15 text-danger">سوابق تحصیلی متقاضی</label>
                     </div>
@@ -367,7 +394,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <input type="submit" value="ارسال" class="site-button-secondry site-btn-effect">
+                        <input type="submit" value="ارسال" onclick="productGallery()" class="site-button-secondry site-btn-effect">
                     </div>
                 </div>
             </form>
@@ -384,6 +411,9 @@
         var photosGallery = []
         var drop = new Dropzone('#photo', {
             addRemoveLinks: true,
+            maxFilesize: 5,
+            maxFiles: 2,
+
             url: "{{route('photos.store')}}",
             sending: function (file, xhr, formData) {
                 formData.append("_token", "{{csrf_token()}}")

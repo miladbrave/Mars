@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class evale extends Model
 {
-    public function photos()
+    public function photo()
     {
-        return $this->belongsToMany(photo::class );
+        return $this->hasOne(photo::class );
     }
 }

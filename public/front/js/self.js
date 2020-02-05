@@ -17,10 +17,12 @@ function myFunction(imgs) {
     expandImg.parentElement.style.display = "block";
 }
 
-
 $(document).ready(function () {
     var back = ['green','cyan','voilet','red','orange','blue','black'];
     var rand = back[Math.floor(Math.random() * back.length)];
     $('.color-lebel').addClass('clr-' + rand);
 })
+
+
+
 

@@ -10,4 +10,9 @@ class exam extends Model
     {
         return $this->hasMany(comment::class);
     }
+
+    public function photos()
+    {
+        return $this->belongsToMany(photo::class);
+    }
 }

@@ -7,7 +7,7 @@
                 <div class="logo-header">
                     <div class="logo-header-inner logo-header-one">
                         <a href="{{route('main')}}">
-                            <img src="{{asset('/image/logo3.png')}}" width="130px" height="80px" alt=""/>
+                            <img src="{{asset('/image/main.png')}}" width="130px" height="80px" alt=""/>
                         </a>
                     </div>
                 </div>
@@ -38,20 +38,22 @@
                         <li class="">
                             <a href="{{route('main')}}">خانه</a>
                         </li>
+                        <li class="">
+                            <a href="">کشور ها</a>
+                            <ul class="sub-menu">
+                                @foreach($country as $countries)
+                                    <li>
+                                        <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
                         <li>
                             <a href="javascript:;">آزمون ها</a>
                             <ul class="sub-menu">
-                                @foreach($examCountry as $examCountrys)
-                                    <li><a href="javascript:;">{{$examCountrys->country}}</a>
-                                        <ul class="sub-menu">
-                                            @foreach($exam as $exams)
-                                                @if($exams->country == $examCountrys->country)
-                                                    <li>
-                                                        <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
-                                                    </li>
-                                                @endif
-                                            @endforeach
-                                        </ul>
+                                @foreach($exam as $exams)
+                                    <li>
+                                        <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -60,16 +62,8 @@
                             <a href="javascript:;">دانشگاه ها</a>
                             <ul class="sub-menu">
                                 @foreach($uniCountry as $uniCountrys)
-                                    <li><a href="javascript:;">{{$uniCountrys->country}}</a>
-                                        <ul class="sub-menu">
-                                            @foreach($uniName as $uniNames)
-                                                @if($uniNames->country == $uniCountrys->country)
-                                                    <li>
-                                                        <a href="{{route('uni',['name' => $uniNames->title])}}">{{$uniNames->title}}</a>
-                                                    </li>
-                                                @endif
-                                            @endforeach
-                                        </ul>
+                                    <li>
+                                        <a href="{{route('countryuni',['name' => $uniCountrys->country])}}">{{$uniCountrys->country}}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -92,6 +86,8 @@
             </div>
         </div>
     </div>
+
+
 @endsection
 @section('content')
     <div class="page-content">
@@ -110,7 +106,7 @@
                                     data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
                                     data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                                     data-param8="" data-param9="" data-param10="" data-description="">
-                                    <img src="{{asset('/image/1.jpg')}}" alt="" data-bgposition="bottom bottom"
+                                    <img src="{{asset('/image/2.jpg')}}" alt="" data-bgposition="bottom bottom"
                                          data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"
                                          data-no-retina/>
                                     <div class="tp-caption tp-shape tp-shapewrapper "
@@ -134,9 +130,11 @@
                                          data-paddingbottom="[0,0,0,0]"
                                          data-paddingleft="[0,0,0,0]"
 
-                                         style="z-index: 12;background-color:rgba(0, 0, 0, 0.7);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+                                         style="z-index: 12;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;">
                                     </div>
-                                    <div class="tp-caption   tp-resizeme"
+
+
+                                    <div class="tp-caption   tp-resizeme first-slide"
                                          id="slide-100-layer-3"
                                          data-x="['right','right','right','center']" data-hoffset="['50','50','50','0']"
                                          data-y="['top','top','top','top']" data-voffset="['260','260','260','260']"
@@ -145,7 +143,6 @@
                                          data-width="['700','700','700','700']"
                                          data-height="['none','none','none','none']"
                                          data-whitespace="['normal','normal','normal','normal']"
-
                                          data-type="text"
                                          data-responsive_offset="on"
                                          data-frames='[
@@ -157,17 +154,16 @@
                                          data-paddingright="[0,0,0,0]"
                                          data-paddingbottom="[0,0,0,0]"
                                          data-paddingleft="[0,0,0,0]"
-
                                          style="z-index: 13;
                                     white-space: normal;
                                     font-weight: 300;
                                     color: rgb(75, 57, 65);
                                     border-width:0px;">
-                                        <div style="font-family: 'IRANSansWeb', sans-serif;">
+                                        <div style="font-family: 'IRANSansWeb', sans-serif;padding-right: 2%">
                                             <span class="text-white"> ثبت نام و راهنمایی</span>
                                         </div>
                                     </div>
-                                    <div class="tp-caption   tp-resizeme"
+                                    <div class="tp-caption   tp-resizeme second-slide"
                                          id="slide-100-layer-4"
                                          data-x="['right','right','right','center']" data-hoffset="['50','50','50','0']"
                                          data-y="['top','top','top','top']" data-voffset="['320','320','320','340']"
@@ -192,11 +188,12 @@
                                     white-space: normal;
                                     font-weight: 700;
                                     border-width:0px;">
-                                        <div style="font-family: 'IRANSansWeb', sans-serif; text-transform:uppercase ;">
+                                        <div
+                                            style="font-family: 'IRANSansWeb', sans-serif;text-transform:uppercase;padding-right: 2%">
                                             <span class="text-white"> آزمون های بین المللی</span>
                                         </div>
                                     </div>
-                                    <div class="tp-caption  tp-resizeme"
+                                    <div class="tp-caption  tp-resizeme second-slide"
                                          id="slide-100-layer-5"
                                          data-x="['right','right','right','center']" data-hoffset="['50','50','50','0']"
                                          data-y="['top','top','top','top']" data-voffset="['400','400','400','400']"
@@ -256,7 +253,7 @@
                                     data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
                                     data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                                     data-param8="" data-param9="" data-param10="" data-description="">
-                                    <img src="{{asset('/image/2.jpg')}}" alt="" data-bgposition="bottom bottom"
+                                    <img src="{{asset('/image/1.jpg')}}" alt="" data-bgposition="bottom bottom"
                                          data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"
                                          data-no-retina/>
                                     <div class="tp-caption tp-shape tp-shapewrapper "
@@ -280,9 +277,9 @@
                                          data-paddingbottom="[0,0,0,0]"
                                          data-paddingleft="[0,0,0,0]"
 
-                                         style="z-index: 12;background-color:rgba(0, 0, 0, 0.7);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+                                         style="z-index: 12;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;">
                                     </div>
-                                    <div class="tp-caption   tp-resizeme"
+                                    <div class="tp-caption   tp-resizeme first-slide"
                                          id="slide-101-layer-3"
                                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                          data-y="['top','top','top','top']" data-voffset="['260','260','260','260']"
@@ -311,7 +308,7 @@
                                             <span class="text-white">تحصیل در کشور انگلستان</span>
                                         </div>
                                     </div>
-                                    <div class="tp-caption   tp-resizeme"
+                                    <div class="tp-caption   tp-resizeme second-slide"
                                          id="slide-101-layer-4"
                                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                          data-y="['top','top','top','top']" data-voffset="['320','320','320','340']"
@@ -339,7 +336,7 @@
                                             <span class="text-white">مدرسه و دانشگاه</span>
                                         </div>
                                     </div>
-                                    <div class="tp-caption  tp-resizeme"
+                                    <div class="tp-caption  tp-resizeme second-slide"
                                          id="slide-101-layer-5"
                                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                          data-y="['top','top','top','top']" data-voffset="['400','400','400','400']"
@@ -397,7 +394,7 @@
                                     data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
                                     data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                                     data-param8="" data-param9="" data-param10="" data-description="">
-                                    <img src="{{asset('/image/3.jpg')}}" alt="" data-bgposition="bottom bottom"
+                                    <img src="{{asset('/image/3.png')}}" alt="" data-bgposition="bottom bottom"
                                          data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"
                                          data-no-retina/>
                                     <div class="tp-caption tp-shape tp-shapewrapper "
@@ -420,9 +417,9 @@
                                          data-paddingright="[0,0,0,0]"
                                          data-paddingbottom="[0,0,0,0]"
                                          data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 12;background-color:rgba(0, 0, 0, 0.7);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+                                         style="z-index: 12;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;">
                                     </div>
-                                    <div class="tp-caption   tp-resizeme"
+                                    <div class="tp-caption   tp-resizeme first-slide"
                                          id="slide-102-layer-3"
                                          data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
                                          data-y="['top','top','top','top']" data-voffset="['260','260','260','260']"
@@ -447,11 +444,11 @@
                                     font-weight: 300;
                                     color: rgb(75, 57, 65);
                                     border-width:0px;">
-                                        <div style="font-family: 'IRANSansWeb', sans-serif;">
+                                        <div style="font-family: 'IRANSansWeb',sans-serif;padding-left: 2%">
                                             <span class="text-white">تحصیل در مدارس و دانشگاه های</span>
                                         </div>
                                     </div>
-                                    <div class="tp-caption   tp-resizeme"
+                                    <div class="tp-caption   tp-resizeme second-slide"
                                          id="slide-102-layer-4"
                                          data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
                                          data-y="['top','top','top','top']" data-voffset="['320','320','320','340']"
@@ -475,11 +472,12 @@
                                     white-space: normal;
                                     font-weight: 700;
                                     border-width:0px;">
-                                        <div style="font-family: 'IRANSansWeb', sans-serif; text-transform:uppercase ;">
+                                        <div
+                                            style="font-family: 'IRANSansWeb', sans-serif; text-transform:uppercase;padding-left: 2%">
                                             <span class="text-white"> کانادا</span>
                                         </div>
                                     </div>
-                                    <div class="tp-caption  tp-resizeme"
+                                    <div class="tp-caption  tp-resizeme second-slide"
                                          id="slide-102-layer-5"
                                          data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
                                          data-y="['top','top','top','top']" data-voffset="['400','400','400','400']"
@@ -504,7 +502,7 @@
                                     font-weight: 500;
                                     color:#fff;
                                     border-width:0px;">
-                                        <span style="font-family: 'IRANSansWeb', sans-serif;">علاقه مندان به تحصیل در کشور کانادا برای بهره مندی از مشاوره رایگان می توانند با ما تماس گرفته و وقت مشاوره رزرو نمایند</span>
+                                        <span style="font-family:'IRANSansWeb',sans-serif;padding-left: 2%">علاقه مندان به تحصیل در کشور کانادا برای بهره مندی از مشاوره رایگان می توانند با ما تماس گرفته و وقت مشاوره رزرو نمایند</span>
                                     </div>
                                     <div class="tp-caption tp-resizeme"
                                          id="slide-102-layer-6"
@@ -537,284 +535,123 @@
                 </div>
             </div>
         </div>
-
-        <div class="container main-categories-slider-outer">
-            <div class="main-categories-slider">
-                <div class="owl-carousel banner-categories owl-btn-vertical-center">
-                    <div class="item">
-                        <a href="#" class="main-categories-box-outer site-text-primary text-center v-icon-effect">
-                            <div class="main-categories-box">
-                                <div class="main-categories-icon">
-                                    <img src="{{asset('/image/blog/tomers.jpg')}}" alt=""
-                                         class="v-icon ">
-                                </div>
-                            </div>
-                            <span>TOMER</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#" class="main-categories-box-outer site-text-primary text-center v-icon-effect">
-                            <div class="main-categories-box">
-                                <div class="main-categories-icon">
-                                    <img src="{{asset('/image/blog/gmat.jpg')}}" alt=""
-                                         class="v-icon">
-                                </div>
-                            </div>
-                            <span>GMAT</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#" class="main-categories-box-outer site-text-primary text-center v-icon-effect">
-                            <div class="main-categories-box ">
-                                <div class="main-categories-icon ">
-                                    <img src="{{asset('/image/blog/yos.jfif')}}" alt=""
-                                         class=" v-icon">
-                                </div>
-                            </div>
-                            <span>YOS</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#" class="main-categories-box-outer site-text-primary text-center v-icon-effect">
-                            <div class="main-categories-box">
-                                <div class="main-categories-icon">
-                                    <img src="{{asset('/image/blog/ielts.png')}}" alt=""
-                                         class="v-icon">
-                                </div>
-                            </div>
-                            <span>ILETS</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#" class="main-categories-box-outer site-text-primary text-center v-icon-effect">
-                            <div class="main-categories-box">
-                                <div class="main-categories-icon">
-                                    <img src="{{asset('/image/blog/gres.jpg')}}" alt=""
-                                         class="v-icon">
-                                </div>
-                            </div>
-                            <span>GRE</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#" class="main-categories-box-outer site-text-primary text-center v-icon-effect">
-                            <div class="main-categories-box">
-                                <div class="main-categories-icon">
-                                    <img src="{{asset('/image/blog/toefls.jpg')}}" alt=""
-                                         class="v-icon">
-                                </div>
-                            </div>
-                            <span>TOEFL</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#" class="main-categories-box-outer site-text-primary text-center v-icon-effect">
-                            <div class="main-categories-box">
-                                <div class="main-categories-icon">
-                                    <img src="{{asset('/image/blog/aless.png')}}" alt=""
-                                         class="v-icon ">
-                                </div>
-                            </div>
-                            <span>ALES</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#" class="main-categories-box-outer site-text-primary text-center v-icon-effect">
-                            <div class="main-categories-box">
-                                <div class="main-categories-icon">
-                                    <img src="{{asset('/image/blog/ydss.jpg')}}" alt=""
-                                         class="v-icon">
-                                </div>
-                            </div>
-                            <span>YDS</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="section-full p-t80 p-b50 bg-no-repeat bg-center circle-box-style-1-outer"
              style="background-image:url('../../../public/front/images/background/bg-map.png')">
             <div class="container">
                 <div class="section-content">
-                    <!-- TITLE START-->
                     <div class="section-head text-center">
-                        <h2>تجربه مهاجرت</h2>
+                        <h2>برای اپلای و پذیرش موفق چه چیزهایی لازم است؟ </h2>
                         <div class="wt-separator sep-gradient-light"></div>
-                        <p>مهاجرت امری زمان بر و طاقت فرسا می باشد.که نیاز مبرم به افرادی با تجربه و آشنا به این راه می
-                            باشد</p>
                     </div>
                     <div class="row d-flex justify-content-center">
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="circle-box-style-1 text-center m-b5">
-                                <div class="circle-icon-secton">
-                                        <span>
-                                            <i class="im-icon-Turkey "></i>
-                                        </span>
-                                </div>
-                                <div class="icon-content">
-                                    <h4 class="wt-tilte">اخذ پاسپورت ترکیه</h4>
-                                    <p>با گرفتن اقامت از ترکیه و گذراندن 5سال در این کشور می توانید اقدام به گرفتن
-                                        پاسپورت خود کنید و از مزایای آن بهره </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="circle-box-style-1 text-center m-b5">
-                                <div class="circle-icon-secton">
-                                        <span>
-                                            <i class="im-icon-University "></i>
-                                        </span>
-                                </div>
-                                <div class="icon-content">
-                                    <h4 class="wt-tilte">اخذ پذیرش تحصیلی</h4>
-                                    <p>با اخذ پذیرش از دانشگاه های معتبر اروپایی و آمریکایی می توانید آینده خود را تامین
-                                        کنید.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="circle-box-style-1 circle-line-none text-center m-b5">
-                                <div class="circle-icon-secton">
-                                        <span>
-                                            <i class="im-icon-Plane "></i>
-                                        </span>
-                                </div>
-                                <div class="icon-content">
-                                    <h4 class="wt-tilte">مهاجرت</h4>
-                                    <p>مهاجرت امری زمان بر و طولانی می باشد.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="exam bg-orange-light dot-left-top-img dot-right-bottom-img">
-            <div class="section-head text-center">
-                <h2>کدام آزمون نیاز دارید؟</h2>
-                <div class="wt-separator sep-gradient-light"></div>
-                <p>آیا می دانید برای پذیرش و ادامه تحصیل در کشور های مختلف نیاز به اخذ مدارک از آزمون های بین الملی
-                    می باشید؟</p>
-            </div>
-            <div class="container">
-                <div class="">
-                    <div class="card-columns">
-                        @foreach($exam as $exams)
-                            <div class="card">
-                                <div class="flip-card">
-                                    <div class="flip-card-inner">
-                                        <a href="{{route('getExam',['name' => $exams->title])}}">
-                                            <div class="flip-card-front">
-                                                <img src="{{asset('/image/a.png')}}"
-                                                     class="featured-cat-box v-icon-effect"
-                                                     alt="Avatar"
-                                                     style="width:365px;height:300px;">
-                                                <p>{{$exams->title}}</p>
-                                            </div>
-                                        </a>
-                                        <div class="flip-card-back">
-                                            <h1>{{$exams->title}}</h1>
-                                            <p>{!! str_limit($exams->description,30) !!}</p>
-
-                                            <a href="{{route('getExam',['name' => $exams->title])}}">
-                                                <button class="button">بیشتر بدانید</button>
-                                            </a>
+                        <div class="row">
+                            <div class="col-md-4 text-center service small">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="s-service">
+                                   <span class="fa-stack fa-4x">
+                                        <i class="fa fa-circle-thin fa-stack-2x text-danger"></i>
+                                        <i class="fa im-icon-Consulting fa-stack-1x fa-inverse text-danger"></i>
+                                   </span>
+                                        </div>
+                                        <div class="icon-content">
+                                            <h4 class="wt-tilte">مشاوره</h4>
+                                            <span class="icon-count-number">1</span>
+                                            <p>یک مشاوره خوب کمک میکنه تا مسیر بشناسید
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                            <div class="col-md-4 text-center service small">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="s-service">
+                                   <span class="fa-stack fa-4x">
+                                        <i class="fa fa-circle-thin fa-stack-2x text-danger"></i>
+                                        <i class="fa im-icon-University  fa-stack-1x fa-inverse text-danger"></i>
+                                   </span>
+                                        </div>
+                                        <div class="icon-content">
+                                            <h4 class="wt-tilte">دانشگاه</h4>
+                                            <span class="icon-count-number">1</span>
+                                            <p>انتخاب درست دانشگاه و کشور مقصد بر اساس رزومه شخص</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center service small">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="s-service">
+                                   <span class="fa-stack fa-4x">
+                                        <i class="fa fa-circle-thin fa-stack-2x text-danger"></i>
+                                        <i class="fa im-icon-Folder-WithDocument  fa-stack-1x fa-inverse text-danger"></i>
+                                   </span>
+                                        </div>
+                                        <div class="icon-content">
+                                            <h4 class="wt-tilte">مدارک</h4>
+                                            <span class="icon-count-number">1</span>
+                                            <p>کسب مدارک زبان و همچنین اخذ مدارک آزمون های بین المللی</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 text-center service mt-4 small">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="s-service">
+                                   <span class="fa-stack fa-4x">
+                                        <i class="fa fa-circle-thin fa-stack-2x text-danger"></i>
+                                        <i class="fa im-icon-Paper fa-stack-1x fa-inverse text-danger"></i>
+                                   </span>
+                                        </div>
+                                        <div class="icon-content">
+                                            <h4 class="wt-tilte">آماده سازی</h4>
+                                            <span class="icon-count-number">1</span>
+                                            <p>مهمترین مرحله آماده سازی دقیق و علمی مدارک اپلای</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 text-center service mt-4 small">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="s-service">
+                                   <span class="fa-stack fa-4x">
+                                        <i class="fa fa-circle-thin fa-stack-2x text-danger"></i>
+                                        <i class="fa im-icon-Teacher fa-stack-1x fa-inverse text-danger"></i>
+                                   </span>
+                                        </div>
+                                        <div class="icon-content">
+                                            <h4 class="wt-tilte">مکاتبه با اساتید</h4>
+                                            <span class="icon-count-number">1</span>
+                                            <p>مکاتبه اصولی با اساتید و دانشگاه ها وارسال به موقع مدارک</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 text-center service mt-4 small">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="s-service">
+                                   <span class="fa-stack fa-4x">
+                                        <i class="fa fa-circle-thin fa-stack-2x text-danger"></i>
+                                        <i class="fa fa-vimeo fa-stack-1x fa-inverse text-danger"></i>
+                                   </span>
+                                        </div>
+                                        <div class="icon-content">
+                                            <h4 class="wt-tilte">ویزا</h4>
+                                            <span class="icon-count-number">1</span>
+                                            <p>آخرین مرحله بعد از اخذ پذیرش اقدام برای ویزا می باشد</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="section-full  p-t80 p-b70 bg-orange-light dot-left-top-img dot-right-bottom-img">
-            <div class="container">
-                <div class="section-head text-center">
-                    <h2>پویندگان راه موفقیت</h2>
-                    <div class="wt-separator sep-gradient-light"></div>
-                    <p>شما هم می توانید یکی از افرادی باشید که این راه را با موفقیت سپری کردند.</p>
-                </div>
-                <div class="section-content">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 m-b30">
-                            <div class="featured-cat-box bg-cover bg-no-repeat v-icon-effect"
-                                 style="background-image:url({{asset('/image/g1.jfif')}})">
-                                <div class="featured-cat-text clearfix">
-                                    <div class="f-cat-icon v-icon"></div>
-                                    <div class="featured-cat-name-outer">
-                                        <h4 class="featured-cat-name">اما واتسن</h4>
-                                        <span
-                                            class="featured-cat-user color-lebel clr-orange">دانشگاه آزاد برمنگام</span>
-                                    </div>
-                                </div>
-                                <div class="featured-cat-overlay"></div>
-                                <a href="#" class="featured-cat-linking"></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 m-b30">
-                            <div class="featured-cat-box bg-cover bg-no-repeat v-icon-effect"
-                                 style="background-image:url({{asset('/image/g2.jpg')}})">
-                                <div class="featured-cat-text clearfix">
-                                    <div class="f-cat-icon v-icon"></div>
-                                    <div class="featured-cat-name-outer">
-                                        <h4 class="featured-cat-name">فاطمه</h4>
-                                        <span class="featured-cat-user color-lebel clr-pink">دانشگاه آکسفورد</span>
-                                    </div>
-                                </div>
-                                <div class="featured-cat-overlay"></div>
-                                <a href="#" class="featured-cat-linking"></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 m-b30">
-                            <div class="featured-cat-box bg-cover bg-no-repeat v-icon-effect"
-                                 style="background-image:url({{asset('/image/g3.jpg')}})">
-                                <div class="featured-cat-text clearfix">
-                                    <div class="f-cat-icon v-icon"></div>
-                                    <div class="featured-cat-name-outer">
-                                        <h4 class="featured-cat-name">کبری</h4>
-                                        <span class="featured-cat-user color-lebel clr-green">دانشگاه پریستون</span>
-                                    </div>
-                                </div>
-                                <div class="featured-cat-overlay"></div>
-                                <a href="#" class="featured-cat-linking"></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 m-b30">
-                            <div class="featured-cat-box bg-cover bg-no-repeat v-icon-effect"
-                                 style="background-image:url({{asset('/image/b1.jpg')}})">
-                                <div class="featured-cat-text clearfix">
-                                    <div class="featured-cat-name-outer">
-                                        <h4 class="featured-cat-name">اکبر</h4>
-                                        <span class="featured-cat-user color-lebel clr-blue">دانشگاه کوچ</span>
-                                    </div>
-                                </div>
-                                <div class="featured-cat-overlay"></div>
-                                <a href="#" class="featured-cat-linking"></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 m-b30">
-                            <div class="featured-cat-box bg-cover bg-no-repeat v-icon-effect"
-                                 style="background-image:url({{asset('/image/g4.jpg')}})">
-                                <div class="featured-cat-text clearfix">
-                                    <div class="featured-cat-name-outer">
-                                        <h4 class="featured-cat-name">زهراسادات</h4>
-                                        <span class="featured-cat-user color-lebel clr-cyan">دانشگاه استنفورد</span>
-                                    </div>
-                                </div>
-                                <div class="featured-cat-overlay"></div>
-                                <a href="#" class="featured-cat-linking"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{--            <div class="text-center m-t10">--}}
-            {{--                <a href="#" class="site-button-secondry site-btn-effect" data-hover="Read More">مشاهده همه</a>--}}
-            {{--            </div>--}}
         </div>
 
         <div class="section-full  p-t80 p-b50 site-bg-primary dot-left-top-bg-dark bg-repeat-x bg-bottom-center"
@@ -842,7 +679,7 @@
                         <div class="masonry-item cat-{{$uniNames->country}} col-lg-4 col-md-6 col-sm-12 m-b30">
                             <div class="cities-slide-box bg-cover bg-no-repeat"
                                  @if(isset($uniNames->photos[0]->path))
-                                 style="background-image:url({{asset($uniNames->photos[0]->path)}})">
+                                 style="background-image:url({{($uniNames->photos[0]->path)}})">
                                 @endif
                                 <span class="cities-slide-user color-lebel">{{$uniNames->country}}</span>
                                 <div class="cities-slide-text text-white">
@@ -861,24 +698,62 @@
             </div>
         </div>
 
+        <div class="exam bg-orange-light mb-5 mt-5">
+            <div class="section-head text-center">
+                <h2>کدام آزمون نیاز دارید؟</h2>
+                <div class="wt-separator sep-gradient-light"></div>
+                <p>آیا می دانید برای پذیرش و ادامه تحصیل در کشور های مختلف نیاز به اخذ مدارک از آزمون های بین الملی
+                    می باشید؟</p>
+            </div>
+
+            <div class="container d-flex justify-content-center">
+                <div class="row test">
+                    @foreach($exam as $eph)
+                        @if(isset($eph->photos[0]->path))
+                            <div class="col-md-4 text-center imagehover">
+                                <img class="examImage" src="{{($eph->photos[0]->path)}}">
+                                <img class="examImage2" src="{{($eph->photos[1]->path)}}">
+                                <strong class="title">{{$eph->title}}</strong>
+                                <div class="overlay"></div>
+                                <div class="button"><a href="{{route('getExam',['name'=>$eph->title])}}">کلیک کنید</a>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        <section id="subscribe">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="subscribe-title">سوالات خود را از ما بپرسید.</h3>
+                        <a class="subscribe-btn" href="{{route('contact')}}">اطلاعات بیشتر</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <div class="section-full  p-t80 p-b40 bg-white blog-post-outer-3 ">
             <div class="container">
                 <div class="section-head text-center">
                     <h2>اخبار</h2>
                     <div class="wt-separator sep-gradient-light"></div>
-                    <p>می توانید آخرین اخبار رو جستجو کنید.</p>
+                    <p>می توانید آخرین اخبار رو مشاهده کنید.</p>
                 </div>
                 <div class="section-content">
                     <div class="row d-flex justify-content-center">
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            @foreach($news->where('select','ترکیه')->take(1) as $new)
-                                <div class="blog-post blog-list-1 blog-lg">
-                                    <div class="wt-post-media wt-img-effect zoom-slow">
-                                        <a href="{{route('news-self',['sel' => 'اخبار-تحصیلی-کشور-ترکیه'])}}"><img
-                                                src="{{asset('/image/turkey.jpg')}}"
-                                                alt=""></a>
+                        <div class="col-lg-4 col-md-6 col-sm-12 news">
+                            @foreach($news->where('select','آزمون')->take(1) as $new)
+                                <div class="card p-3">
+                                    <div class="wt-post-media wt-img-effect">
+                                        <a href="{{route('news-category',['sel' => 'اخبار-آزمون ها'])}}"><img
+                                                src="{{asset('/image/news-exams.jpg')}}"
+                                                alt="" style="border-radius: 15px"></a>
                                     </div>
-                                    <div class="wt-post-info bg-white p-t30">
+                                    <div class="wt-post-info p-t30">
                                         <div class="wt-post-meta ">
                                             <ul>
                                                 <li class="post-date"><i
@@ -886,29 +761,31 @@
                                                 </li>
                                                 <li class="post-catagory"><i
                                                         class="fa fa-tags site-text-secondry"></i><a
-                                                        href="{{route('news-self',['sel' => 'اخبار-تحصیلی-کشور-ترکیه'])}}void(0);">{{$new->select}}</a>
+                                                        href="{{route('news-category',['sel' => 'اخبار-آزمون ها'])}}void(0);">{{$new->select}}</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="wt-post-title ">
-                                            <h4 class="post-title"><a href="#">{{$new->title}}</a></h4>
+                                            <h5 class="post-title"
+                                                style="font-size:16px;font-weight:400;line-height:1.5"><a
+                                                    href="#">{{$new->title}}</a></h5>
                                         </div>
                                         <div class="wt-post-text">
-                                            <p>{!! $new->description !!}</p>
-                                            <a href="{{route('news-self',['sel' => 'اخبار-تحصیلی-کشور-ترکیه'])}}"
+                                            <h6 style="font-size:15px;font-weight:100;line-height:1.5">{!!($new->description) !!}</h6>
+                                            <a href="{{route('news-category',['sel' => 'اخبار-آزمون ها'])}}"
                                                class="site-button-link orange">ادامه مطلب</a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            @foreach($news->where('select','داخلی')->take(1) as $new)
-                                <div class="blog-post blog-list-1 blog-lg">
-                                    <div class="wt-post-media wt-img-effect zoom-slow">
-                                        <a href="{{route('news-self',['sel' => 'اخبار-داخلی-آموزشگاه'])}}"><img
-                                                src="{{asset('/image/logo.jpg')}}"
-                                                alt=""></a>
+                        <div class="col-lg-4 col-md-6 col-sm-12 news2">
+                            @foreach($news->where('select','دانشگاه')->take(1) as $new)
+                                <div class="card p-3">
+                                    <div class="wt-post-media wt-img-effect">
+                                        <a href="{{route('news-category',['sel' => 'اخبار-دانشگاه ها'])}}"><img
+                                                src="{{asset('/image/news-university.jpg')}}"
+                                                alt="" style="border-radius: 15px"></a>
                                     </div>
                                     <div class="wt-post-info bg-white p-t30">
                                         <div class="wt-post-meta ">
@@ -923,27 +800,29 @@
                                         </div>
                                         <div class="wt-post-title ">
                                             <h4 class="post-title"><a
-                                                    href="{{route('news-self',['sel' => 'اخبار-داخلی-آموزشگاه'])}}">{{$new->title}}</a>
+                                                    style="font-size:16px;font-weight:400;line-height:1.5"
+                                                    href="{{route('news-category',['sel' => 'اخبار-دانشگاه ها'])}}">{{$new->title}}</a>
                                             </h4>
                                         </div>
                                         <div class="wt-post-text">
-                                            <p>{!! $new->description !!}</p>
-                                            <a href="{{route('news-self',['sel' => 'اخبار-داخلی-آموزشگاه'])}}"
+                                            <h6 style="font-size:15px;font-weight:100;line-height:1.5">
+                                                >{!! $new->description !!}</h6>
+                                            <a href="{{route('news-category',['sel' => 'اخبار-دانشگاه ها'])}}"
                                                class="site-button-link orange">ادامه مطلب</a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            @foreach($news->where('select','سایر')->take(1) as $new)
-                                <div class="blog-post blog-list-1 blog-lg">
-                                    <div class="wt-post-media wt-img-effect zoom-slow">
-                                        <a href="{{route('news-self',['sel' => 'اخبار-تحصیلی-دانشگاه-ها'])}}"><img
-                                                src="{{asset('/image/world.jpg')}}"
-                                                alt="" style="height: 175px"></a>
+                        <div class="col-lg-4 col-md-6 col-sm-12 news">
+                            @foreach($news->where('select','دوره')->take(1) as $new)
+                                <div class="card p-3">
+                                    <div class="wt-post-media wt-img-effect">
+                                        <a href="{{route('news-category',['sel' => 'اخبار-دوره ها'])}}"><img
+                                                src="{{asset('/image/news-period.jpg')}}"
+                                                alt="" style="border-radius: 15px;"></a>
                                     </div>
-                                    <div class="wt-post-info bg-white p-t30">
+                                    <div class="wt-post-info p-t30">
                                         <div class="wt-post-meta ">
                                             <ul>
                                                 <li class="post-date"><i
@@ -951,150 +830,24 @@
                                                 </li>
                                                 <li class="post-catagory"><i
                                                         class="fa fa-tags site-text-secondry"></i><a
-                                                        href="{{route('news-self',['sel' => 'اخبار-تحصیلی-دانشگاه-ها'])}}void(0);">{{$new->select}}</a>
+                                                        href="{{route('news-category',['sel' => 'اخبار-دوره ها'])}}void(0);">{{$new->select}}</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="wt-post-title ">
                                             <h4 class="post-title"><a
-                                                    href="{{route('news-self',['sel' => 'اخبار-تحصیلی-دانشگاه-ها'])}}">{{$new->title}}</a>
+                                                    style="font-size:16px;font-weight:400;line-height:1.5"
+                                                    href="{{route('news-category',['sel' => 'اخبار-دوره ها'])}}">{{$new->title}}</a>
                                             </h4>
                                         </div>
                                         <div class="wt-post-text">
-                                            <p>{!! $new->description !!}</p>
-                                            <a href="{{route('news-self',['sel' => 'اخبار-تحصیلی-دانشگاه-ها'])}}"
+                                            <h6 style="font-size:15px;font-weight:100;line-height:1.5">{!! $new->description !!}</h6>
+                                            <a href="{{route('news-category',['sel' => 'اخبار-دوره ها'])}}"
                                                class="site-button-link orange">ادامه مطلب</a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-full  p-t80 p-b80 site-bg-primary dot-left-top-bg-dark">
-            <div class="container">
-                <div class="section-head text-center text-white">
-                    <h2>همکاران و همراهان ما در راه موفقیت شما</h2>
-                    <div class="wt-separator sep-gradient-dark"></div>
-                    <p>ما به پشتوانه اعتماد شما استوار ایستاده ایم</p>
-                </div>
-                <div class="section-content">
-                    <div class="owl-carousel testimonial-home dark-next-prev">
-                        <div class="item">
-                            <div class="testimonial-2  bg-white corner-radius">
-                                <div class="testimonial-pic radius shadow"><img
-                                        src="{{asset('front/images/testimonials/pic1.jpg')}}"
-                                        width="100" height="100" alt="">
-                                </div>
-                                <div class="testimonial-content  p-a30">
-                                    <div class="testimonial-text">
-                                        <p>دکتر رستین دوزا مالک و مدیر موسسه مارس هولدینگ می باشند.ایشان مدرس دوره های
-                                            موفقیت در 5روز...</p>
-                                    </div>
-                                    <div class="testimonial-detail clearfix">
-                                        <div class="testimonial-info">
-                                            <h4 class="testimonial-name">رستین دوزا</h4>
-                                            <span class="testimonial-position site-text-secondry">مدیر</span>
-                                            <div class="client-rating">
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <span class="fa fa-quote-right"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-2  bg-white corner-radius">
-                                <div class="testimonial-pic radius shadow"><img
-                                        src="{{asset('front/images/testimonials/pic2.jpg')}}"
-                                        width="100" height="100" alt="">
-                                </div>
-                                <div class="testimonial-content  p-a30">
-                                    <div class="testimonial-text">
-                                        <p>مهندس الیور وتولف دارای کارشناسی ارشد روانشناسی از دانشگاه هاروارد و مدرس
-                                            زبان انگلیسی و مشاور..</p>
-                                    </div>
-                                    <div class="testimonial-detail clearfix">
-                                        <div class="testimonial-info">
-                                            <h4 class="testimonial-name">الیور وتولف</h4>
-                                            <span
-                                                class="testimonial-position site-text-secondry">مشاور و مدرس</span>
-                                            <div class="client-rating">
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <span class="fa fa-quote-right"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-2  bg-white corner-radius">
-                                <div class="testimonial-pic radius shadow"><img
-                                        src="{{asset('front/images/testimonials/pic3.jpg')}}"
-                                        width="100" height="100" alt="">
-                                </div>
-                                <div class="testimonial-content  p-a30">
-                                    <div class="testimonial-text">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه.</p>
-                                    </div>
-                                    <div class="testimonial-detail clearfix">
-                                        <div class="testimonial-info">
-                                            <h4 class="testimonial-name">فرانسیس برتون</h4>
-                                            <span class="testimonial-position site-text-secondry">مدرس</span>
-                                            <div class="client-rating">
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <span class="fa fa-quote-right"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-2  bg-white corner-radius">
-                                <div class="testimonial-pic radius shadow"><img
-                                        src="{{asset('front/images/testimonials/pic4.jpg')}}"
-                                        width="100" height="100" alt="">
-                                </div>
-                                <div class="testimonial-content  p-a30">
-                                    <div class="testimonial-text">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه.</p>
-                                    </div>
-                                    <div class="testimonial-detail clearfix">
-                                        <div class="testimonial-info">
-                                            <h4 class="testimonial-name">رستین دوزا</h4>
-                                            <span class="testimonial-position site-text-secondry">صاحب اسپا</span>
-                                            <div class="client-rating">
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <span class="fa fa-quote-right"></span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

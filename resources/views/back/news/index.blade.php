@@ -15,8 +15,8 @@
                             <thead>
                             <tr>
                                 <th class="text-center">شناسه</th>
+                                <th class="text-center">تصویر</th>
                                 <th class="text-center">عنوان</th>
-                                <th class="text-center">توضیح</th>
                                 <th class="text-center">عملیات</th>
                             </tr>
                             </thead>
@@ -24,8 +24,11 @@
                             @foreach($news as $newss)
                                 <tr>
                                     <td class="text-center">{{$newss->id}}</td>
+                                    @if(isset($newss->photo->path))
+                                        <td class="text-center" width="25%"><img src="{{($newss->photo->path)}}"
+                                                                                 width="60%" height="70px"></td>
+                                    @endif
                                     <td class="text-center"> {{$newss->title}}</td>
-                                    <td class="text-center" style="text-align:center "> {!!str_limit($newss->description,50)!!}</td>
                                     <td class="text-center">
                                         <form method="post" action="{{route('news.destroy',$newss->id)}}"
                                               style="display: inline">
@@ -33,7 +36,8 @@
                                             {{ method_field('Delete')}}
                                             <button class="btn-sm btn-danger">حذف</button>
                                         </form>
-                                        <a href="{{route('news.edit',$newss->id)}}" class="btn-sm btn-warning">ویرایش</a>
+                                        <a href="{{route('news.edit',$newss->id)}}"
+                                           class="btn-sm btn-warning">ویرایش</a>
                                     </td>
                                 </tr>
                             @endforeach

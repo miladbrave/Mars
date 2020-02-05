@@ -15,6 +15,7 @@
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
 
+
     <title>MarsHolding | dashboard Activity</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{asset('/front/css/bootstrap.min.css')}}">
@@ -28,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/front/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/front/css/flaticon.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/front/css/cluster-css.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/front/css/dropzone.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/back/dropzone.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900&display=swap" rel="stylesheet">
 
 </head>
@@ -186,14 +187,9 @@
                         <li class="header-widget">
                             <div class="listing-user-outer dashboard-user-section">
                                 <div class="listing-user">
-                                    <div class="user-name text-black"><span><img src="{{asset('/image/admin.png')}}" alt=""></span>سعید محمودی</div>
+                                    <div class="user-name text-black"><span><img src="{{asset('/image/admin.png')}}" alt=""></span>{{auth()->user()->name}}</div>
                                     <ul>
-                                        <li><a href="dashboard-profile.html"><i class="sl-icon-user "></i>ویرایش پروفایل </a></li>
-                                        <li><a href="dashboard-messages.html"><i class="sl-icon-envelope-open"></i>پیام ها </a></li>
-                                        <li><a href="dashboard-add-listing.html"><i class="sl-icon-layers"></i>ثبت تبلیغ </a></li>
-                                        <li><a href="dashboard-booking.html"><i class="sl-icon-docs "></i>رزرو </a></li>
-                                        <li><a href="dashboard-review.html"><i class="sl-icon-star "></i>بازدید </a></li>
-                                        <li><a href="index.html"><i class="sl-icon-logout "></i>خروج </a></li>
+                                        <li><a href="{{route('main')}}"><i class="sl-icon-logout "></i>خروج </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -219,13 +215,20 @@
                     <a href="{{route('exam.index')}}"><i class="sl-icon-docs "></i><span class="admin-nav-text">آزمون ها</span></a>
                 </li>
                 <li>
+                    <a href="{{route('country.index')}}"><i class="sl-icon-docs "></i><span class="admin-nav-text">کشور ها</span></a>
+                </li>
+                <li>
                     <a href="{{route('university.index')}}"><i class="sl-icon-wallet "></i><span class="admin-nav-text">دانشگاه ها</span></a>
                 </li>
                 <li>
                     <a href="{{route('question.index')}}"><i class="sl-icon-layers "></i><span class="admin-nav-text">سوالات</span></a>
                 </li>
                 <li>
-                    <a href="{{route('news.index')}}"><i class="sl-icon-star "></i><span class="admin-nav-text">اخبار</span></a>
+                    <a href=""> <i class="sl-icon-star "></i><span class="admin-nav-text">اخبار</span></a>
+                    <ul class="sub-menu">
+                        <li> <a href="{{route('news.titleIndex')}}"><i class="sl-icon-envelope-open "></i><span class="admin-nav-text">متون</span></a></li>
+                        <li> <a href="{{route('news.index')}}"><i class="sl-icon-envelope-open "></i><span class="admin-nav-text">اخبار</span></a></li>
+                    </ul>
                 </li>
                 <li >
                     <a href="{{route('comment.index')}}"><i class="sl-icon-heart "></i><span class="admin-nav-text">کامنت ها</span></a>
@@ -253,9 +256,9 @@
                         <div class="panel-body wt-panel-body gradi-1 dashboard-card text-white p-tb60 p-lr30 radius-md">
                             <div class="wt-card-wrap">
                                 <div class="wt-card-icon"><i class="sl-icon-location"></i></div>
-                                <div class="wt-card-right wt-total-active-listing counter ">18,000</div>
+                                <div class="wt-card-right wt-total-active-listing counter ">{{$news2}}</div>
                                 <div class="wt-card-bottom ">
-                                    <h4 class="m-b0">تبلیغ های فعال</h4>
+                                    <h4 class="m-b0">مجموع اخبار</h4>
                                 </div>
                             </div>
                         </div>
@@ -266,9 +269,9 @@
                         <div class="panel-body wt-panel-body gradi-2 dashboard-card text-white p-tb60 p-lr30 radius-md">
                             <div class="wt-card-wrap">
                                 <div class="wt-card-icon"><i class="sl-icon-chart"></i></div>
-                                <div class="wt-card-right  wt-total-listing-view counter ">3,500</div>
+                                <div class="wt-card-right  wt-total-listing-view counter ">{{$user}}</div>
                                 <div class="wt-card-bottom">
-                                    <h4 class="m-b0">تعداد بازدیدها</h4>
+                                    <h4 class="m-b0">ثبت نام کنندگان</h4>
                                 </div>
                             </div>
                         </div>
@@ -279,9 +282,9 @@
                         <div class="panel-body wt-panel-body gradi-3 dashboard-card text-white p-tb60 p-lr30 radius-md">
                             <div class="wt-card-wrap">
                                 <div class="wt-card-icon"><i class="sl-icon-people"></i></div>
-                                <div class="wt-card-right wt-total-listing-review counter ">250</div>
+                                <div class="wt-card-right wt-total-listing-review counter ">{{$com}}</div>
                                 <div class="wt-card-bottom">
-                                    <h4 class="m-b0">کل بررسی ها</h4>
+                                    <h4 class="m-b0">کامنت ها</h4>
                                 </div>
                             </div>
                         </div>
@@ -334,7 +337,7 @@
 <script  src="{{asset('/front/js/isotope.pkgd.min.js')}}"></script><!-- MASONRY  -->
 <script  src="{{asset('/front/js/owl.carousel.min.js')}}"></script><!-- OWL  SLIDER  -->
 <script  src="{{asset('/front/js/stellar.min.js')}}"></script><!-- PARALLAX BG IMAGE   -->
-<script src="{{asset('/front/js/dropzone.js')}}"></script><!-- IMAGE UPLOAD  -->
+<script src="{{asset('/back/dropzone.js')}}"></script><!-- IMAGE UPLOAD  -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_8C7p0Ws2gUu7wo0b6pK9Qu7LuzX2iWY&amp;libraries=places&amp;"></script>
 <script  src="{{asset('/front/js/infobox.min.js')}}"></script><!-- MAP CLUSTER  -->
 <script  src="{{asset('/front/js/markerclusterer.js')}}"></script><!-- MAP CLUSTER  -->
@@ -344,7 +347,10 @@
 <script  src="{{asset('/front/js/kinetic.js')}}"></script>
 <script src="{{asset('/front/js/jquery.final-countdown.js')}}"></script>
 <script  src="{{asset('/front/js/custom.js')}}"></script><!-- CUSTOM FUCTIONS  -->
+
 @yield('script')
+
+
 </body>
 
 </html>

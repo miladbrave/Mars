@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class photo extends Model
 {
-    protected $uploads = '/storage/photos/';
+    protected $uploads = '/photo/';
 
     public function user()
     {
@@ -23,9 +23,19 @@ class photo extends Model
         return $this->belongsToMany(university::class);
     }
 
+    public function exams()
+    {
+        return $this->belongsToMany(exam::class);
+    }
+
     public function evales()
     {
-        return $this->belongsToMany(evale::class);
+        return $this->belongsTo(evale::class);
+    }
+
+    public function news()
+    {
+        return $this->belongsTo(news::class);
     }
 
 }

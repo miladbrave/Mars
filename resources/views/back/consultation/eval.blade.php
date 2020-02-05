@@ -15,6 +15,7 @@
                             <th class="text-center">نام</th>
                             <th class="text-center">تاریخ</th>
                             <th class="text-center">عملیات</th>
+                            <th class="text-center btn-sm btn-primary"><a href="{{route('download')}}" class="text-white">Download</a></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -24,7 +25,7 @@
                                 <td class="text-center"> {{$eval->name}}</td>
                                 <td class="text-center" style="text-align:center "> {!!$eval->created_at!!}</td>
                                 <td class="text-center">
-                                    <a href="{{route('download')}}"><button class="btn btn-success">Download Excel xls</button></a>
+                                    <a href="{{route('resume',['id'=>$eval->id])}}"><button class="btn-small btn-danger">Download Resume</button></a>
                                 </td>
                             </tr>
                         @endforeach

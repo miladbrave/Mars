@@ -24,7 +24,7 @@
                             @foreach($university as $universitys)
                                 <tr>
                                     @if(isset($universitys->photos[0]->path))
-                                        <td class="text-center" width="25%"><img src="{{asset($universitys->photos[0]->path)}}"
+                                        <td class="text-center" width="25%"><img src="{{($universitys->photos[0]->path)}}"
                                                                                  width="60%" height="70px"></td>
                                     @endif
                                     <td class="text-center">{{$universitys->id}}</td>

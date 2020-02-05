@@ -1,14 +1,14 @@
 @extends('front.master.master')
 
 @section('nav')
-    <header class="site-header header-style-2 mobile-sider-drawer-menu">
+    <header class="site-header header-style-2 mobile-sider-drawer-menu"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <div class="main-bar-wraper  navbar-expand-lg">
             <div class="main-bar bg-white">
                 <div class="container">
                     <div class="logo-header">
                         <div class="logo-header-inner logo-header-one">
-                            <a href="index.html">
-                                <img src="{{asset('/image/logo.jpg')}}" width="130px" height="80px" alt=""/>
+                            <a href="{{route('main')}}">
+                                <img src="{{asset('/image/main.png')}}" width="130px" height="80px" alt=""/>
                             </a>
                         </div>
                     </div>
@@ -38,20 +38,22 @@
                             <li class="">
                                 <a href="{{route('main')}}">خانه</a>
                             </li>
+                            <li class="">
+                                <a href="">کشور ها</a>
+                                <ul class="sub-menu">
+                                    @foreach($country as $countries)
+                                        <li>
+                                            <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             <li>
                                 <a href="javascript:;">آزمون ها</a>
                                 <ul class="sub-menu">
-                                    @foreach($examCountry as $examCountrys)
-                                        <li><a href="javascript:;">{{$examCountrys->country}}</a>
-                                            <ul class="sub-menu">
-                                                @foreach($exam as $exams)
-                                                    @if($exams->country == $examCountrys->country)
-                                                        <li>
-                                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                    @foreach($exam as $exams)
+                                        <li>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -60,16 +62,8 @@
                                 <a href="javascript:;">دانشگاه ها</a>
                                 <ul class="sub-menu">
                                     @foreach($uniCountry as $uniCountrys)
-                                        <li><a href="javascript:;">{{$uniCountrys->country}}</a>
-                                            <ul class="sub-menu">
-                                                @foreach($uniName as $uniNames)
-                                                    @if($uniNames->country == $uniCountrys->country)
-                                                        <li>
-                                                            <a href="{{route('uni',['name' => $uniNames->title])}}">{{$uniNames->title}}</a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                        <li>
+                                            <a href="{{route('countryuni',['name' => $uniCountrys->country])}}">{{$uniCountrys->country}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -127,7 +121,7 @@
                             <div class="fluid-wrapper">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d785.2978851400621!2d46.3236075291969!3d38.06592015458617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x401a1ade9f08fe47%3A0xfed672d8b0e5e72d!2sKhiyaban%2C%20Tabriz%2C%20East%20Azerbaijan%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1577526983744!5m2!1sen!2s"
-                                    width="1100" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                                    width="600" height="450" frameborder="0" style="border: #f90027 2px solid;margin-right: 20%" allowfullscreen=""></iframe>
                             </div>
                         </div>
                     </div>
@@ -190,21 +184,23 @@
                                                 <div class="icon-xs"><i class="fa fa-phone site-text-secondry"></i></div>
                                                 <div class="icon-content">
                                                     <h4 class="m-t0">شماره تلفن</h4>
-                                                    <p>۰۲۱-۱۲۳۴۵۶۷۸8</p>
+                                                    <p>984133340136+</p>
+                                                    <p>989360369313+</p>
                                                 </div>
                                             </div>
                                             <div class="wt-icon-box-wraper left m-b30">
                                                 <div class="icon-xs"><i class="fa fa-envelope site-text-secondry"></i></div>
                                                 <div class="icon-content">
                                                     <h4 class="m-t0"> ایمیل</h4>
-                                                    <p>thewebmax@gmail.com</p>
+                                                    <p>marsholdingco@gmail.com</p>
                                                 </div>
                                             </div>
                                             <div class="wt-icon-box-wraper left">
                                                 <div class="icon-xs"><i class="sl-icon-location site-text-secondry"></i></div>
                                                 <div class="icon-content">
                                                     <h4 class="m-t0">آدرس</h4>
-                                                    <p>ایران , تهران , خیابان آزادی , ساختمان مهر</p>
+                                                    <p>تبریز، خیابان آبرسان، طبقه فوقانی قنادی تشریفات،
+                                    ساختمان 110، طبقاختمان مهر</p>
                                                 </div>
                                             </div>
                                         </div>
