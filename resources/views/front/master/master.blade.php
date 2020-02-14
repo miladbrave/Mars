@@ -3,24 +3,26 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="icon" href="{{asset('/image/mars-icon2.ico')}}" type="image/x-icon" />
+    <link rel="icon" href="{{asset('/image/mars-icon2.ico')}}" type="image/x-icon"/>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/front/images/favicon.png')}}"/>
     <title>MarsHolding</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="keywords" content="mars holding,mars,مارس هلدینگ,مارس,">
-      <meta name="description" content="مارس هلدینگ موسسه مشاوره تحصیلی و علمی در زمینه تحصیل در خارج از کشور و کمک ومشاوره برا ی متقاضیان تحصیل در خارج از کشور می باشد"/>
-      <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
-      <link rel="canonical" href="http://www.marsholdingco.com/" />
-      <meta name="subject" content="education web مارس هلدینگ">
-      <meta name="copyright" content="مارس هلدینگ مارس هلدینگ marsholding">
-      <meta name="language" content="FA">
-      <meta property="og:locale" content="fa_IR" />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content="marsholding مارس هلدینگ " />
-      <meta property="og:description" content="موسسه مشاوره یمارس هلدینگ موسسه مشاوره تحصیلی و علمی در زمینه تحصیل در خارج از کشور و کمک ومشاوره برا ی متقاضیان تحصیل در خارج از کشور می باشد " />
-      <meta property="og:url" content="http://marsholdingco.com/" />
-      <meta property="og:site_name" content="مارس هلدینگ,marsholding" />      
-    
+    <meta name="keywords" content="mars holding,mars,مارس هلدینگ,مارس,">
+    <meta name="description"
+          content="مارس هلدینگ موسسه مشاوره تحصیلی و علمی در زمینه تحصیل در خارج از کشور و کمک ومشاوره برا ی متقاضیان تحصیل در خارج از کشور می باشد"/>
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+    <link rel="canonical" href="http://www.marsholdingco.com/"/>
+    <meta name="subject" content="education web مارس هلدینگ">
+    <meta name="copyright" content="مارس هلدینگ مارس هلدینگ marsholding">
+    <meta name="language" content="FA">
+    <meta property="og:locale" content="fa_IR"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="marsholding مارس هلدینگ "/>
+    <meta property="og:description"
+          content="موسسه مشاوره یمارس هلدینگ موسسه مشاوره تحصیلی و علمی در زمینه تحصیل در خارج از کشور و کمک ومشاوره برا ی متقاضیان تحصیل در خارج از کشور می باشد "/>
+    <meta property="og:url" content="http://marsholdingco.com/"/>
+    <meta property="og:site_name" content="مارس هلدینگ,marsholding"/>
+
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/font-awesome-4.7.0/css/font-awesome.min.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/owl.carousel.min.css')}}">
@@ -46,7 +48,7 @@
     <header class="site-header header-style-1 mobile-sider-drawer-menu">
         <div class="top-bar site-bg-primary">
             <div class="container">
-                <div class="d-flex justify-content-between" >
+                <div class="d-flex justify-content-between">
                     <div class="wt-topbar-left d-flex flex-wrap align-content-center">
                         <ul class="wt-topbar-info e-p-bx site-text-secondry">
                             <li><i class="fa fa-envelope text-white"></i>marsholdingco@gmail.com</li>
@@ -74,13 +76,16 @@
                             <div class="logo-footer clearfix p-b15">
                                 <a href="{{route('main')}}"><img src="{{asset('/image/main.png')}}" alt=""></a>
                             </div>
-                            <p class="mt-3" style="text-align: justify;padding-left: 70px">هلدینگ آموزشی مارس با اتکا به تجارب خود طی سال
-                                ها فعالیت در زمینه های آموزش و اعزام دانشجو به کشورهای مختلف توانسته سابقه درخشانی از
-                                خود برجای گذارد.</p>
+                            <p class="mt-3" style="text-align: justify;padding-left: 70px">
+                                هلدینگ مشاوره ی مارس با اتکا به تجارب خویش طی سال ها فعالیت در زمینه مشاوره تحصیلی و
+                                علمی برای متقاضیان تحصیل در خارج از کشور ،توانسته سابقه درخشان از خود به نمایش
+                                گذارد.</p>
+
                             <div class="widget_social_inks">
                                 <ul class="social-icons social-square social-darkest">
-                                    <li><a href="javascript:void(0);" class="fa fa-telegram" ></a></li>
-                                    <li><a href="https://www.instagram.com/marsholding" class="fa fa-instagram"></a></li>
+                                    <li><a href="javascript:void(0);" class="fa fa-telegram"></a></li>
+                                    <li><a href="https://www.instagram.com/marsholding" class="fa fa-instagram"></a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -182,36 +187,41 @@
                             <div class="col-md-8">
                                 <div class="card bg-dark">
                                     <ul class="navbar-nav ml-auto">
-                                    @guest
-                                        <li class="nav-item">
-                                            <a class="nav-link text-danger" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                        </li>
-                                        @if (Route::has('register'))
+                                        @guest
                                             <li class="nav-item">
-                                                <a class="nav-link text-danger" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                <a class="nav-link text-danger"
+                                                   href="{{ route('login') }}">{{ __('Login') }}</a>
                                             </li>
-                                        @endif
-                                    @else
-                                        <li class="nav-item dropdown">
-                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                {{ Auth::user()->name }} <span class="caret"></span>
-                                            </a>
-
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
+                                            @if (Route::has('register'))
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-danger"
+                                                       href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                </li>
+                                            @endif
+                                        @else
+                                            <li class="nav-item dropdown">
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                                   role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                   aria-expanded="false" v-pre>
+                                                    {{ Auth::user()->name }} <span class="caret"></span>
                                                 </a>
 
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                    @csrf
-                                                </form>
-                                            </div>
-                                        </li>
-                                    @endguest
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                     aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </a>
+
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                          style="display: none;">
+                                                        @csrf
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        @endguest
                                     </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -220,28 +230,29 @@
             </div>
         </div>
     </div>
+</div>
 
 
-    <div class="modal fade preview-place" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <button type="button" class="close single-preview-popup-close" data-dismiss="modal">&times;</button>
-                <div class="single-preview-location">
+<div class="modal fade preview-place" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <button type="button" class="close single-preview-popup-close" data-dismiss="modal">&times;</button>
+            <div class="single-preview-location">
 
-                    <div class="single-preview-location-info">
-                        <div class="single-preview-location-left">
-                            <div class="list-slide">
-                                <div class="wt-media">
-                                    <img src="{{asset('/front/images/gallery/pic5.jpg')}}" alt="">
-                                </div>
+                <div class="single-preview-location-info">
+                    <div class="single-preview-location-left">
+                        <div class="list-slide">
+                            <div class="wt-media">
+                                <img src="{{asset('/front/images/gallery/pic5.jpg')}}" alt="">
                             </div>
-                            <div class="list-category-content p-a20">
-                                <div class="p-b10">
-                                    <span class="list-cat-featured"><i class="fa fa-star-o"></i> ویژه</span>
-                                    <span class="list-cat-verified"><i class="fa fa-check"></i> تأیید شده</span>
-                                </div>
-                                <div class="clearfix">
-                                    <div class="wt-rating-section p-b10">
+                        </div>
+                        <div class="list-category-content p-a20">
+                            <div class="p-b10">
+                                <span class="list-cat-featured"><i class="fa fa-star-o"></i> ویژه</span>
+                                <span class="list-cat-verified"><i class="fa fa-check"></i> تأیید شده</span>
+                            </div>
+                            <div class="clearfix">
+                                <div class="wt-rating-section p-b10">
                                         <span class="wt-rating">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -249,30 +260,27 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-o"></i>
                                         </span>
-                                        <span class="wt-rating-conting">(۲۰ بازدید)</span>
-                                    </div>
-                                </div>
-                                <h4 class="list-place-name m-b10">رستوران ستاره</h4>
-
-                                <div class="list-cat-phone p-b10"><strong>۰۲۱-۱۲۳۴۵۶۷۸</strong><i
-                                        class="sl-icon-phone"></i></div>
-                                <div class="list-cat-address p-b10"><i class="sl-icon-location"></i>تبریز، خیابان
-                                    آبرسان، طبقه فوقانی قنادی تشریفات، ساختمان 110، طبقه اول
-                                </div>
-                                <p>هلدینگ آموزشی مارس با اتکا به تجارب خود طی سال ها فعالیت در زمینه های آموزش و اعزام
-                                    دانشجو به کشورهای مختلف توانسته سابقه درخشانی از خود برجای گذارد.</p>
-                                <div class="single-preview-footer clearfix">
-                                    <a href="#" class="site-button-link">بیشتر</a>
+                                    <span class="wt-rating-conting">(۲۰ بازدید)</span>
                                 </div>
                             </div>
-                        </div>
+                            <h4 class="list-place-name m-b10">رستوران ستاره</h4>
 
-                        <div class="single-preview-location-right">
-                            <div class="single-preview-map">
-                                <div id="singleListingMap-container">
-                                    <div id="singleListingMappopup" data-latitude="40.70437865245596"
-                                         data-longitude="-73.98674011230469" data-map-icon="im im-icon-Hamburger"></div>
-                                </div>
+                            <div class="list-cat-phone p-b10"><strong>۰۲۱-۱۲۳۴۵۶۷۸</strong><i
+                                    class="sl-icon-phone"></i></div>
+                            <div class="list-cat-address p-b10"><i class="sl-icon-location"></i>تبریز، خیابان
+                                آبرسان، طبقه فوقانی قنادی تشریفات، ساختمان 110، طبقه اول
+                            </div>
+                            <div class="single-preview-footer clearfix">
+                                <a href="#" class="site-button-link">بیشتر</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="single-preview-location-right">
+                        <div class="single-preview-map">
+                            <div id="singleListingMap-container">
+                                <div id="singleListingMappopup" data-latitude="40.70437865245596"
+                                     data-longitude="-73.98674011230469" data-map-icon="im im-icon-Hamburger"></div>
                             </div>
                         </div>
                     </div>
@@ -280,6 +288,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
 <div class="loading-area">

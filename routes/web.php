@@ -52,6 +52,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::prefix('administrator')->group(function () {
         Route::get('/', 'back\dashboardController@index')->name('dashboard');
         Route::resource('exam', 'back\ExamController');
+        Route::resource('slider', 'back\sliderController');
         Route::resource('country', 'back\countryController');
         Route::resource('university', 'back\universityController');
         Route::resource('photos', 'back\photosController');

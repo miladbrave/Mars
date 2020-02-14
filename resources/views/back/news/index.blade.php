@@ -28,7 +28,7 @@
                                         <td class="text-center" width="25%"><img src="{{($newss->photo->path)}}"
                                                                                  width="60%" height="70px"></td>
                                     @endif
-                                    <td class="text-center"> {{$newss->title}}</td>
+                                    <td class="text-center"> {!!  $newss->title!!}</td>
                                     <td class="text-center">
                                         <form method="post" action="{{route('news.destroy',$newss->id)}}"
                                               style="display: inline">

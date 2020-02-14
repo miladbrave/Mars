@@ -12,6 +12,7 @@ use App\news;
 use App\newstitle;
 use App\photo;
 use App\question;
+use App\Slider;
 use App\university;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -22,13 +23,14 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $sider = Slider::with('photo')->get();
         $country = Country::all();
         $exam = exam::with('photos')->get();
         $examCountry = exam::distinct()->get(['country']);
         $uniCountry = university::distinct()->get(['country']);
         $uniName = university::all();
         $news = news::orderBy('created_at', 'desc')->get();
-        return view('front.index', compact('examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
+        return view('front.index', compact('sider','examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
     }
 
     public function university($name,$uni)
@@ -217,6 +219,7 @@ class HomeController extends Controller
         $valid->ubran = $request->ubran;
         $valid->usub = $request->usub;
         $valid->des = $request->des;
+
         $valid->save();
 
          if(isset($request->input('photo_id')[0])){

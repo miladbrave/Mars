@@ -8117,7 +8117,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 	padding: 0px;
 	position: absolute;
 	visibility: hidden;
-	width: 400px;
+	width: 200px;
 	z-index: 10;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;

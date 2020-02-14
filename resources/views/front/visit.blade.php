@@ -1,6 +1,7 @@
 @extends('front.master.master')
 @section('nav')
-    <header class="site-header header-style-2 mobile-sider-drawer-menu"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <header class="site-header header-style-2 mobile-sider-drawer-menu">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <div class="main-bar-wraper  navbar-expand-lg">
             <div class="main-bar bg-white">
                 <div class="container">
@@ -121,124 +122,129 @@
             @endif
 
             @if ($errors->any())
-		    <div class="alert alert-danger">
-		    	<strong>لطفا موارد زیر را تصحیح فرماید</strong>
-						<br/>
-		        <ul>
-		            @foreach ($errors->all() as $error)
-		                <li>{{ $error }}</li>
-		            @endforeach
-		        </ul>
-		    </div>
-		@endif
+                <div class="alert alert-danger">
+                    <strong>لطفا موارد زیر را تصحیح فرماید</strong>
+                    <br/>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
         </div>
         <div class="container col-lg-12 col-md-12 col-sm-12 mb-4 border border-dark rounded-lg p-5">
-            <form  method="post" action="{{route('valid')}}">
+            <form method="post" action="{{route('valid')}}">
                 @csrf
                 <div class="row">
                     <div class="col-md-4 col-sm-4">
                         <div class="form-group">
                             <input name="name" type="text" required class="form-control"
-                                   placeholder="نام و نام خانوادگی">
+                                   placeholder="نام و نام خانوادگی" value="{{old('name')}}">
                             @error('name')
-					            <span class="text-danger">{{ $message }}</span>
-				        	@enderror
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
 
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-2">
                         <div class="form-group">
-                            <input name="date" type="text" class="form-control" required placeholder="تاریخ تولد">
-                             @error('date')
-					            <span class="text-danger">{{ $message }}</span>
-				        	@enderror
+                            <input name="date" type="text" class="form-control" value="{{old('date')}}" required placeholder="تاریخ تولد">
+                            @error('date')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2">
                         <div class="form-group">
-                            <input name="phone" type="number" class="form-control" placeholder="تلفن ثابت">
+                            <input name="phone"  type="number" class="form-control" placeholder="تلفن ثابت" value="{{old('phone')}}">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="cell" type="number" class="form-control" max=99999999999 required placeholder="تلفن همراه">
-                             @error('cell')
-					            <span class="text-danger">{{ $message }}</span>
-				        	@enderror
+                            <input name="cell" type="number" class="form-control" required
+                                   placeholder="تلفن همراه" value="{{old('cell')}}">
+                            @error('cell')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div class="form-group">
-                            <input name="email" type="text" required class="form-control" placeholder="ایمیل">
-                             @error('email')
-					            <span class="text-danger">{{ $message }}</span>
-				        	@enderror
+                            <input name="email" type="text" required class="form-control" placeholder="ایمیل" value="{{old('email')}}">
+                            @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div class="form-group">
                             <input name="sub" type="text" required class="form-control"
-                                   placeholder="رشته های تحصیلی مد نظر برای ادامه تحصیل ">
-                                    @error('sub')
-					                     <span class="text-danger">{{ $message }}</span>
-				                	@enderror
+                                   placeholder="رشته های تحصیلی مد نظر برای ادامه تحصیل " value="{{old('sub')}}">
+                            @error('sub')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div class="form-group">
                             <input name="country" type="text" required class="form-control"
-                                   placeholder="کشور های مد نظر برای ادامه تحصیل">
-                                    @error('country')
-					                 <span class="text-danger">{{ $message }}</span>
-				                	@enderror
+                                   placeholder="کشور های مد نظر برای ادامه تحصیل" value="{{old('country')}}">
+                            @error('country')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="tofel" type="number" class="form-control"  placeholder="نمره TOEFL">
+                            <input name="tofel" type="number" class="form-control" placeholder="نمره TOEFL" value="{{old('tofel')}}">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="ilets" type="number" class="form-control"  placeholder="نمره IELTS ">
+                            <input name="ilets" type="number" class="form-control" placeholder="نمره IELTS " value="{{old('ilets')}}">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="gre" type="number" class="form-control"  placeholder="نمره GRE">
+                            <input name="gre" type="number" class="form-control" placeholder="نمره GRE" value="{{old('gre')}}">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
-                            <input name="gmat" type="number" class="form-control"  placeholder="نمره GMAT">
+                            <input name="gmat" type="number" class="form-control" placeholder="نمره GMAT" value="{{old('gmat')}}">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
                             <input name="essay" type="text" class="form-control"
-                                   placeholder="تعداد مقالات علمی">
+                                   placeholder="تعداد مقالات علمی" value="{{old('essay')}}">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="form-group">
                             <input name="grade" type="text" class="form-control" required
-                                   placeholder="مقطع مورد نظر برای ادامه تحصیل">
-                                    @error('grade')
-					                     <span class="text-danger">{{ $message }}</span>
-				                	@enderror
+                                   placeholder="مقطع مورد نظر برای ادامه تحصیل" value="{{old('grade')}}">
+                            @error('grade')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 mt-2">
                         <div class="wt-filter-features-wrap wt-full-width-filter-features">
                             <label class="d-inline-block m-r15">آیا قبلا برای اخذ ویزا اقدام کرده اید؟</label>
-                            <div class="checkbox wt-radio-checkbox">
-                                <input id="Accessories_1" name="visa" value="بله" type="checkbox">
-                                <label for="Accessories_1">بله</label>
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" name="visa" id="exampleRadios1" value="بله"
+                                       checked>
+                                <label class="form-check-label" for="exampleRadios1"></label>
+                                <label class="d-inline-block mb-4">بله</label>
                             </div>
-                            <div class="checkbox wt-radio-checkbox">
-                                <input id="credit_1" name="visa"  value="خیر" type="checkbox">
-                                <label for="credit_1">خیر</label>
+                            <div class="form-check-inline">
+                                <input class="form-check-input" type="radio" name="visa" id="exampleRadios2" value="خیر"
+                                       checked>
+                                <label class="form-check-label" for="exampleRadios2"></label>
+                                <label class="d-inline-block mb-4">خیر</label>
                             </div>
                         </div>
                     </div>
@@ -263,24 +269,24 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="dsub" type="text"  class="form-control"
-                                           placeholder="رشته تحصیلی">
+                                    <input name="dsub" type="text" class="form-control"
+                                           placeholder="رشته تحصیلی" value="{{old('dsub')}}" >
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="dbran" type="text"  class="form-control" placeholder="گرایش">
+                                    <input name="dbran" type="text" class="form-control" placeholder="گرایش" value="{{old('dbran')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="dnum" type="text"  class="form-control" placeholder="معدل">
+                                    <input name="dnum" type="text" class="form-control" placeholder="معدل" value="{{old('dnum')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="ddate" type="text"  class="form-control"
-                                           placeholder="تاریخ اخذ">
+                                    <input name="ddate" type="text" class="form-control"
+                                           placeholder="تاریخ اخذ" value="{{old('ddate')}}">
                                 </div>
                             </div>
                         </div>
@@ -290,24 +296,24 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="bsub" type="text"  class="form-control"
-                                           placeholder="رشته تحصیلی">
+                                    <input name="bsub" type="text" class="form-control"
+                                           placeholder="رشته تحصیلی" value="{{old('bsub')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="bbra" type="text"  class="form-control" placeholder="گرایش">
+                                    <input name="bbran" type="text" class="form-control" placeholder="گرایش" value="{{old('bbran')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="bnum" type="text"  class="form-control" placeholder="معدل">
+                                    <input name="bnum" type="text" class="form-control" placeholder="معدل" value="{{old('bnum')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="bdate" type="text"  class="form-control"
-                                           placeholder="تاریخ اخذ">
+                                    <input name="bdate" type="text" class="form-control"
+                                           placeholder="تاریخ اخذ" value="{{old('bdate')}}">
                                 </div>
                             </div>
                         </div>
@@ -317,24 +323,24 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="msub" type="text"  class="form-control"
-                                           placeholder="رشته تحصیلی">
+                                    <input name="msub" type="text" class="form-control"
+                                           placeholder="رشته تحصیلی" value="{{old('msub')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="mbra" type="text"  class="form-control" placeholder="گرایش">
+                                    <input name="mbran" type="text" class="form-control" placeholder="گرایش" value="{{old('mbran')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="mgra" type="text"  class="form-control" placeholder="معدل">
+                                    <input name="mgra" type="text" class="form-control" placeholder="معدل" value="{{old('mgra')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="mdate" type="text"  class="form-control"
-                                           placeholder="تاریخ اخذ">
+                                    <input name="mdate" type="text" class="form-control"
+                                           placeholder="تاریخ اخذ" value="{{old('mdate')}}">
                                 </div>
                             </div>
                         </div>
@@ -344,24 +350,24 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="docsub" type="text"  class="form-control"
-                                           placeholder="رشته تحصیلی">
+                                    <input name="docsub" type="text" class="form-control"
+                                           placeholder="رشته تحصیلی" value="{{old('docsub')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="docbra" type="text"  class="form-control" placeholder="گرایش">
+                                    <input name="docbran" type="text" class="form-control" placeholder="گرایش" value="{{old('docbran')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="docnum" type="text"  class="form-control" placeholder="معدل">
+                                    <input name="docnum" type="text" class="form-control" placeholder="معدل" value="{{old('docnum')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="docdate" type="text"  class="form-control"
-                                           placeholder="تاریخ اخذ">
+                                    <input name="docdate" type="text" class="form-control"
+                                           placeholder="تاریخ اخذ" value="{{old('docdate')}}">
                                 </div>
                             </div>
                         </div>
@@ -371,37 +377,36 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="usub" type="text"  class="form-control"
-                                           placeholder="رشته تحصیلی">
+                                    <input name="usub" type="text" class="form-control"
+                                           placeholder="رشته تحصیلی" value="{{old('usub')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="ubra" type="text"  class="form-control" placeholder="گرایش">
+                                    <input name="ubran" type="text" class="form-control" placeholder="گرایش" value="{{old('ubran')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="unum" type="text"  class="form-control" placeholder="معدل">
+                                    <input name="unum" type="text" class="form-control" placeholder="معدل" value="{{old('unum')}}">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3">
                                 <div class="form-group">
-                                    <input name="udate" type="text"  class="form-control"
-                                           placeholder="تاریخ اخذ">
+                                    <input name="udate" type="text" class="form-control"
+                                           placeholder="تاریخ اخذ" value="{{old('udate')}}">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <input type="submit" value="ارسال" onclick="productGallery()" class="site-button-secondry site-btn-effect">
+                        <input type="submit" value="ارسال" onclick="productGallery()"
+                               class="site-button-secondry site-btn-effect">
                     </div>
                 </div>
             </form>
         </div>
     </div>
-
-
 @endsection
 
 @section('script')

@@ -25,10 +25,20 @@
                                 <td class="text-center"> {{$eval->name}}</td>
                                 <td class="text-center" style="text-align:center "> {!!$eval->created_at!!}</td>
                                 <td class="text-center">
-                                    <a href="{{route('resume',['id'=>$eval->id])}}"><button class="btn-small btn-danger">Download Resume</button></a>
+                                    <a href="{{route('resume',['id'=>$eval->id])}}"><button class="btn-small btn-danger" >دانلود رزومه</button></a>
                                 </td>
                             </tr>
                         @endforeach
+
+                        @if(isset($message))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>{{$message}}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+
                         </tbody>
                     </table>
                     <div class="col-md-12" style="text-align: center">{{$val->links()}}</div>
@@ -38,3 +48,4 @@
     </div>
 
 @endsection
+

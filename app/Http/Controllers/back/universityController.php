@@ -92,7 +92,6 @@ class universityController extends Controller
         $photo = photo::findOrFail($id);
         $photo->delete();
         unlink(getcwd() . $photo->path);
-
         return back();
     }
 }

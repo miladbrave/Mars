@@ -122,7 +122,8 @@
                                                             class="wt-list-panel-title m-t0">{{$new->title}}</h4></a>
                                                     <div class="wt-separator sep-gradient-light"></div>
                                                     <span class="pull-left text-danger" style="font-size: 15px;">
-                                                            {{ new Verta($new->created_at)}}
+                                                            <?php $v = new \Hekmatinasser\Verta\Verta($new->created_at) ?>
+                                                        {{ $v->formatDate()}}
                                                         </span>
                                                 </div>
                                             </div>

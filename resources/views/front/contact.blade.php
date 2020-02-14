@@ -1,7 +1,8 @@
 @extends('front.master.master')
 
 @section('nav')
-    <header class="site-header header-style-2 mobile-sider-drawer-menu"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <header class="site-header header-style-2 mobile-sider-drawer-menu">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <div class="main-bar-wraper  navbar-expand-lg">
             <div class="main-bar bg-white">
                 <div class="container">
@@ -120,8 +121,10 @@
                         <div class="container">
                             <div class="fluid-wrapper">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d785.2978851400621!2d46.3236075291969!3d38.06592015458617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x401a1ade9f08fe47%3A0xfed672d8b0e5e72d!2sKhiyaban%2C%20Tabriz%2C%20East%20Azerbaijan%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1577526983744!5m2!1sen!2s"
-                                    width="600" height="450" frameborder="0" style="border: #f90027 2px solid;margin-right: 20%" allowfullscreen=""></iframe>
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2221.159741529895!2d46.32247981649349!3d38.06585749913824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x401a1b2adf7bd633%3A0x27e24917d98496db!2z2YfZhNiv24zZhtqvINmF2KfYsdiz!5e0!3m2!1sen!2s!4v1580972967833!5m2!1sen!2s"
+                                     frameborder="0" style="border: #f90027 2px solid;"
+                                    allowfullscreen="">
+                                </iframe>
                             </div>
                         </div>
                     </div>
@@ -134,7 +137,7 @@
                     <div class="contact-one   shadow radius-md   p-a30">
                         <div class="row">
                             <div class="col-lg-8 col-md-12 col-sm-12  m-b30">
-                                <form  class="cons-contact-form" method="get" action="{{route('sendmessage')}}">
+                                <form class="cons-contact-form" method="get" action="{{route('sendmessage')}}">
                                     @csrf
                                     <div class="section-head text-left">
                                         <h2 class="m-t0">تماس با ما</h2>
@@ -143,31 +146,37 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input name="name" type="text" required class="form-control" placeholder="نام">
+                                                <input name="name" type="text" required class="form-control"
+                                                       placeholder="نام">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input name="email" type="text" class="form-control" required placeholder="ایمیل">
+                                                <input name="email" type="text" class="form-control" required
+                                                       placeholder="ایمیل">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input name="phone" type="text" class="form-control" required placeholder="تلفن">
+                                                <input name="phone" type="text" class="form-control" required
+                                                       placeholder="تلفن">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input name="subject" type="text" class="form-control" required placeholder="موضوع">
+                                                <input name="subject" type="text" class="form-control" required
+                                                       placeholder="موضوع">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea name="des" class="form-control" rows="4" placeholder="پیام"></textarea>
+                                                <textarea name="des" class="form-control" rows="4"
+                                                          placeholder="پیام"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <input type="submit" name="ارسال" value="ارسال" class="site-button-secondry site-btn-effect">
+                                            <input type="submit" name="ارسال" value="ارسال"
+                                                   class="site-button-secondry site-btn-effect">
                                         </div>
                                     </div>
                                 </form>
@@ -179,9 +188,11 @@
                                             <h2 class="m-t0">اطلاعات تماس</h2>
                                             <div class="wt-separator sep-gradient-light"></div>
                                         </div>
-                                        <div class="contact-info-section text-white" style="background-image:url({{asset('/front/images/background/dot-left-t-dark.png')}})">
+                                        <div class="contact-info-section text-white"
+                                             style="background-image:url({{asset('/front/images/background/dot-left-t-dark.png')}})">
                                             <div class="wt-icon-box-wraper left m-b30">
-                                                <div class="icon-xs"><i class="fa fa-phone site-text-secondry"></i></div>
+                                                <div class="icon-xs"><i class="fa fa-phone site-text-secondry"></i>
+                                                </div>
                                                 <div class="icon-content">
                                                     <h4 class="m-t0">شماره تلفن</h4>
                                                     <p>984133340136+</p>
@@ -189,18 +200,20 @@
                                                 </div>
                                             </div>
                                             <div class="wt-icon-box-wraper left m-b30">
-                                                <div class="icon-xs"><i class="fa fa-envelope site-text-secondry"></i></div>
+                                                <div class="icon-xs"><i class="fa fa-envelope site-text-secondry"></i>
+                                                </div>
                                                 <div class="icon-content">
                                                     <h4 class="m-t0"> ایمیل</h4>
                                                     <p>marsholdingco@gmail.com</p>
                                                 </div>
                                             </div>
                                             <div class="wt-icon-box-wraper left">
-                                                <div class="icon-xs"><i class="sl-icon-location site-text-secondry"></i></div>
+                                                <div class="icon-xs"><i class="sl-icon-location site-text-secondry"></i>
+                                                </div>
                                                 <div class="icon-content">
                                                     <h4 class="m-t0">آدرس</h4>
                                                     <p>تبریز، خیابان آبرسان، طبقه فوقانی قنادی تشریفات،
-                                    ساختمان 110، طبقاختمان مهر</p>
+                                                        ساختمان 110، طبقه اول</p>
                                                 </div>
                                             </div>
                                         </div>

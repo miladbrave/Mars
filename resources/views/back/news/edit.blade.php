@@ -4,7 +4,7 @@
     <div class="content-admin-main">
         <div class="panel panel-default bg-white m-t30">
             <div class="panel-heading wt-panel-heading p-a20">
-                <h4 class="panel-tittle m-a0"> ویرایش {{$news->title}}</h4>
+                <h6 class="panel-tittle m-a0">{!! $news->title!!}</h6>
             </div>
             <div class="panel-body wt-panel-body">
                 <div class="container dashboard-list-box list-box-with-icon">
@@ -17,8 +17,8 @@
                                     {{ method_field('PATCH')}}
                                     <div class="form-group">
                                         <label>عنوان</label>
-                                        <textarea type="text" name="title" class="form-control"
-                                                 >{{$news->title}}</textarea>
+                                        <textarea id="mytextarea" type="text" name="title" class="form-control"
+                                                 >{!!  $news->title!!}</textarea>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>دانشگاه</label>
@@ -138,4 +138,10 @@
                 console.error( error );
             } );
     </script>
+
+{{--    <script>--}}
+{{--        tinymce.init({--}}
+{{--            selector: '#mytextarea'--}}
+{{--        });--}}
+{{--    </script>--}}
     @endsection

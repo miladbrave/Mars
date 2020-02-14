@@ -38,4 +38,9 @@ class photo extends Model
         return $this->belongsTo(news::class);
     }
 
+    public function slider()
+    {
+        return $this->belongsTo(Slider::class);
+    }
+
 }

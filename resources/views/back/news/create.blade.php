@@ -16,7 +16,7 @@
                                     {{csrf_field()}}
                                     <div class="form-group">
                                         <label>موضوع</label>
-                                        <textarea type="text" name="title" class="form-control"
+                                        <textarea id="mytextarea" name="title" class="form-control"
                                         ></textarea>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -117,5 +117,11 @@
                 console.error( error );
             } );
     </script>
+
+{{--    <script>--}}
+{{--        tinymce.init({--}}
+{{--            selector: '#mytextarea'--}}
+{{--        });--}}
+{{--    </script>--}}
 
 @endsection

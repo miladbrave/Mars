@@ -1,0 +1,25 @@
+*you can merge or combine both query and realese one query.
+$ekhtesasiAlbum = Album::where('ekhtesasi',1)->latest()->get();
+$ekhtesasiMusic = Music::where('ekhtesasi',1)->latest()->get();
+$ekhtesasi = $ekhtesasiAlbum->mergeRecursive($ekhtesasiMusic);
+
+-------------------------------------------------------------------
+*if have problem with none-opbject you can use if to filter what you want.
+
+-------------------------------------------------------------------
+Auth and middle ware
+
+----------------------------------------------------------------
+never allow to submit id of user or another sth
+----------------------------------------------------------------
+first we push to git lab or github after that we push it in server.*if server could get it
+----------------------------------------------------------------
+laravel-medialibrary this package help to upload images
+---------------------------------------------------------------
+we use   protected $fillable in models to say what we want to say in db when we use create method(like in register method)->if use created you shoud use fillable
+we use   protected $hidden to hidden a fileds that we dont want to show from db.
+------------------------------------------------------------
+use correct model of table->.. when we create db
+--------------------------------------------------
+sub domin -> you can created by cpanel
+parkdomin -> you click another domain it lounch your site

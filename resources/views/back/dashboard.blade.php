@@ -212,10 +212,13 @@
                     <a href="{{route('message')}}"><i class="sl-icon-envelope-open "></i><span class="admin-nav-text">پیام ها</span></a>
                 </li>
                 <li>
+                    <a href="{{route('slider.index')}}"><i class="sl-icon-shuffle "></i><span class="admin-nav-text">اسلایدر ها</span></a>
+                </li>
+                <li>
                     <a href="{{route('exam.index')}}"><i class="sl-icon-docs "></i><span class="admin-nav-text">آزمون ها</span></a>
                 </li>
                 <li>
-                    <a href="{{route('country.index')}}"><i class="sl-icon-docs "></i><span class="admin-nav-text">کشور ها</span></a>
+                    <a href="{{route('country.index')}}"><i class="sl-icon-flag "></i><span class="admin-nav-text">کشور ها</span></a>
                 </li>
                 <li>
                     <a href="{{route('university.index')}}"><i class="sl-icon-wallet "></i><span class="admin-nav-text">دانشگاه ها</span></a>
@@ -311,18 +314,6 @@
 
 </div>
 
-<!-- LOADING AREA START ===== -->
-{{--<div class="loading-area">--}}
-{{--    <div class="loading-box"></div>--}}
-{{--    <div class="loading-pic">--}}
-{{--        <div class='load-pin load-bounce'></div>--}}
-{{--        <div class='load-pulse'></div>--}}
-{{--        <div class="cssload-container">--}}
-{{--            <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-<!-- LOADING AREA  END ====== -->
 
 <!-- JAVASCRIPT  FILES ========================================= -->
 <script  src="{{asset('/front/js/jquery-2.2.0.min.js')}}"></script><!-- JQUERY.MIN JS -->
@@ -347,6 +338,8 @@
 <script  src="{{asset('/front/js/kinetic.js')}}"></script>
 <script src="{{asset('/front/js/jquery.final-countdown.js')}}"></script>
 <script  src="{{asset('/front/js/custom.js')}}"></script><!-- CUSTOM FUCTIONS  -->
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 @yield('script')
 

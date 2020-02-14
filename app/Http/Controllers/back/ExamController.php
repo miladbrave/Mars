@@ -5,6 +5,7 @@ namespace App\Http\Controllers\back;
 use App\comment;
 use App\exam;
 use App\news;
+use App\photo;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -72,8 +73,15 @@ class ExamController extends Controller
 
     public function destroy($id)
     {
-        $exam = exam::findOrFail($id);
+        $exam = exam::with('photos')->findOrFail($id);
         $exam->delete();
         return redirect('administrator/exam');
+    }
+    public function delete($id)
+    {
+        $photo = photo::findOrFail($id);
+        $photo->delete();
+        unlink(getcwd() . $photo->path );
+        return back();
     }
 }

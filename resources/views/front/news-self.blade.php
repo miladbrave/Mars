@@ -114,16 +114,17 @@
                         <div class="row">
                             <div class="wt-post-info col-lg-8 col-md-7 bg-white p-t30">
                                 @foreach($news->sortBy('examuni') as $new)
-                                    <div class=" wt-list-panel mt-2 m-b30  p-a20 bg-white shadow">
+                                    <div class=" wt-list-panel mt-1 m-b15 p-a15 bg-white shadow">
                                         <div class="row">
                                             <div class="col-md-3">
                                                 @if(isset($new->photo->path))
-                                                <img src="{{$new->photo->path}}" width="100%" height="200px" alt="news">
+                                                <img class="news-img" src="{{$new->photo->path}}" alt="news">
                                                 @endif
                                             </div>
                                             <div class="wt-list-single-about-detail col-md-9 newsdes">
                                                 <div class="m-b30 text-left">
-                                                    <h4 class="wt-list-panel-title m-t0" style="font-family: Roboto, sans-serif;font-size:15px;font-weight: 400;line-height: 1.5">{{$new->title}}</h4>
+                                                    <h4 class="wt-list-panel-title m-t0" style="font-family: Roboto, sans-serif;font-size:16px;
+                                                        font-weight: 400;line-height: 1.5">{!!  nl2br($new->title)!!}</h4>
                                                     <div class="wt-separator sep-gradient-light" style="margin-top: -8px"></div>
                                                 </div>
                                                 <p style="margin-top: -5px">{!! $new->description !!}</p>

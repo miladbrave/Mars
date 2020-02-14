@@ -4,14 +4,10 @@ namespace App\Imports;
 
 use App\evale;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class EvalesImport implements ToModel
+class EvalesImport implements ToModel, WithHeadingRow
 {
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
     public function model(array $row)
     {
         return new evale([
@@ -30,28 +26,27 @@ class EvalesImport implements ToModel
             'check'    => $row['check'],
             'visa'    => $row['visa'],
             'country'    => $row['country'],
-            'duniver'    => $row['duniver'],
+            'dnum'    => $row['dnum'],
             'ddate'    => $row['ddate'],
             'dbran'    => $row['dbran'],
             'dsub'    => $row['dsub'],
-            'buniver'    => $row['buniver'],
+            'bnum'    => $row['bnum'],
             'bdate'    => $row['bdate'],
             'bbran'    => $row['bbran'],
             'bsub'    => $row['bsub'],
-            'muniver'    => $row['muniver'],
+            'mnum'    => $row['mnum'],
             'mdate'    => $row['mdate'],
             'mbran'    => $row['mbran'],
             'msub'    => $row['msub'],
-            'douniver'    => $row['douniver'],
+            'donum'    => $row['donum'],
             'dodate'    => $row['dodate'],
             'dobran'    => $row['dobran'],
             'dosub'    => $row['dosub'],
-            'uuniver'    => $row['uuniver'],
+            'unum'    => $row['unum'],
             'udate'    => $row['udate'],
             'ubran'    => $row['ubran'],
             'usub'    => $row['usub'],
             'des'    => $row['des'],
-
         ]);
     }
 }

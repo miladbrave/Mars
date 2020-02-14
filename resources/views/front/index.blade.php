@@ -50,9 +50,9 @@
                         </li>
                         <li>
                             <a href="javascript:;">آزمون ها</a>
-                            <ul class="sub-menu">
+                            <ul class="sub-menu" style="width: 100%">
                                 @foreach($exam as $exams)
-                                    <li>
+                                    <li style="display:block;">
                                         <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
                                     </li>
                                 @endforeach
@@ -132,8 +132,6 @@
 
                                          style="z-index: 12;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;">
                                     </div>
-
-
                                     <div class="tp-caption   tp-resizeme first-slide"
                                          id="slide-100-layer-3"
                                          data-x="['right','right','right','center']" data-hoffset="['50','50','50','0']"
@@ -219,7 +217,7 @@
                                     font-weight: 500;
                                     color:#fff;
                                     border-width:0px;">
-                                        <span style="font-family: 'IRANSansWeb', sans-serif;">GRE / GMAT / ALES / YDS / TÖMER / YÖS / TOEFL / IELTS</span>
+                                        <span style="font-family: Roboto, sans-serif;">GRE / GMAT / ALES / YDS / TÖMER / YÖS / TOEFL / IELTS</span>
                                     </div>
                                     <div class="tp-caption tp-resizeme"
                                          id="slide-100-layer-6"
@@ -304,7 +302,7 @@
                                     font-weight: 300;
                                     color: rgb(75, 57, 65);
                                     border-width:0px;">
-                                        <div style="font-family: 'IRANSansWeb', sans-serif; ">
+                                        <div style="font-family: 'IRANSansWeb','Roboto', sans-serif; ">
                                             <span class="text-white">تحصیل در کشور انگلستان</span>
                                         </div>
                                     </div>
@@ -332,7 +330,7 @@
                                     white-space: normal;
                                     font-weight: 700;
                                     border-width:0px;">
-                                        <div style="font-family: 'IRANSansWeb', sans-serif; text-transform:uppercase ;">
+                                        <div style="font-family: 'IRANSansWeb','Roboto', sans-serif; text-transform:uppercase ;">
                                             <span class="text-white">مدرسه و دانشگاه</span>
                                         </div>
                                     </div>
@@ -685,7 +683,7 @@
                                 <div class="cities-slide-text text-white">
                                     <div class="cities-location-sign"><i class="sl-icon-location "></i></div>
                                     <div class="city-slide-content">
-                                        <h4 class="cities-slide-name">{{$uniNames->title}}</h4>
+                                        <h4 class="cities-slide-name" style="font-family: 'IRANSansWeb',Roboto, sans-serif;">{{$uniNames->title}}</h4>
                                     </div>
                                 </div>
                                 <div class="cities-slide-overlay"></div>

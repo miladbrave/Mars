@@ -105,7 +105,6 @@ class newsController extends Controller
         $photo->delete();
         $news->delete();
          unlink(getcwd() . $photo->path );
-
         return redirect('administrator/news');
     }
 
