@@ -8076,6 +8076,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 
 .header-nav.nav-animation .nav>li:hover a:before {
+    margin-right: -20%;
 	text-shadow: 0px 0 #f90027, -10px 0 #f90027, 10px 0 #f90027 !important;
 }
 
@@ -8084,7 +8085,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 
 .header-nav.nav-animation .nav>li:hover>ul.sub-menu li:hover>a {
-	padding-right: 30px;
+	/*padding-right: 30px;*/
 }
 
 .header-style-1 .header-nav .nav>li:hover>a {
@@ -8158,18 +8159,18 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 	display: block;
 	float: left;
 	position: absolute;
-	left: 10px;
-	top: 2px;
+	/*left: 10px;*/
+	/*top: 2px;*/
 }
 
 .header-nav .nav>li .sub-menu li>.sub-menu {
-	right: 220px;
-	margin: 0 20px 0 0;
-	-webkit-transition: all 0.1s ease;
-	-moz-transition: all 0.1s ease;
-	-ms-transition: all 0.1s ease;
-	-o-transition: all 0.1s ease;
-	transition: all 0.1s ease;
+	/*right: 220px;*/
+	/*margin: 0 20px 0 0;*/
+	/*-webkit-transition: all 0.1s ease;*/
+	/*-moz-transition: all 0.1s ease;*/
+	/*-ms-transition: all 0.1s ease;*/
+	/*-o-transition: all 0.1s ease;*/
+	/*transition: all 0.1s ease;*/
 }
 
 .header-nav .nav>li .sub-menu li:hover>.sub-menu {
@@ -8186,7 +8187,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 	content: '';
 	display: block;
 	height: 100%;
-	left: -6px;
+	/*left: -6px;*/
 	position: absolute;
 	top: 0px;
 	width: 6px;
@@ -8464,11 +8465,11 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 
 .header-nav.nav-animation .nav>li>ul.sub-menu li>a {
-	-webkit-transition: all 0.5s ease-out;
-	-moz-transition: all 0.5s ease-out;
-	-o-transition: all 0.5s ease-out;
-	-ms-transition: all 0.5s ease-out;
-	transition: all 0.5s ease-out;
+	/*-webkit-transition: all 0.5s ease-out;*/
+	/*-moz-transition: all 0.5s ease-out;*/
+	/*-o-transition: all 0.5s ease-out;*/
+	/*-ms-transition: all 0.5s ease-out;*/
+	/*transition: all 0.5s ease-out;*/
 	position: relative;
 	z-index: 1;
 }
@@ -8490,7 +8491,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 
 .header-nav.nav-animation .nav>li>ul.sub-menu li>a:hover {
-	padding-left: 25px;
+	/*padding-left: 25px;*/
 }
 
 .header-nav.nav-animation .nav>li>ul.sub-menu li>a:hover:after {
@@ -15237,7 +15238,7 @@ button {
 @media only screen and (max-width:420px){
 .addlisting-btn {
     padding: 10px 12px;
-    background-color: #f96b39;
+    background-color: #f90027;
     border-radius: 6px;
     -webkit-border-radius: 6px;
     color: #fff;
