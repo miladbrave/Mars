@@ -48,12 +48,10 @@ class User extends Authenticatable
     }
 
     public function isAdmin(){
-        $user = User::all();
-        foreach ($user as $role){
-            if($role->admin == "admin"){
+        $user = Auth()->user();
+            if($user->admin == 'admin'){
                 return true;
             }
-        }
         return false;
     }
 

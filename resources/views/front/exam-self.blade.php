@@ -53,7 +53,7 @@
                                 <ul class="sub-menu">
                                     @foreach($exam as $exams)
                                         <li>
-                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}" style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>

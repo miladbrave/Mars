@@ -44,7 +44,7 @@
                                 <ul class="sub-menu">
                                     @foreach($exam as $exams)
                                         <li>
-                                            <a href="{{route('getExam',['name' => $exams->title])}}">{{$exams->title}}</a>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}" style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -118,7 +118,7 @@
                                             <div class="wt-list-single-about-detail">
                                                 <div class="m-b30 text-left">
                                                     <a href="{{route('news-self',['sel' => $title,'exam'=>$new->title])}}">
-                                                        <h4 style="font-size: 16px; font-weight: 600;"
+                                                        <h4 style="font-size: 16px; font-weight: 600;font-family: IRANSansWeb ,Roboto , sans-serif"
                                                             class="wt-list-panel-title m-t0">{{$new->title}}</h4></a>
                                                     <div class="wt-separator sep-gradient-light"></div>
                                                     <span class="pull-left text-danger" style="font-size: 15px;">
