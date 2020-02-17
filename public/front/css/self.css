@@ -210,7 +210,15 @@
 
 @media only screen and (max-width:600px) {
     .news-img {
-        width: 100px;height: 90px;margin-right: 35%;
+        /*width: 100px;*/
+        height: 150px;
+        /*margin-right: 35%;*/
+    }
+
+    .newsdes p{
+        line-height : 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
         .button {
