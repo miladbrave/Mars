@@ -16,6 +16,15 @@
                                     {{csrf_field()}}
                                     {{ method_field('PATCH')}}
                                     <div class="form-group">
+                                        <label for="Select1">شماره اسلایدر</label>
+                                        <select class="form-control" id="Select1" name="number">
+                                            <option @if($slider->number) selected @endif value="{{$slider->number}}">{{$slider->number}}</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label>عنوان اول</label>
                                         <input type="text" name="title" class="form-control"
                                                value="{{$slider->title1}}">

@@ -34,6 +34,7 @@ class sliderController extends Controller
     public function store(Request $request)
     {
         $slider = new slider;
+        $slider->number = $request->number;
         $slider->title1 = $request->title1;
         $slider->title2 = $request->title2;
         $slider->description = $request->des;
@@ -63,7 +64,8 @@ class sliderController extends Controller
 
     public function update(Request $request, $id)
     {
-        $slider = slide::findOrFail($id);
+        $slider = slider::findOrFail($id);
+        $slider->number = $request->number;
         $slider->title1 = $request->title1;
         $slider->title2 = $request->title2;
         $slider->description = $request->des;

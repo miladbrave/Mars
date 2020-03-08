@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/front/css/cluster-css.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/back/dropzone.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
 
 </head>
 
@@ -339,6 +340,8 @@
 <script src="{{asset('/front/js/jquery.final-countdown.js')}}"></script>
 <script  src="{{asset('/front/js/custom.js')}}"></script><!-- CUSTOM FUCTIONS  -->
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
 
 
 @yield('script')

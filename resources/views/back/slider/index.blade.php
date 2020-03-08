@@ -17,6 +17,8 @@
                                 <th class="text-center">شناسه</th>
                                 <th class="text-center">تصویر</th>
                                 <th class="text-center">عنوان</th>
+{{--                                <th class="text-center">وضعیت</th>--}}
+                                <th class="text-center">شماره</th>
                                 <th class="text-center">عملیات</th>
                             </tr>
                             </thead>
@@ -29,6 +31,11 @@
                                                                                  width="60%" height="70px"></td>
                                     @endif
                                     <td class="text-center"> {!!  $sliders->title1!!}</td>
+{{--                                    <td>--}}
+{{--                                        <input type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success"--}}
+{{--                                               data-offstyle="danger" data-on="نشر" data-off="عدم">--}}
+{{--                                    </td>--}}
+                                    <td class="text-center"> {{ $sliders->number}}</td>
                                     <td class="text-center">
                                         <form method="post" action="{{route('slider.destroy',$sliders->id)}}"
                                               style="display: inline">
@@ -50,3 +57,4 @@
     </div>
 
 @endsection
+

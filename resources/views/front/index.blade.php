@@ -53,7 +53,8 @@
                             <ul class="sub-menu" style="width: 100%">
                                 @foreach($exam as $exams)
                                     <li style="display:block;">
-                                        <a href="{{route('getExam',['name' => $exams->title])}}" style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
+                                        <a href="{{route('getExam',['name' => $exams->title])}}"
+                                           style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -99,434 +100,456 @@
                         <div id="rev_slider_1014_1" class="rev_slider fullscreenbanner" style="display:none;"
                              data-version="5.4.1">
                             <ul>
-                                <li data-index="rs-1000" data-transition="slidingoverlayhorizontal"
-                                    data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
-                                    data-easein="default" data-easeout="default" data-masterspeed="default"
-                                    data-thumb="images/main-slider/slider3/slide1.jpg" data-rotate="0"
-                                    data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
-                                    data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
-                                    data-param8="" data-param9="" data-param10="" data-description="">
-                                    <img src="{{asset('/image/2.jpg')}}" alt="" data-bgposition="bottom bottom"
-                                         data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"
-                                         data-no-retina/>
-                                    <div class="tp-caption tp-shape tp-shapewrapper "
-                                         id="slide-100-layer-1"
-                                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
-                                         data-width="full"
-                                         data-height="full"
-                                         data-whitespace="nowrap"
-                                         data-type="shape"
-                                         data-basealign="slide"
-                                         data-responsive_offset="off"
-                                         data-responsive="off"
-                                         data-frames='[
+                                @foreach($slider->where('number',1) as $slides)
+                                    <li data-index="rs-1000" data-transition="slidingoverlayhorizontal"
+                                        data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
+                                        data-easein="default" data-easeout="default" data-masterspeed="default"
+                                        data-thumb="images/main-slider/slider3/slide1.jpg" data-rotate="0"
+                                        data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
+                                        data-param8="" data-param9="" data-param10="" data-description="">
+                                        <img src="{{asset($slides->photo->path)}}" alt="" data-bgposition="bottom bottom"
+                                             data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"
+                                             data-no-retina/>
+                                        <div class="tp-caption tp-shape tp-shapewrapper "
+                                             id="slide-100-layer-1"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['0','0','0','0']"
+                                             data-width="full"
+                                             data-height="full"
+                                             data-whitespace="nowrap"
+                                             data-type="shape"
+                                             data-basealign="slide"
+                                             data-responsive_offset="off"
+                                             data-responsive="off"
+                                             data-frames='[
                                     {"from":"opacity:0;","speed":1000,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"opacity:0;","ease":"Power4.easeOut"}
                                     ]'
-                                         data-textAlign="['right','right','right','right']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
+                                             data-textAlign="['right','right','right','right']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
 
-                                         style="z-index: 12;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;">
-                                    </div>
-                                    <div class="tp-caption   tp-resizeme first-slide"
-                                         id="slide-100-layer-3"
-                                         data-x="['right','right','right','center']" data-hoffset="['50','50','50','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['260','260','260','260']"
-                                         data-fontsize="['40','40','40','30']"
-                                         data-lineheight="['60','60','60','65']"
-                                         data-width="['700','700','700','700']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                             style="z-index: 12;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+                                        </div>
+                                        <div class="tp-caption   tp-resizeme first-slide"
+                                             id="slide-100-layer-3"
+                                             data-x="['right','right','right','center']"
+                                             data-hoffset="['50','50','50','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['260','260','260','260']"
+                                             data-fontsize="['40','40','40','30']"
+                                             data-lineheight="['60','60','60','65']"
+                                             data-width="['700','700','700','700']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":500,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['right','right','right','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 13;
+                                             data-textAlign="['right','right','right','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 13;
                                     white-space: normal;
                                     font-weight: 300;
                                     color: rgb(75, 57, 65);
                                     border-width:0px;">
-                                        <div style="font-family: 'IRANSansWeb', sans-serif;padding-right: 2%">
-                                            <span class="text-white"> ثبت نام و راهنمایی</span>
+                                            <div style="font-family: 'IRANSansWeb', sans-serif;padding-right: 2%">
+                                                <span class="text-white">{{$slides->title1}}</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tp-caption   tp-resizeme second-slide"
-                                         id="slide-100-layer-4"
-                                         data-x="['right','right','right','center']" data-hoffset="['50','50','50','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['320','320','320','340']"
-                                         data-fontsize="['53','53','53','34']"
-                                         data-lineheight="['70','70','70','40']"
-                                         data-width="['700','700','700','96%']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
+                                        <div class="tp-caption   tp-resizeme second-slide"
+                                             id="slide-100-layer-4"
+                                             data-x="['right','right','right','center']"
+                                             data-hoffset="['50','50','50','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['320','320','320','340']"
+                                             data-fontsize="['53','53','53','34']"
+                                             data-lineheight="['70','70','70','40']"
+                                             data-width="['700','700','700','96%']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
 
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":1000,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['right','right','right','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 13;
+                                             data-textAlign="['right','right','right','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 13;
                                     white-space: normal;
                                     font-weight: 700;
                                     border-width:0px;">
-                                        <div
-                                            style="font-family: 'IRANSansWeb', sans-serif;text-transform:uppercase;padding-right: 2%">
-                                            <span class="text-white"> آزمون های بین المللی</span>
+                                            <div
+                                                style="font-family: 'IRANSansWeb', sans-serif;text-transform:uppercase;padding-right: 2%">
+                                                <span class="text-white"> {{$slides->title2}}</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tp-caption  tp-resizeme second-slide"
-                                         id="slide-100-layer-5"
-                                         data-x="['right','right','right','center']" data-hoffset="['50','50','50','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['400','400','400','400']"
-                                         data-fontsize="['16','16','16','16']"
-                                         data-lineheight="['30','30','30','30']"
-                                         data-width="['600','600','600','96%']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
+                                        <div class="tp-caption  tp-resizeme second-slide"
+                                             id="slide-100-layer-5"
+                                             data-x="['right','right','right','center']"
+                                             data-hoffset="['50','50','50','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['400','400','400','400']"
+                                             data-fontsize="['16','16','16','16']"
+                                             data-lineheight="['30','30','30','30']"
+                                             data-width="['600','600','600','96%']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
 
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['right','right','right','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
+                                             data-textAlign="['right','right','right','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
 
-                                         style="z-index: 13;
+                                             style="z-index: 13;
                                     font-weight: 500;
                                     color:#fff;
                                     border-width:0px;">
-                                        <span style="font-family: Roboto, sans-serif;">GRE / GMAT / ALES / YDS / TÖMER / YÖS / TOEFL / IELTS</span>
-                                    </div>
-                                    <div class="tp-caption tp-resizeme"
-                                         id="slide-100-layer-6"
-                                         data-x="['right','right','right','center']" data-hoffset="['50','50','50','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['490','490','490','490']"
-                                         data-lineheight="['none','none','none','none']"
-                                         data-width="['300','300','300','300']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                            <span style="font-family: Roboto, sans-serif;">{{$slides->description}}</span>
+                                        </div>
+                                        <div class="tp-caption tp-resizeme"
+                                             id="slide-100-layer-6"
+                                             data-x="['right','right','right','center']"
+                                             data-hoffset="['50','50','50','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['490','490','490','490']"
+                                             data-lineheight="['none','none','none','none']"
+                                             data-width="['300','300','300','300']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":2000,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['right','right','right','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index:13; text-transform:uppercase;">
-                                        <a href="{{route('contact')}}" class="site-button-secondry slider-btn-left">تماس
-                                            با
-                                            ما</a>
-                                    </div>
-                                </li>
-                                <li data-index="rs-1001" data-transition="slidingoverlayhorizontal"
-                                    data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
-                                    data-easein="default" data-easeout="default" data-masterspeed="default"
-                                    data-thumb="images/main-slider/slider3/slide2.jpg" data-rotate="0"
-                                    data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
-                                    data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
-                                    data-param8="" data-param9="" data-param10="" data-description="">
-                                    <img src="{{asset('/image/1.jpg')}}" alt="" data-bgposition="bottom bottom"
-                                         data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"
-                                         data-no-retina/>
-                                    <div class="tp-caption tp-shape tp-shapewrapper "
-                                         id="slide-101-layer-1"
-                                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
-                                         data-width="full"
-                                         data-height="full"
-                                         data-whitespace="nowrap"
-                                         data-type="shape"
-                                         data-basealign="slide"
-                                         data-responsive_offset="off"
-                                         data-responsive="off"
-                                         data-frames='[
+                                             data-textAlign="['right','right','right','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index:13; text-transform:uppercase;">
+                                            <a href="{{route('contact')}}" class="site-button-secondry slider-btn-left">تماس
+                                                با
+                                                ما</a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                                @foreach($slider->where('number',2) as $slides)
+                                    <li data-index="rs-1001" data-transition="slidingoverlayhorizontal"
+                                        data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
+                                        data-easein="default" data-easeout="default" data-masterspeed="default"
+                                        data-thumb="images/main-slider/slider3/slide2.jpg" data-rotate="0"
+                                        data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
+                                        data-param8="" data-param9="" data-param10="" data-description="">
+                                        <img src="{{asset($slides->photo->path)}}" alt="" data-bgposition="bottom bottom"
+                                             data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"
+                                             data-no-retina/>
+                                        <div class="tp-caption tp-shape tp-shapewrapper "
+                                             id="slide-101-layer-1"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['0','0','0','0']"
+                                             data-width="full"
+                                             data-height="full"
+                                             data-whitespace="nowrap"
+                                             data-type="shape"
+                                             data-basealign="slide"
+                                             data-responsive_offset="off"
+                                             data-responsive="off"
+                                             data-frames='[
                                     {"from":"opacity:0;","speed":1000,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"opacity:0;","ease":"Power4.easeOut"}
                                     ]'
-                                         data-textAlign="['left','left','left','left']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
+                                             data-textAlign="['left','left','left','left']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
 
-                                         style="z-index: 12;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;">
-                                    </div>
-                                    <div class="tp-caption   tp-resizeme first-slide"
-                                         id="slide-101-layer-3"
-                                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['260','260','260','260']"
-                                         data-fontsize="['40','40','40','30']"
-                                         data-lineheight="['60','60','60','65']"
-                                         data-width="['700','700','700','700']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                             style="z-index: 12;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+                                        </div>
+                                        <div class="tp-caption   tp-resizeme first-slide"
+                                             id="slide-101-layer-3"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['260','260','260','260']"
+                                             data-fontsize="['40','40','40','30']"
+                                             data-lineheight="['60','60','60','65']"
+                                             data-width="['700','700','700','700']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":500,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['center','center','center','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 13;
+                                             data-textAlign="['center','center','center','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 13;
                                     white-space: normal;
                                     font-weight: 300;
                                     color: rgb(75, 57, 65);
                                     border-width:0px;">
-                                        <div style="font-family: 'IRANSansWeb','Roboto', sans-serif; ">
-                                            <span class="text-white">تحصیل در کشور انگلستان</span>
+                                            <div style="font-family: 'IRANSansWeb','Roboto', sans-serif; ">
+                                                <span class="text-white">{{$slides->title1}}</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tp-caption   tp-resizeme second-slide"
-                                         id="slide-101-layer-4"
-                                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['320','320','320','340']"
-                                         data-fontsize="['53','53','53','34']"
-                                         data-lineheight="['70','70','70','40']"
-                                         data-width="['700','700','700','96%']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                        <div class="tp-caption   tp-resizeme second-slide"
+                                             id="slide-101-layer-4"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['320','320','320','340']"
+                                             data-fontsize="['53','53','53','34']"
+                                             data-lineheight="['70','70','70','40']"
+                                             data-width="['700','700','700','96%']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":1000,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['center','center','center','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 13;
+                                             data-textAlign="['center','center','center','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 13;
                                     white-space: normal;
                                     font-weight: 700;
                                     border-width:0px;">
-                                        <div style="font-family: 'IRANSansWeb','Roboto', sans-serif; text-transform:uppercase ;">
-                                            <span class="text-white">مدرسه و دانشگاه</span>
+                                            <div
+                                                style="font-family: 'IRANSansWeb','Roboto', sans-serif; text-transform:uppercase ;">
+                                                <span class="text-white">{{$slides->title2}}</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tp-caption  tp-resizeme second-slide"
-                                         id="slide-101-layer-5"
-                                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['400','400','400','400']"
-                                         data-fontsize="['16','16','16','16']"
-                                         data-lineheight="['30','30','30','30']"
-                                         data-width="['600','600','600','96%']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                        <div class="tp-caption  tp-resizeme second-slide"
+                                             id="slide-101-layer-5"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['400','400','400','400']"
+                                             data-fontsize="['16','16','16','16']"
+                                             data-lineheight="['30','30','30','30']"
+                                             data-width="['600','600','600','96%']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['center','center','center','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 13;
+                                             data-textAlign="['center','center','center','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 13;
                                     font-weight: 500;
                                     color:#fff;
                                     border-width:0px;">
-                                        <span style="font-family: 'IRANSansWeb', sans-serif;">برای تحصیل در مدارس انگلستان می توانید با روش های آسانی که ما برای شما ارائه خواهیم داد به راحتی ادامه تحصیل دهید</span>
-                                    </div>
-                                    <div class="tp-caption tp-resizeme"
-                                         id="slide-101-layer-6"
-                                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['490','490','490','490']"
-                                         data-lineheight="['none','none','none','none']"
-                                         data-width="['300','300','300','300']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                            <span style="font-family: 'IRANSansWeb', sans-serif;">{{$slides->description}}</span>
+                                        </div>
+                                        <div class="tp-caption tp-resizeme"
+                                             id="slide-101-layer-6"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['490','490','490','490']"
+                                             data-lineheight="['none','none','none','none']"
+                                             data-width="['300','300','300','300']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":2000,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['center','center','center','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index:13; text-transform:uppercase;">
-                                        <a href="{{route('contact')}}" class="site-button-secondry slider-btn-left">تماس
-                                            با
-                                            ما</a>
-                                    </div>
-                                </li>
-                                <li data-index="rs-1002" data-transition="slidingoverlayhorizontal"
-                                    data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
-                                    data-easein="default" data-easeout="default" data-masterspeed="default"
-                                    data-thumb="images/main-slider/slider3/slide3.jpg" data-rotate="0"
-                                    data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
-                                    data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
-                                    data-param8="" data-param9="" data-param10="" data-description="">
-                                    <img src="{{asset('/image/3.png')}}" alt="" data-bgposition="bottom bottom"
-                                         data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"
-                                         data-no-retina/>
-                                    <div class="tp-caption tp-shape tp-shapewrapper "
-                                         id="slide-102-layer-1"
-                                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
-                                         data-width="full"
-                                         data-height="full"
-                                         data-whitespace="nowrap"
-                                         data-type="shape"
-                                         data-basealign="slide"
-                                         data-responsive_offset="off"
-                                         data-responsive="off"
-                                         data-frames='[
+                                             data-textAlign="['center','center','center','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index:13; text-transform:uppercase;">
+                                            <a href="{{route('contact')}}" class="site-button-secondry slider-btn-left">تماس
+                                                با
+                                                ما</a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                                @foreach($slider->where('number',3) as $slides)
+
+                                    <li data-index="rs-1002" data-transition="slidingoverlayhorizontal"
+                                        data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
+                                        data-easein="default" data-easeout="default" data-masterspeed="default"
+                                        data-thumb="images/main-slider/slider3/slide3.jpg" data-rotate="0"
+                                        data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
+                                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
+                                        data-param8="" data-param9="" data-param10="" data-description="">
+                                        <img src="{{asset($slides->photo->path)}}" alt="" data-bgposition="bottom bottom"
+                                             data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg"
+                                             data-no-retina/>
+                                        <div class="tp-caption tp-shape tp-shapewrapper "
+                                             id="slide-102-layer-1"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['0','0','0','0']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['0','0','0','0']"
+                                             data-width="full"
+                                             data-height="full"
+                                             data-whitespace="nowrap"
+                                             data-type="shape"
+                                             data-basealign="slide"
+                                             data-responsive_offset="off"
+                                             data-responsive="off"
+                                             data-frames='[
                                     {"from":"opacity:0;","speed":1000,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"opacity:0;","ease":"Power4.easeOut"}
                                     ]'
-                                         data-textAlign="['left','left','left','left']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 12;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;">
-                                    </div>
-                                    <div class="tp-caption   tp-resizeme first-slide"
-                                         id="slide-102-layer-3"
-                                         data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['260','260','260','260']"
-                                         data-fontsize="['40','40','40','30']"
-                                         data-lineheight="['60','60','60','65']"
-                                         data-width="['700','700','700','700']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                             data-textAlign="['left','left','left','left']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 12;background-color:rgba(0, 0, 0, 0.1);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+                                        </div>
+                                        <div class="tp-caption   tp-resizeme first-slide"
+                                             id="slide-102-layer-3"
+                                             data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['260','260','260','260']"
+                                             data-fontsize="['40','40','40','30']"
+                                             data-lineheight="['60','60','60','65']"
+                                             data-width="['700','700','700','700']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":500,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['left','left','left','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 13;
+                                             data-textAlign="['left','left','left','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 13;
                                     white-space: normal;
                                     font-weight: 300;
                                     color: rgb(75, 57, 65);
                                     border-width:0px;">
-                                        <div style="font-family: 'IRANSansWeb',sans-serif;padding-left: 2%">
-                                            <span class="text-white">تحصیل در مدارس و دانشگاه های</span>
+                                            <div style="font-family: 'IRANSansWeb',sans-serif;padding-left: 2%">
+                                                <span class="text-white">{{$slides->title1}}</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tp-caption   tp-resizeme second-slide"
-                                         id="slide-102-layer-4"
-                                         data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['320','320','320','340']"
-                                         data-fontsize="['53','53','53','34']"
-                                         data-lineheight="['70','70','70','40']"
-                                         data-width="['700','700','700','700']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                        <div class="tp-caption   tp-resizeme second-slide"
+                                             id="slide-102-layer-4"
+                                             data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['320','320','320','340']"
+                                             data-fontsize="['53','53','53','34']"
+                                             data-lineheight="['70','70','70','40']"
+                                             data-width="['700','700','700','700']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":1000,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['left','left','left','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 13;
+                                             data-textAlign="['left','left','left','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 13;
                                     white-space: normal;
                                     font-weight: 700;
                                     border-width:0px;">
-                                        <div
-                                            style="font-family: 'IRANSansWeb', sans-serif; text-transform:uppercase;padding-left: 2%">
-                                            <span class="text-white"> کانادا</span>
+                                            <div
+                                                style="font-family: 'IRANSansWeb', sans-serif; text-transform:uppercase;padding-left: 2%">
+                                                <span class="text-white"> {{$slides->title2}}</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tp-caption  tp-resizeme second-slide"
-                                         id="slide-102-layer-5"
-                                         data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['400','400','400','400']"
-                                         data-fontsize="['16','16','16','16']"
-                                         data-lineheight="['30','30','30','30']"
-                                         data-width="['600','600','600','96%']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                        <div class="tp-caption  tp-resizeme second-slide"
+                                             id="slide-102-layer-5"
+                                             data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['400','400','400','400']"
+                                             data-fontsize="['16','16','16','16']"
+                                             data-lineheight="['30','30','30','30']"
+                                             data-width="['600','600','600','96%']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['left','left','left','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
+                                             data-textAlign="['left','left','left','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
 
-                                         style="z-index: 13;
+                                             style="z-index: 13;
                                     font-weight: 500;
                                     color:#fff;
                                     border-width:0px;">
-                                        <span style="font-family:'IRANSansWeb',sans-serif;padding-left: 2%">علاقه مندان به تحصیل در کشور کانادا برای بهره مندی از مشاوره رایگان می توانند با ما تماس گرفته و وقت مشاوره رزرو نمایند</span>
-                                    </div>
-                                    <div class="tp-caption tp-resizeme"
-                                         id="slide-102-layer-6"
-                                         data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
-                                         data-y="['top','top','top','top']" data-voffset="['490','490','490','490']"
-                                         data-lineheight="['none','none','none','none']"
-                                         data-width="['300','300','300','300']"
-                                         data-height="['none','none','none','none']"
-                                         data-whitespace="['normal','normal','normal','normal']"
-                                         data-type="text"
-                                         data-responsive_offset="on"
-                                         data-frames='[
+                                            <span style="font-family:'IRANSansWeb',sans-serif;padding-left: 2%">{{$slides->description}}</span>
+                                        </div>
+                                        <div class="tp-caption tp-resizeme"
+                                             id="slide-102-layer-6"
+                                             data-x="['left','left','left','center']" data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['490','490','490','490']"
+                                             data-lineheight="['none','none','none','none']"
+                                             data-width="['300','300','300','300']"
+                                             data-height="['none','none','none','none']"
+                                             data-whitespace="['normal','normal','normal','normal']"
+                                             data-type="text"
+                                             data-responsive_offset="on"
+                                             data-frames='[
                                     {"from":"y:100px(R);opacity:0;","speed":2000,"to":"o:1;","delay":2000,"ease":"Power4.easeOut"},
                                     {"delay":"wait","speed":1000,"to":"y:-50px;opacity:0;","ease":"Power2.easeInOut"}
                                     ]'
-                                         data-textAlign="['left','left','left','center']"
-                                         data-paddingtop="[0,0,0,0]"
-                                         data-paddingright="[0,0,0,0]"
-                                         data-paddingbottom="[0,0,0,0]"
-                                         data-paddingleft="[0,0,0,0]"
-                                         style="z-index:13; text-transform:uppercase;">
-                                        <a href="{{route('contact')}}" class="site-button-secondry slider-btn-left">تماس
-                                            با
-                                            ما</a>
-                                    </div>
-                                </li>
+                                             data-textAlign="['left','left','left','center']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index:13; text-transform:uppercase;">
+                                            <a href="{{route('contact')}}" class="site-button-secondry slider-btn-left">تماس
+                                                با
+                                                ما</a>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -683,7 +706,8 @@
                                 <div class="cities-slide-text text-white">
                                     <div class="cities-location-sign"><i class="sl-icon-location "></i></div>
                                     <div class="city-slide-content">
-                                        <h4 class="cities-slide-name" style="font-family: 'IRANSansWeb',Roboto, sans-serif;">{{$uniNames->title}}</h4>
+                                        <h4 class="cities-slide-name"
+                                            style="font-family: 'IRANSansWeb',Roboto, sans-serif;">{{$uniNames->title}}</h4>
                                     </div>
                                 </div>
                                 <div class="cities-slide-overlay"></div>
