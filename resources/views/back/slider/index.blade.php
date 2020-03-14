@@ -17,7 +17,7 @@
                                 <th class="text-center">شناسه</th>
                                 <th class="text-center">تصویر</th>
                                 <th class="text-center">عنوان</th>
-{{--                                <th class="text-center">وضعیت</th>--}}
+                                <th class="text-center">وضعیت</th>
                                 <th class="text-center">شماره</th>
                                 <th class="text-center">عملیات</th>
                             </tr>
@@ -31,10 +31,19 @@
                                                                                  width="60%" height="70px"></td>
                                     @endif
                                     <td class="text-center"> {!!  $sliders->title1!!}</td>
-{{--                                    <td>--}}
-{{--                                        <input type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success"--}}
-{{--                                               data-offstyle="danger" data-on="نشر" data-off="عدم">--}}
-{{--                                    </td>--}}
+                                    <td>
+                                    @if($sliders->status == 1)
+                                        <form method="get" action="{{ route('slider.action',$sliders->id) }}" class="form">
+                                            {{ csrf_field() }}
+                                            <input type="submit" value="تایید" class="btn btn-success" name="action">
+                                        </form>
+                                    @else
+                                        <form method="get" action="{{ route('slider.action',$sliders->id) }}" class="form">
+                                            {{ csrf_field() }}
+                                            <input type="submit" value="عدم تایید" class="btn btn-danger" name="action">
+                                        </form>
+                                    @endif
+                                    </td>
                                     <td class="text-center"> {{ $sliders->number}}</td>
                                     <td class="text-center">
                                         <form method="post" action="{{route('slider.destroy',$sliders->id)}}"

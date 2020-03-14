@@ -23,14 +23,14 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $sider = Slider::with('photo')->get();
+        $slider = Slider::with('photo')->where('status',1)->get();
         $country = Country::all();
         $exam = exam::with('photos')->get();
         $examCountry = exam::distinct()->get(['country']);
         $uniCountry = university::distinct()->get(['country']);
         $uniName = university::all();
         $news = news::orderBy('created_at', 'desc')->get();
-        return view('front.index', compact('sider','examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
+        return view('front.index', compact('slider','examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
     }
 
     public function university($name,$uni)

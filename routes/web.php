@@ -74,6 +74,7 @@ Route::group(['middleware' => 'admin'], function () {
         Route::get('message', 'back\commentController@message')->name('message');
         Route::get('message/{id}', 'back\commentController@messageRead')->name('messageRead');
         Route::get('uni/{id}', 'back\universityController@delete')->name('uni');
+        Route::get('slider/action/{id}', 'back\sliderController@action')->name('slider.action');
     });
 });
 

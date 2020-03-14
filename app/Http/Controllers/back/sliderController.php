@@ -5,7 +5,6 @@ namespace App\Http\Controllers\back;
 use App\comment;
 use App\news;
 use App\photo;
-use App\slide;
 use App\Slider;
 use App\User;
 use Illuminate\Http\Request;
@@ -81,7 +80,7 @@ class sliderController extends Controller
 
     public function destroy($id)
     {
-        $slide = slide::with('photo')->findOrFail($id);
+        $slide = slider::with('photo')->findOrFail($id);
         $photo = photo::findOrFail($slide->photo->id);
 
         if($photo){$photo->delete();}
@@ -97,5 +96,21 @@ class sliderController extends Controller
         $photo->delete();
         unlink(getcwd() . $photo->path );
         return back();
+    }
+
+    public function action(Request $request, $id)
+    {
+        if ($request->has('action')) {
+            if ($request->input('action') == 'تایید') {
+                $slider = slider::findOrFail($id);
+                $slider->status = 0;
+                $slider->save();
+            } else {
+                $slider = slider::findOrFail($id);
+                $slider->status = 1;
+                $slider->save();
+            }
+        }
+        return redirect('administrator/slider');
     }
 }
