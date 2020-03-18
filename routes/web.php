@@ -73,6 +73,7 @@ Route::group(['middleware' => 'admin'], function () {
         Route::get('resume/{id}', 'back\commentController@resume')->name('resume');
         Route::get('message', 'back\commentController@message')->name('message');
         Route::get('message/{id}', 'back\commentController@messageRead')->name('messageRead');
+        Route::delete('messageDestroy/{id}', 'back\commentController@messageDestroy')->name('messageDestroy');
         Route::get('uni/{id}', 'back\universityController@delete')->name('uni');
         Route::get('slider/action/{id}', 'back\sliderController@action')->name('slider.action');
     });

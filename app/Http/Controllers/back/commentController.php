@@ -156,4 +156,12 @@ class commentController extends Controller
         return view('back.message.messageRead', compact('message', 'news2', 'com', 'user'));
     }
 
+    public function messageDestroy($id)
+    {
+        $message = message::findOrfail($id);
+        $message->delete();
+
+        return back();
+    }
+
 }

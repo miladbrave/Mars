@@ -131,13 +131,32 @@
                 </div>
             </div>
         </div>
+
+        @if(Session::has('message'))
+            <div class="alert alert-success container" style="float: right;text-align: center;width: 100%">
+                <div>{{ Session('message') }}</div>
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>لطفا موارد زیر را تصحیح فرماید</strong>
+                <br/>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="section-full  p-t80 p-b80">
             <div class="section-content">
                 <div class="container">
                     <div class="contact-one   shadow radius-md   p-a30">
                         <div class="row">
                             <div class="col-lg-8 col-md-12 col-sm-12  m-b30">
-                                <form class="cons-contact-form" method="get" action="{{route('sendmessage')}}">
+{{--                                cons-contact-form--}}
+                                <form class="form-group" method="post" action="{{route('sendmessage')}}">
                                     @csrf
                                     <div class="section-head text-left">
                                         <h2 class="m-t0">تماس با ما</h2>
@@ -152,13 +171,13 @@
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input name="email" type="text" class="form-control" required
+                                                <input name="email" type="text" class="form-control"
                                                        placeholder="ایمیل">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input name="phone" type="text" class="form-control" required
+                                                <input name="phone" type="number" class="form-control" required
                                                        placeholder="تلفن">
                                             </div>
                                         </div>

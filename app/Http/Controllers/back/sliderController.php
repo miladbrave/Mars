@@ -36,7 +36,9 @@ class sliderController extends Controller
         $slider->number = $request->number;
         $slider->title1 = $request->title1;
         $slider->title2 = $request->title2;
+        $slider->status = 0;
         $slider->description = $request->des;
+
 
         $slider->save();
         $photo = explode(',', $request->input('photo_id')[0]);
@@ -70,12 +72,15 @@ class sliderController extends Controller
         $slider->description = $request->des;
         $slider->save();
 
-        $photo = explode(',', $request->input('photo_id')[0]);
-        $photos = photo::findOrFail($photo)->first();
-        $photos->slider_id = $slider->id;
-        $photos->save();
+        if ($request->input('photo_id')[0]) {
+            $photo = explode(',', $request->input('photo_id')[0]);
+            $photos = photo::findOrFail($photo)->first();
+            $photos->slider_id = $slider->id;
+            $photos->save();
+        }
 
-        return redirect('administrator/slider');
+//        return redirect('administrator/slider');
+        return redirect()->route('slider.index');
     }
 
     public function destroy($id)
@@ -83,10 +88,14 @@ class sliderController extends Controller
         $slide = slider::with('photo')->findOrFail($id);
         $photo = photo::findOrFail($slide->photo->id);
 
-        if($photo){$photo->delete();}
-        if($slide){$slide->delete();}
+        if ($photo) {
+            $photo->delete();
+        }
+        if ($slide) {
+            $slide->delete();
+        }
 
-        unlink(getcwd() . $photo->path );
+        unlink(getcwd() . $photo->path);
         return back();
     }
 

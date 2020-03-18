@@ -22,11 +22,15 @@
                         @foreach($message as $messages)
                             <tr>
                                 <td class="text-center">{{$messages->id}}</td>
-                               <a href="{{route('messageRead')}}"> <td class="text-center"> {{$messages->name}}</td>
-                                   <td class="text-center"> {{$messages->title}}</td></a>
+                                <td class="text-center">
+                                    <a href="{{route('messageRead',['id' => $messages->id])}}">
+                                        {{$messages->name}}</a></td>
+                                <td class="text-center">
+                                    <a href="{{route('messageRead',['id' => $messages->id])}}"> {{$messages->title}}
+                                    </a></td>
                                 <td class="text-center" style="text-align:center "> {!!$messages->created_at!!}</td>
                                 <td class="text-center">
-                                    <form method="post" action="{{route('message.destroy',$messages->id)}}"
+                                    <form method="post" action="{{route('messageDestroy',$messages->id)}}"
                                           style="display: inline">
                                         {{csrf_field()}}
                                         {{ method_field('Delete')}}

@@ -323,15 +323,33 @@ class HomeController extends Controller
     public function message(Request $request)
     {
 
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+//            'email' => 'required|email',
+            'phone' => 'required|regex:/(09)[0-9]{9}/|digits:11|numeric',
+            'subject' => 'required',
+        ],[
+            'name.required' => 'نام و نام خانوادگی را وارد کنید.',
+//            'email.required' => 'ایمیل را وارد کنید',
+//            'email.email' => 'ایمیل معتبر وارد کنید',
+            'phone.required' => 'شماره تماس وارد کنید',
+            'phone.regex' => 'شماره تماس معتبر وارد کنید',
+            'phone.digits' => 'شماره تماس معتبر وارد کنید',
+            'subject' => 'موضوع مورد نظر خود را وارد کنید',
+        ]);
+        $validator->validate();
+
         $message = new message();
         $message->name = $request->name;
         $message->email = $request->email;
         $message->phone = $request->phone;
-        $message->title = $request->title;
+        $message->title = $request->subject;
         $message->description = $request->des;
         $message->save();
 
-        return redirect(route('main'));
+        Session::flash('message', ' با تشکر از شما.،پیام شما ارسال شد.');
+
+        return redirect()->route('contact');
     }
 
     public function student()

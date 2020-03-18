@@ -9,26 +9,20 @@
             <div class="box-body">
                 <div class="table-responsive">
                     <table class="table no-margin">
-                        <thead>
-                        <tr>
-                            <th class="text-center">نام</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">ایمیل</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">موضوع</th>
-                        </tr>
-                        </thead>
+                        <thead></thead>
                         <tbody>
-                        @foreach($message as $messages)
-                            <tr>
-                                <td class="text-center">{{$messages->id}}</td>
-                            </tr>
-                        @endforeach
+                        <th class="text-center text-danger bg-dark">نام</th>
+                        <tr><td class="text-center">{{$message->name}}</td></tr>
+                        <th class="text-center text-danger bg-dark">تلفن</th>
+                        <tr><td class="text-center">{{$message->phone}}</td></tr>
+                        <th class="text-center text-danger bg-dark">ایمیل</th>
+                        <tr><td class="text-center">{{$message->email}}</td></tr>
+                        <th class="text-center text-danger bg-dark">موضوع</th>
+                        <tr><td class="text-center">{{$message->title}}</td></tr>
+                        <th class="text-center text-danger bg-dark">توضیحات</th>
+                        <tr><td class="text-center">{{$message->description}}</td></tr>
                         </tbody>
                     </table>
-                    <div class="col-md-12" style="text-align: center">{{$message->links()}}</div>
                 </div>
             </div>
         </div>

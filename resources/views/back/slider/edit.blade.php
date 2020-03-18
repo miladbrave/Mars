@@ -27,12 +27,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label>عنوان اول</label>
-                                        <input type="text" name="title" class="form-control"
+                                        <input type="text" name="title1" class="form-control"
                                                value="{{$slider->title1}}">
                                     </div>
                                     <div class="form-group">
                                         <label>عنوان دوم</label>
-                                        <input type="text" name="title" class="form-control"
+                                        <input type="text" name="title2" class="form-control"
                                                value="{{$slider->title2}}">
                                     </div>
                                     <div class="form-group">
