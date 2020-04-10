@@ -123,7 +123,7 @@
                                             </div>
                                             <div class="wt-list-single-about-detail col-md-9 newsdes">
                                                 <div class="m-b30 text-left">
-                                                    <h4 class="wt-list-panel-title m-t0" style="font-size:16px;
+                                                    <h4 class="wt-list-panel-title m-t0" style="font-size:16px;font-family: IRANSans_Light_2 , sans-serif;
                                                         font-weight: bolder;line-height: 1.5">{!!  nl2br($new->title)!!}</h4>
                                                     <div class="wt-separator sep-gradient-light" style="margin-top: -8px"></div>
                                                 </div>

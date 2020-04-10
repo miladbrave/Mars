@@ -127,7 +127,7 @@
                             <div class=" wt-list-panel mt-5 m-b30  p-a20 bg-white shadow">
                                 <div class="wt-list-single-about-detail">
                                     <div class="m-b30 text-left">
-                                        <h4 class="wt-list-panel-title m-t0">{{$uni->title}}</h4>
+                                        <h4 class="wt-list-panel-title m-t0" style="font-size:26px;font-family: IRANSans_Light_2 , sans-serif;">{{$uni->title}}</h4>
                                         <div class="wt-separator sep-gradient-light"></div>
                                     </div>
                                     <p>{!! $uni->description !!}</p>

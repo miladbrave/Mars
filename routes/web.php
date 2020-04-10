@@ -48,6 +48,17 @@ Route::get('university/{name}','front\HomeController@uni')->name('countryuni');
 
 
 
+Route::get('profile','front\profileController@index')->name('profile.index');
+Route::get('profile/financial','front\profileController@financial')->name('profile.money');
+Route::get('profile/classes','front\profileController@classes')->name('profile.classes');
+Route::get('profile/user','front\profileController@user')->name('profile.user');
+Route::get('profile/message','front\profileController@message')->name('profile.message');
+
+
+
+
+
+
 Route::group(['middleware' => 'admin'], function () {
     Route::prefix('administrator')->group(function () {
         Route::get('/', 'back\dashboardController@index')->name('dashboard');

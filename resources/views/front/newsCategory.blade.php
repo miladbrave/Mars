@@ -1,8 +1,8 @@
 @extends('front.master.master')
 
 @section('nav')
-    <header class="site-header header-style-2 mobile-sider-drawer-menu">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <header class="site-header header-style-2 mobile-sider-drawer-menu"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        
         <div class="main-bar-wraper  navbar-expand-lg">
             <div class="main-bar bg-white">
                 <div class="container">
@@ -118,7 +118,7 @@
                                             <div class="wt-list-single-about-detail">
                                                 <div class="m-b30 text-left">
                                                     <a href="{{route('news-self',['sel' => $title,'exam'=>$new->title])}}">
-                                                        <h4 style="font-size: 16px; font-weight: 600;font-family: IRANSansWeb ,Roboto , sans-serif"
+                                                        <h4 style="font-size: 16px; font-weight: 600;font-family: IRANSans_Light_2 , sans-serif"
                                                             class="wt-list-panel-title m-t0">{{$new->title}}</h4></a>
                                                     <div class="wt-separator sep-gradient-light"></div>
                                                     <span class="pull-left text-danger" style="font-size: 15px;">

@@ -57,8 +57,16 @@
                     </div>
                     <div class="wt-topbar-right d-flex flex-wrap align-content-center">
                         <ul class="list-unstyled e-p-bx login-controls">
-                            <li><a href="javascript:;" class="sign-up-btn" data-toggle="modal"
-                                   data-target=".sign-in-modal"><i class="sl-icon-login m-r10"></i>ورود</a></li>
+                            @if (Route::has('login'))
+                                <div class="top-right links">
+                                    @auth
+                                        <a href="{{ url('/profile') }}"  class="text-danger">{{ Auth()->user()->name }}</a>
+                                    @else
+                                        <li><a href="javascript:;" class="sign-up-btn" data-toggle="modal"
+                                               data-target=".sign-in-modal"><i class="sl-icon-login m-r10"></i>ورود</a></li>
+                                    @endauth
+                                </div>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -291,13 +299,35 @@
 </div>
 
 
-<div class="loading-area">
+<!--<div class="loading-area">-->
+<!--    <div class="loading-box"></div>-->
+<!--    <div class="loading-pic">-->
+<!--        <div class='load-pin load-bounce'></div>-->
+<!--        <div class='load-pulse'></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="loading-area" >
     <div class="loading-box"></div>
     <div class="loading-pic">
-        <div class='load-pin load-bounce'></div>
-        <div class='load-pulse'></div>
+        <div id="fountainTextG">
+            <!--<div id="fountainTextG_1" class="fountainTextG">M</div>-->
+            <!--<div id="fountainTextG_2" class="fountainTextG">a</div>-->
+            <!--<div id="fountainTextG_3" class="fountainTextG">r</div>-->
+            <!--<div id="fountainTextG_4" class="fountainTextG">s</div>-->
+            <!--<div id="fountainTextG_5" class="fountainTextG">H</div>-->
+            <!--<div id="fountainTextG_6" class="fountainTextG">o</div>-->
+            <!--<div id="fountainTextG_7" class="fountainTextG">l</div>-->
+            <!--<div id="fountainTextG_8" class="fountainTextG">d</div>-->
+            <!--<div id="fountainTextG_9" class="fountainTextG">i</div>-->
+            <!--<div id="fountainTextG_10" class="fountainTextG">n</div>-->
+            <!--<div id="fountainTextG_11" class="fountainTextG">g</div>-->
+                        <img class="loader-img" alt="MarsHolding" src="{{asset('/image/main.png')}}">
+
+        </div>
     </div>
 </div>
+
 
 <!-- JAVASCRIPT  FILES ========================================= -->
 <script src="{{asset('front/js/jquery-2.2.0.min.js')}}"></script><!-- JQUERY.MIN JS -->

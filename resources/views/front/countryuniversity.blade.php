@@ -129,7 +129,7 @@
                                             <a href="{{route('university',['name' => $countries->country,'uni'=>$countries->title])}}">
                                             <img src="{{$countries->photos[0]->path}}" width="250px" height="170px"
                                             style="width: 250px;height: 170px">
-                                            <h5 class="wt-list-panel-title mt-3 text-center">{{$countries->title}}</h5>
+                                            <h5 class="wt-list-panel-title mt-3 text-center" style="font-size:20px;font-family: IRANSans_Light_2 , sans-serif;">{{$countries->title}}</h5>
                                             </a>
                                         </div>
                                     @endforeach

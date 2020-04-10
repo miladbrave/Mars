@@ -39,7 +39,7 @@
                             <a href="{{route('main')}}">خانه</a>
                         </li>
                         <li class="">
-                            <a href="">کشور ها</a>
+                            <a href="javascript:;">کشور ها</a>
                             <ul class="sub-menu">
                                 @foreach($country as $countries)
                                     <li>
@@ -81,13 +81,16 @@
                         <li class="">
                             <a href="{{route('contact')}}">تماس با ما</a>
                         </li>
+                        <li class="online">
+                            <a class="btn btn-danger text-white" href="{{route('about')}}"
+                               data-toggle="modal" data-target="#exampleModal0">کلاس آنلاین</a>
+                        </li>
                     </ul>
 
                 </div>
             </div>
         </div>
     </div>
-
 
 @endsection
 @section('content')
@@ -221,7 +224,7 @@
                                     font-weight: 500;
                                     color:#fff;
                                     border-width:0px;">
-                                            <span style="font-family: 'IRANSansWeb', sans-serif;">{{$slides->description}}</span>
+                                            <span style="font-family: 'IRANSansWeb', sans-serif;">{!!$slides->description!!}</span>
                                         </div>
                                         <div class="tp-caption tp-resizeme"
                                              id="slide-101-layer-6"
@@ -341,10 +344,10 @@
                                              data-paddingleft="[0,0,0,0]"
                                              style="z-index: 13;
                                     white-space: normal;
-                                    font-weight: 700;
+                                    font-weight: 400;
                                     border-width:0px;">
                                             <div
-                                                style="font-family: 'IRANSansWeb', sans-serif;text-transform:uppercase;padding-right: 2%">
+                                                style="font-family: IRANSans_Light_2 , sans-serif;text-transform:uppercase;padding-right: 2%">
                                                 <span class="text-white"> {{$slides->title2}}</span>
                                             </div>
                                         </div>
@@ -375,7 +378,7 @@
                                     font-weight: 500;
                                     color:#fff;
                                     border-width:0px;">
-                                            <span style="font-family: Roboto, sans-serif;">{{$slides->description}}</span>
+                                            <span style="font-family: 'IRANSansWeb', sans-serif;">{!!$slides->description!!}</span>
                                         </div>
                                         <div class="tp-caption tp-resizeme"
                                              id="slide-100-layer-6"
@@ -525,7 +528,7 @@
                                     font-weight: 500;
                                     color:#fff;
                                     border-width:0px;">
-                                            <span style="font-family: 'IRANSansWeb', sans-serif;">{{$slides->description}}</span>
+                                            <span style="font-family: 'IRANSansWeb', sans-serif;">{!!$slides->description!!}</span>
                                         </div>
                                         <div class="tp-caption tp-resizeme"
                                              id="slide-101-layer-6"
@@ -673,7 +676,7 @@
                                     font-weight: 500;
                                     color:#fff;
                                     border-width:0px;">
-                                            <span style="font-family:'IRANSansWeb',sans-serif;padding-left: 2%">{{$slides->description}}</span>
+                                            <span style="font-family:'IRANSansWeb',sans-serif;padding-left: 2%">{!!$slides->description!!}</span>
                                         </div>
                                         <div class="tp-caption tp-resizeme"
                                              id="slide-102-layer-6"
@@ -862,7 +865,7 @@
                                     </div>
                                 </div>
                                 <div class="cities-slide-overlay"></div>
-                                <a href="{{route('uni',['name' => $uniNames->title])}}"
+                                <a href="{{route('university',['uni' => $uniNames->title,'name' =>$uniNames->country])}}"
                                    class="cities-slide-linking"></a>
                             </div>
                         </div>
@@ -1023,6 +1026,25 @@
                             @endforeach
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel0"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h4 class="modal-title text-white" id="exampleModalLabel">راهنما</h4>
+                </div>
+                <div class="modal-body bg-dark">
+                    <p class="text-white">
+                        برای استفاده از کلاس آنلاین لطفا نرم افزار مورد نیاز را دانلود کرده (لینک دانلود نرم افزار در ادامه موجود می باشد) و در سیستم خود نصب نمایید. سپس بعد از راه اندازی نرم افزار با استفاده از نام کاربری و رمز عبور وارد کلاس شوید.
+                    </p>
+                </div>
+                <div class="modal-footer bg-dark">
+                    <a type="button" class="btn btn-danger" href="http://185.126.202.195/marsholdong" style="margin-left: 88%">ادامه</a>
                 </div>
             </div>
         </div>

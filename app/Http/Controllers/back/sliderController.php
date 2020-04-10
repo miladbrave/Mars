@@ -18,7 +18,7 @@ class sliderController extends Controller
         $com = comment::all()->count();
         $user = User::all()->count();
         $slider = Slider::with('photo')->get();
-        return view('back.slider.index',compact('slider','news2','com','user'));
+        return view('back.slider.index', compact('slider', 'news2', 'com', 'user'));
     }
 
     public function create()
@@ -27,7 +27,7 @@ class sliderController extends Controller
         $com = comment::all()->count();
         $user = User::all()->count();
         $slider = slider::paginate(10);
-        return view('back.slider.create',compact('slider','news2','com','user'));
+        return view('back.slider.create', compact('slider', 'news2', 'com', 'user'));
     }
 
     public function store(Request $request)
@@ -60,7 +60,7 @@ class sliderController extends Controller
         $com = comment::all()->count();
         $user = User::all()->count();
         $slider = Slider::with('photo')->findOrFail($id);
-        return view('back.slider.edit',compact('slider','news2','com','user'));
+        return view('back.slider.edit', compact('slider', 'news2', 'com', 'user'));
     }
 
     public function update(Request $request, $id)
@@ -103,7 +103,7 @@ class sliderController extends Controller
     {
         $photo = photo::findOrFail($id);
         $photo->delete();
-        unlink(getcwd() . $photo->path );
+        unlink(getcwd() . $photo->path);
         return back();
     }
 
