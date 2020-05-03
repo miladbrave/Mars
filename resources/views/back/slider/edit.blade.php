@@ -41,6 +41,11 @@
                                         >{{$slider->description}}</textarea>
                                     </div>
                                     <div class="form-group">
+                                        <label>لینک</label>
+                                        <input id="link" name="link" class="form-control"
+                                            {{$slider->link}}>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="photo">تصویر</label>
                                         <input type="hidden" name="photo_id[]" id="product-photo">
                                         <div id="photo" class="dropzone"></div>

@@ -144,7 +144,6 @@
                                     @foreach($uni->photos as $unis)
                                         <div class="column">
                                             <img src="{{($unis->path)}}" alt="Nature"
-                                                 style="width:100%;height: 150px"
                                                  onclick="myFunction(this);">
                                         </div>
                                     @endforeach

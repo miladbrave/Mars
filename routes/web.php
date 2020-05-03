@@ -30,6 +30,7 @@ Route::post('comment','front\HomeController@reply')->name('comment.reply');
 Route::get('question', 'front\HomeController@question')->name('question');
 Route::get('news', 'front\HomeController@news')->name('news');
 Route::get('news/{title}/{name}', 'front\HomeController@newSelf')->name('news-self');
+Route::get('newses/{self}', 'front\HomeController@newssearch')->name('news-search');
 Route::get('news/{title}', 'front\HomeController@newscategory')->name('news-category');
 Route::get('about', 'front\HomeController@about')->name('about');
 Route::get('contact', 'front\HomeController@contact')->name('contact');
@@ -37,7 +38,6 @@ Route::get('contact', 'front\HomeController@contact')->name('contact');
 Route::get('Consultation','front\HomeController@consultation')->name('Consultation');
 Route::post('consult','front\HomeController@consult')->name('consult');
 Route::post('valid','front\HomeController@valids')->name('valid');
-//Route::post('resume', 'front\HomeController@resume')->name('resume');
 Route::post('message', 'front\HomeController@message')->name('sendmessage');
 Route::post('consult','front\HomeController@consult')->name('consult');
 Route::get('validation','front\HomeController@valid')->name('validation');
@@ -47,15 +47,11 @@ Route::get('university/{name}','front\HomeController@uni')->name('countryuni');
 
 
 
-
 Route::get('profile','front\profileController@index')->name('profile.index');
-Route::get('profile/financial','front\profileController@financial')->name('profile.money');
-Route::get('profile/classes','front\profileController@classes')->name('profile.classes');
-Route::get('profile/user','front\profileController@user')->name('profile.user');
 Route::get('profile/message','front\profileController@message')->name('profile.message');
-
-
-
+Route::put('profile/update/{id}', 'front\profileController@update')->name('ins.profile.update');
+Route::get('profile/update', 'front\profileController@user')->name('ins.profile.user');
+Route::get('profile/class', 'front\profileController@class')->name('ins.profile.class');
 
 
 
@@ -87,6 +83,17 @@ Route::group(['middleware' => 'admin'], function () {
         Route::delete('messageDestroy/{id}', 'back\commentController@messageDestroy')->name('messageDestroy');
         Route::get('uni/{id}', 'back\universityController@delete')->name('uni');
         Route::get('slider/action/{id}', 'back\sliderController@action')->name('slider.action');
+        Route::get('list', 'back\instituteController@index')->name('ins.index');
+        Route::get('list/video', 'back\instituteController@video')->name('ins.video');
+        Route::post('list/video/save', 'back\instituteController@viddeosave')->name('ins.video.save');
+        Route::delete('list/video/delete/{id}', 'back\instituteController@videodelete')->name('ins.video.delete');
+        Route::get('list/{id}', 'back\instituteController@profile')->name('ins.profile');
+        Route::post('list/savemoney/{id}', 'back\instituteController@money')->name('ins.save.money');
+        Route::delete('list/deletemoney/{id}', 'back\instituteController@delete')->name('ins.delete.money');
+        Route::post('list/message/{id}', 'back\instituteController@message')->name('ins.message');
+        Route::post('list/saveclass/{id}', 'back\instituteController@classtime')->name('ins.save.class');
+        Route::delete('list/deleteclass/{id}', 'back\instituteController@classdelete')->name('ins.delete.class');
+        Route::delete('list/deleteuser/{id}', 'back\instituteController@userdelete')->name('ins.delete.user');
     });
 });
 

@@ -36,8 +36,15 @@
                                     <div class="form-group">
                                         <label>توضیح</label>
                                         <textarea id="textareaDes" name="des" class="ckeditor form-control"
-                                                  placeholder="توضیحات محصول را وارد کنید..."> </textarea>
+                                                  placeholder="توضیحات اسلایدر را وارد کنید..."> </textarea>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label>لینک</label>
+                                        <input id="link" name="link" class="form-control"
+                                                  placeholder="لینک را وارد کنید...">
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="photo">تصویر</label>
                                         <input type="hidden" name="photo_id[]" id="product-photo">

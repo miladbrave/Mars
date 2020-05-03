@@ -20,11 +20,10 @@
                         </li>
                     </ul>
                     <div class="pull-right"><img src="{{ asset('/image/logo3.png') }}" alt="MarsHolding" width="150"
-                        height="70"></div>
+                                                 height="70"></div>
                 </div>
             </div>
         </div>
-
         <div class="left side-menu">
             <div class="sidebar-inner slimscrollleft">
                 <div class="user-box">
@@ -34,21 +33,24 @@
                         <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
                     </div>
                     <h5><a href="#">{{$users->name}}</a></h5>
-
                 </div>
                 <div id="sidebar-menu">
                     <ul>
                         <li class="text-muted menu-title">دسته بندی ها</li>
                         <li>
-                            <a href="index.html" class="waves-effect active"><i class="zmdi zmdi-view-dashboard"></i>
+                            <a href="javascript:void(0);" class="waves-effect active" data-toggle="modal"
+                               data-target="#exampleModal2" data-whatever="@mdo"><i class="zmdi zmdi-money"></i>
                                 <span> امور مالی </span> </a>
                         </li>
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i>
                                 <span>کلاس ها</span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="ui-buttons.html">ریاضی</a></li>
-                                <li><a href="ui-cards.html">زبان</a></li>
+                                @foreach($classtime as $classtimes)
+                                    <li><a href="javascript:void(0);" data-toggle="modal"
+                                           data-target="#exampleModal3" data-whatever="@mdo">{{$classtimes->title}}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="has_sub">
@@ -56,26 +58,24 @@
                                 <span>پروفایل کاربری </span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModal"
-                                       data-whatever="@mdo">ویرایش مشخصات</a>
+                                    <a href="{{route('ins.profile.user')}}"> ویرایش مشخصات</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        خروج
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                          style="display: none;">
-                                        @csrf
-                                    </form>
-                                </li>
-
                             </ul>
                         </li>
                         <li>
-                            <a href="inbox.html" class="waves-effect"><i
-                                    class="zmdi zmdi-email"></i><span> پیام ها </span></a>
+                            <a href="javascript:void(0);" class="waves-effect" data-toggle="modal"
+                               data-target="#exampleModal1" data-whatever="@mdo"><i class="zmdi zmdi-email"></i><span> پیام ها </span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                               class="waves-effect">
+                                <i class="zmdi zmdi-outlook"></i><span>خروج</span></a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                  style="display: none;">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -83,48 +83,120 @@
                 <div class="clearfix"></div>
             </div>
         </div>
+
+        @yield('middle')
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #b4b4b4">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">پیام</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-body wt-panel-body">
+                        <div class="container dashboard-list-box list-box-with-icon">
+                            <h3>{{$users->message}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">ادامه</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="background-color: #b4b4b4">
                 <form action="" method="">
                     <div class="modal-header">
-                        <h3 class="modal-title" id="exampleModalLabel">ویرایش مشخصات</h3>
+                        <h3 class="modal-title" id="exampleModalLabel">صورتحساب ها</h3>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label text-danger">نام و نام
-                                    خانوادگی:</label>
-                                <input name="name" type="text" class="form-control" id="recipient-name"
-                                       value="{{$users->name}}">
+                        <div class="panel-body wt-panel-body">
+                            <div class="container dashboard-list-box list-box-with-icon">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">نوع پرداخت</th>
+                                            <th class="text-center">مبلغ</th>
+                                            <th class="text-center">تاریخ</th>
+                                            <th class="text-center">بابت</th>
+                                            <th class="text-center">توضیح</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($finance->chunk(1) as $tests)
+                                            <tr>
+                                                @foreach($tests as $testss)
+                                                    <td class="text-center">{{$testss->kind}}</td>
+                                                    <td class="text-center">{{$testss->price}}</td>
+                                                    <td class="text-center">{{$testss->date}}</td>
+                                                    <td class="text-center">{{$testss->fore}}</td>
+                                                    <td class="text-center">{{$testss->des}}</td>
+                                                @endforeach
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label text-danger">شماره ملی:</label>
-                                <input name="nationalId" type="text" class="form-control" id="recipient-name" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label text-danger">ایمیل:</label>
-                                <input name="email" type="text" class="form-control" id="recipient-name"
-                                       value="{{$users->email}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label text-danger">پسورد قدیمی</label>
-                                <input name="oldPassword" type="text" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label text-danger">پسورد جدید:</label>
-                                <input name="newPassword" type="text" class="form-control" id="recipient-name">
-                            </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">لغو</button>
-                        <button type="submit" class="btn btn-primary">ارسال</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">ادامه</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color: #b4b4b4">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">کلاس ها</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-body wt-panel-body">
+                        <div class="container dashboard-list-box list-box-with-icon">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">عنوان</th>
+                                        <th class="text-center">تاریخ شروع کلاس</th>
+                                        <th class="text-center">روزهای هفته</th>
+                                        <th class="text-center">ساعت کلاس</th>
+                                        <th class="text-center">استاد مربوطه</th>
+                                        <th class="text-center">توضیحات</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($classtime as $classtimes)
+                                        <tr>
+                                            <td class="text-center">{{$classtimes->title}}</td>
+                                            <td class="text-center">{{$classtimes->start}}</td>
+                                            <td class="text-center">{{$classtimes->week}}</td>
+                                            <td class="text-center">{{$classtimes->time}}</td>
+                                            <td class="text-center">{{$classtimes->teacher}}</td>
+                                            <td class="text-center">{{$classtimes->des}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">لغو</button>
+                    <a type="button" class="btn btn-primary" href="{{route('ins.profile.class')}}">ادامه</a>
+                </div>
             </div>
         </div>
     </div>

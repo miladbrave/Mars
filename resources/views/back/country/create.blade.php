@@ -19,12 +19,24 @@
                                         <input type="text" name="title" class="form-control"
                                                placeholder=" عنوان را وارد کنید...">
                                     </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label>توضیح کوتاه</label>--}}
+{{--                                        <input type="text" name="littledes" class="form-control"--}}
+{{--                                               placeholder=" توضیح را وارد کنید..." required>--}}
+{{--                                    </div>--}}
                                     <div class="form-group">
                                         <label>توضیح</label>
                                         <textarea id="textareaDes" name="des" class="ckeditor form-control"
                                                   placeholder="توضیحات محصول را وارد کنید..."> </textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-success pull-left mt-3 mb-3">ذخیره
+                                    <div class="form-group">
+                                        <label for="photo">تصویر پرچم</label>
+                                        <input type="hidden" name="photo_id[]" id="product-photo">
+                                        <div id="photo" class="dropzone"></div>
+                                    </div>
+                                    <small id="emailHelp" class="form-text text-danger">برای وارد کردن عکس ابتدا پرچم کشور، سپس تصویر پس زمینه وارد نمایید.</small>
+                                    <hr>
+                                    <button type="submit" onclick="productGallery()" class="btn-sm btn-success pull-left">ذخیره
                                     </button><br>
                                 </form>
                             </div>
@@ -38,4 +50,41 @@
 @endsection
 @section('script')
     <script type="text/javascript" src="{{asset('/back/ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/front/js/dropzone.min.js')}}"></script>
+
+    <script>
+        Dropzone.autoDiscover = false;
+        var photosGallery = []
+        var drop = new Dropzone('#photo', {
+            addRemoveLinks: true,
+            maxFiles: 2,
+            // autoProcessQueue:false,
+            // autoQueue:false,
+            url: "{{route('photos.store')}}",
+            sending: function (file, xhr, formData) {
+                formData.append("_token", "{{csrf_token()}}")
+            },
+            success: function (file, response) {
+                photosGallery.push(response.photo_id)
+            }
+        });
+        productGallery = function () {
+            document.getElementById('product-photo').value = photosGallery
+
+        }
+        CKEDITOR.replace('textareaDes', {
+            customConfig: 'config.js',
+            language: 'fa',
+            removePlugins: 'cloudservices , easyimage'
+        })
+
+    </script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '.editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection
+

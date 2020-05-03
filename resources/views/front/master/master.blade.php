@@ -60,10 +60,13 @@
                             @if (Route::has('login'))
                                 <div class="top-right links">
                                     @auth
-                                        <a href="{{ url('/profile') }}"  class="text-danger">{{ Auth()->user()->name }}</a>
+                                        <a href="{{ url('/profile') }}"
+                                           class="text-danger">{{ Auth()->user()->name }}</a>
                                     @else
-                                        <li><a href="javascript:;" class="sign-up-btn" data-toggle="modal"
-                                               data-target=".sign-in-modal"><i class="sl-icon-login m-r10"></i>ورود</a></li>
+                                        <li><a href="{{ route('login') }}" class="sign-up-btn"><i class="sl-icon-login m-r10"></i>ورود</a>
+                                        </li>
+                                        <li><a href="{{ route('register') }}" class="sign-up-btn"><i class="sl-icon-pencil m-r10"></i>ثبت نام</a>
+                                        </li>
                                     @endauth
                                 </div>
                             @endif
@@ -182,62 +185,63 @@
     </footer>
     <button class="scroltop"><span class="fa fa-angle-up  relative" id="btn-vibrate"></span></button>
 
-    <div class="modal fade sign-in-modal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="sign-in-dialog bg-dark">
-                    <div class="sign-in-dialog-header" style="background-color: orangered">
-                        <h4 class="dialog-h-title">ورود</h4>
-                        <button type="button" class="close  sign-in-popup-close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="container ">
-                        <div class="row justify-content-center ">
-                            <div class="col-md-8">
-                                <div class="card bg-dark">
-                                    <ul class="navbar-nav ml-auto">
-                                        @guest
-                                            <li class="nav-item">
-                                                <a class="nav-link text-danger"
-                                                   href="{{ route('login') }}">{{ __('Login') }}</a>
-                                            </li>
-                                            @if (Route::has('register'))
-                                                <li class="nav-item">
-                                                    <a class="nav-link text-danger"
-                                                       href="{{ route('register') }}">{{ __('Register') }}</a>
-                                                </li>
-                                            @endif
-                                        @else
-                                            <li class="nav-item dropdown">
-                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
-                                                   role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                   aria-expanded="false" v-pre>
-                                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                                </a>
+{{--    <div class="modal fade sign-in-modal" role="dialog">--}}
+{{--        <div class="modal-dialog">--}}
+{{--            <div class="modal-content" style="margin-top: 20%">--}}
+{{--                <div class="sign-in-dialog bg-dark">--}}
+{{--                    <div class="sign-in-dialog-header" style="background-color: orangered">--}}
+{{--                        <h4 class="dialog-h-title">ورود</h4>--}}
+{{--                        <button type="button" class="close  sign-in-popup-close" data-dismiss="modal">&times;</button>--}}
+{{--                    </div>--}}
+{{--                    <div class="container ">--}}
+{{--                        <div class="row justify-content-center ">--}}
+{{--                            <div class="col-md-8">--}}
+{{--                                <div class="card bg-dark" style="border: 1px solid rgba(0,0,0,0.0);">--}}
+{{--                                        <ul class="navbar-nav ml-auto">--}}
+{{--                                            @guest--}}
+{{--                                                <li class="nav-item">--}}
+{{--                                                    <a class="nav-link text-danger"--}}
+{{--                                                       href="{{ route('login') }}">{{ __('ورود') }}</a>--}}
+{{--                                                </li>--}}
+{{--                                                @if (Route::has('register'))--}}
+{{--                                                    <li class="nav-item">--}}
+{{--                                                        <a class="nav-link text-danger"--}}
+{{--                                                           href="{{ route('register') }}">{{ __('ثبت نام') }}</a>--}}
+{{--                                                    </li>--}}
+{{--                                                @endif--}}
+{{--                                            @else--}}
+{{--                                                <li class="nav-item dropdown">--}}
+{{--                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"--}}
+{{--                                                       role="button" data-toggle="dropdown" aria-haspopup="true"--}}
+{{--                                                       aria-expanded="false" v-pre>--}}
+{{--                                                        {{ Auth::user()->name }} <span class="caret"></span>--}}
+{{--                                                    </a>--}}
 
-                                                <div class="dropdown-menu dropdown-menu-right"
-                                                     aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                        {{ __('Logout') }}
-                                                    </a>
+{{--                                                    <div class="dropdown-menu dropdown-menu-right"--}}
+{{--                                                         aria-labelledby="navbarDropdown">--}}
+{{--                                                        <a class="dropdown-item" href="{{ route('logout') }}"--}}
+{{--                                                           onclick="event.preventDefault();--}}
+{{--                                                     document.getElementById('logout-form').submit();">--}}
+{{--                                                            {{ __('خروج') }}--}}
+{{--                                                        </a>--}}
 
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                          style="display: none;">
-                                                        @csrf
-                                                    </form>
-                                                </div>
-                                            </li>
-                                        @endguest
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--                                                        <form id="logout-form" action="{{ route('logout') }}"--}}
+{{--                                                              method="POST"--}}
+{{--                                                              style="display: none;">--}}
+{{--                                                            @csrf--}}
+{{--                                                        </form>--}}
+{{--                                                    </div>--}}
+{{--                                                </li>--}}
+{{--                                            @endguest--}}
+{{--                                        </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
 
 
@@ -246,7 +250,6 @@
         <div class="modal-content">
             <button type="button" class="close single-preview-popup-close" data-dismiss="modal">&times;</button>
             <div class="single-preview-location">
-
                 <div class="single-preview-location-info">
                     <div class="single-preview-location-left">
                         <div class="list-slide">
@@ -298,32 +301,12 @@
     </div>
 </div>
 
-
-<!--<div class="loading-area">-->
-<!--    <div class="loading-box"></div>-->
-<!--    <div class="loading-pic">-->
-<!--        <div class='load-pin load-bounce'></div>-->
-<!--        <div class='load-pulse'></div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<div class="loading-area" >
+<div class="loading-area">
     <div class="loading-box"></div>
     <div class="loading-pic">
         <div id="fountainTextG">
             <!--<div id="fountainTextG_1" class="fountainTextG">M</div>-->
-            <!--<div id="fountainTextG_2" class="fountainTextG">a</div>-->
-            <!--<div id="fountainTextG_3" class="fountainTextG">r</div>-->
-            <!--<div id="fountainTextG_4" class="fountainTextG">s</div>-->
-            <!--<div id="fountainTextG_5" class="fountainTextG">H</div>-->
-            <!--<div id="fountainTextG_6" class="fountainTextG">o</div>-->
-            <!--<div id="fountainTextG_7" class="fountainTextG">l</div>-->
-            <!--<div id="fountainTextG_8" class="fountainTextG">d</div>-->
-            <!--<div id="fountainTextG_9" class="fountainTextG">i</div>-->
-            <!--<div id="fountainTextG_10" class="fountainTextG">n</div>-->
-            <!--<div id="fountainTextG_11" class="fountainTextG">g</div>-->
-                        <img class="loader-img" alt="MarsHolding" src="{{asset('/image/main.png')}}">
-
+            <img class="loader-img" alt="MarsHolding" style="background-color: white" src="{{asset('/image/gf.gif')}}">
         </div>
     </div>
 </div>

@@ -41,7 +41,7 @@
                             <li class="">
                                 <a href="">کشور ها</a>
                                 <ul class="sub-menu">
-                                    @foreach($country as $countries)
+                                    @foreach($allcountry as $countries)
                                         <li>
                                             <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
                                         </li>

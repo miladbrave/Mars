@@ -10,10 +10,8 @@
 
     <title>مارس هلدینگ | پروفایل کاربری</title>
 
-    <!--Morris Chart CSS -->
     <link rel="stylesheet" href="{{asset('front/assets/plugins/morris/morris.css')}}">
 
-    <!-- App css -->
     <link href="{{asset('front/assets/css/bootstrap-rtl.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('front/assets/css/core.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('front/assets/css/components.css')}}" rel="stylesheet" type="text/css" />
@@ -31,9 +29,10 @@
 
 
 <body class="fixed-left" style="position: relative">
-<img src="{{asset('/image/10.jpg')}}" style="position: absolute">
+<img src="{{asset('/image/10.jpg')}}" style="position: absolute" alt="mars">
 
  @yield('content')
+
 
 <script>
     var resizefunc = [];

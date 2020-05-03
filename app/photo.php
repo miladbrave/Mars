@@ -43,4 +43,9 @@ class photo extends Model
         return $this->belongsTo(Slider::class);
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
 }

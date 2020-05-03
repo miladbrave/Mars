@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $slider = Slider::with('photo')->where('status',1)->get();
-        $country = Country::all();
+        $country = Country::with('photos')->get();
         $exam = exam::with('photos')->get();
         $examCountry = exam::distinct()->get(['country']);
         $uniCountry = university::distinct()->get(['country']);
@@ -44,7 +44,7 @@ class HomeController extends Controller
         $exam = exam::all();
         $uniCountry = university::distinct()->get(['country']);
         $uniName = university::with('photos')->get();
-        return view('front.university', compact('comment', 'uniSelf', 'examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
+        return view('front.university', compact('comment', 'uniSelf', 'examCountry', 'exam', 'uniCountry', 'uniName','country'));
     }
 
     public function uni($countries)
@@ -245,6 +245,19 @@ class HomeController extends Controller
         return view('front.question', compact('examCountry', 'exam', 'uniCountry', 'uniName', 'questions','country'));
     }
 
+    public function newssearch($self)
+    {
+        $news = news::where('title','LIKE', '%' . $self . '%')->first();
+        if ($news->select == 'آزمون')
+            $first = 'اخبار-آزمون ها';
+        if ($news->select == 'دانشگاه')
+            $first = 'اخبار-دانشگاه ها';
+        if ($news->select == 'دوره')
+            $first = 'اخبار-دوره ها';
+
+        return redirect()->route('news-self',['name' => $news->newsTitle ,'title' => $first]);
+    }
+
     public function news()
     {
         $country = Country::all();
@@ -366,11 +379,12 @@ class HomeController extends Controller
     public function country($name)
     {
         $country = Country::where('title', 'LIKE', '%' . $name . '%')->get();
+        $allcountry = Country::with('photos')->get();
         $examCountry = exam::distinct()->get(['country']);
         $exam = exam::all();
         $uniCountry = university::distinct()->get(['country']);
         $uniName = university::all();
-        return view('front.country', compact('examCountry', 'exam', 'uniCountry', 'uniName','country'));
+        return view('front.country', compact('allcountry','examCountry', 'exam', 'uniCountry', 'uniName','country'));
     }
 
      public function cooming()

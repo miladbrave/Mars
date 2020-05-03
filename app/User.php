@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','city','national_code','birthday'
     ];
 
     /**
@@ -45,6 +45,16 @@ class User extends Authenticatable
     public function photos()
     {
         return $this->hasMany(photo::class);
+    }
+
+    public function financial()
+    {
+        return $this->hasMany(financial::class);
+    }
+
+    public function classtime()
+    {
+        return $this->hasMany(classtime::class);
     }
 
     public function isAdmin(){
