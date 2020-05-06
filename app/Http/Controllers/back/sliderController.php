@@ -39,9 +39,8 @@ class sliderController extends Controller
         $slider->link = $request->link;
         $slider->status = 0;
         $slider->description = $request->des;
-
-
         $slider->save();
+
         $photo = explode(',', $request->input('photo_id')[0]);
         $photos = photo::findOrFail($photo)->first();
         $photos->slider_id = $slider->id;

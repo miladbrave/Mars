@@ -53,6 +53,10 @@ Route::put('profile/update/{id}', 'front\profileController@update')->name('ins.p
 Route::get('profile/update', 'front\profileController@user')->name('ins.profile.user');
 Route::get('profile/class', 'front\profileController@class')->name('ins.profile.class');
 
+Route::get('in', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
 
 
 Route::group(['middleware' => 'admin'], function () {

@@ -19,7 +19,7 @@ class countryController extends Controller
         $com = comment::all()->count();
         $user = User::all()->count();
         $country = Country::paginate(10);
-        return view('back.country.index',compact('country','news2','com','user'));
+        return view('back.country.index', compact('country', 'news2', 'com', 'user'));
     }
 
     public function create()
@@ -27,7 +27,7 @@ class countryController extends Controller
         $news2 = news::all()->count();
         $com = comment::all()->count();
         $user = User::all()->count();
-        return view('back.country.create',compact('news2','com','user'));
+        return view('back.country.create', compact('news2', 'com', 'user'));
 
     }
 
@@ -41,10 +41,11 @@ class countryController extends Controller
 
         $photo = explode(',', $request->input('photo_id')[0]);
 
-        foreach ($photo as $ph){
-        $photos = photo::findOrFail($ph);
-        $photos->country_id = $country->id;
-        $photos->save();}
+        foreach ($photo as $ph) {
+            $photos = photo::findOrFail($ph);
+            $photos->country_id = $country->id;
+            $photos->save();
+        }
 
         return redirect()->route('country.index');
     }
@@ -61,7 +62,7 @@ class countryController extends Controller
         $com = comment::all()->count();
         $user = User::all()->count();
         $country = country::with('photos')->findorFail($id);
-        return view('back.country.edit',compact('country','news2','com','user'));
+        return view('back.country.edit', compact('country', 'news2', 'com', 'user'));
     }
 
 
@@ -73,21 +74,23 @@ class countryController extends Controller
 //        $country->littledes = $request->littledes;
         $country->save();
 
-        $photo = explode(',', $request->input('photo_id')[0]);
-        foreach ($photo as $ph){
-            $photos = photo::findOrFail($ph);
-            $photos->country_id = $country->id;
-            $photos->save();}
+        if ($request->input('photo_id')[0]) {
+            $photo = explode(',', $request->input('photo_id')[0]);
+            foreach ($photo as $ph) {
+                $photos = photo::findOrFail($ph);
+                $photos->country_id = $country->id;
+                $photos->save();
+            }
+        }
 
-
-        return redirect('administrator/country');
+        return redirect()->route('country.index');
     }
 
 
     public function destroy($id)
     {
         $country = country::findOrFail($id);
-        if ($country->photo){
+        if ($country->photo) {
             $photo = photo::findOrFail($country->photo->id);
             $photo->delete();
             unlink(getcwd() . $photo->path);
@@ -103,7 +106,7 @@ class countryController extends Controller
     {
         $photo = photo::findOrFail($id);
         $photo->delete();
-        unlink(getcwd() . $photo->path );
+        unlink(getcwd() . $photo->path);
         return back();
     }
 }
