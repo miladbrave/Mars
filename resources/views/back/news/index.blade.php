@@ -26,9 +26,9 @@
                                     <td class="text-center">{{$newss->id}}</td>
                                     @if(isset($newss->photo->path))
                                         <td class="text-center" width="25%"><img src="{{($newss->photo->path)}}"
-                                                                                 width="60%" height="70px"></td>
+                                                                                 width="50%" height="60px"></td>
                                     @endif
-                                    <td class="text-center"> {!!  $newss->title!!}</td>
+                                    <td class="text-center"> {!!  $newss->titlefa!!}</td>
                                     <td class="text-center">
                                         <form method="post" action="{{route('news.destroy',$newss->id)}}"
                                               style="display: inline">

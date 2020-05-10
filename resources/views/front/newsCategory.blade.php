@@ -1,8 +1,9 @@
 @extends('front.master.master')
 
 @section('nav')
-    <header class="site-header header-style-2 mobile-sider-drawer-menu"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        
+    <header class="site-header header-style-2 mobile-sider-drawer-menu">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
         <div class="main-bar-wraper  navbar-expand-lg">
             <div class="main-bar bg-white">
                 <div class="container">
@@ -39,12 +40,23 @@
                             <li class="">
                                 <a href="{{route('main')}}">خانه</a>
                             </li>
+                            <li class="">
+                                <a href="javascript:;">کشور ها</a>
+                                <ul class="sub-menu">
+                                    @foreach($country as $countries)
+                                        <li>
+                                            <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             <li>
                                 <a href="javascript:;">آزمون ها</a>
                                 <ul class="sub-menu">
                                     @foreach($exam as $exams)
                                         <li>
-                                            <a href="{{route('getExam',['name' => $exams->title])}}" style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}"
+                                               style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -101,71 +113,46 @@
 
 @section('content')
 
-    <div class="section-full small-device  p-tb80 bg-white">
+    <div class="section-full small-device  p-tb30 bg-white">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-11 col-sm-12">
-                    <div class="blog-post blog-md date-style-1 blog-list-1 clearfix  m-b60 bg-white">
-                        {{--                        <div class="wt-post-media wt-img-effect">--}}
-                        {{--                            <a href="javascript:;"><img src="{{asset('/image/BG-14.jpg')}}"--}}
-                        {{--                                                        style="height: 350px;width: 100%" alt=""></a>--}}
-                        {{--                        </div>--}}
-                        <div class="row">
-                            <div class="wt-post-info col-lg-9 col-md-7 bg-white p-t15 ">
-                                @if($news)
-                                    @foreach($news as $new)
-                                        <div class=" wt-list-panel mt-5 m-b5 p-a10 bg-white shadow">
-                                            <div class="wt-list-single-about-detail">
-                                                <div class="m-b30 text-left">
-                                                    <a href="{{route('news-self',['sel' => $title,'exam'=>$new->title])}}">
-                                                        <h4 style="font-size: 16px; font-weight: 600;font-family: IRANSans_Light_2 , sans-serif"
-                                                            class="wt-list-panel-title m-t0">{{$new->title}}</h4></a>
-                                                    <div class="wt-separator sep-gradient-light"></div>
-                                                    <span class="pull-left text-danger" style="font-size: 15px;">
-                                                            <?php $v = new \Hekmatinasser\Verta\Verta($new->created_at) ?>
-                                                        {{ $v->formatDate()}}
-                                                        </span>
-                                                </div>
+                <div class="col-lg-9 col-md-9 ">
+                    <div class="card">
+                        <div class="card-body bg-white">
+                            <h5 class="card-title"  style="font-family:IRANSansWeb , sans-serif;line-height: 1.2">{{$news->titlefa}}</h5>
+                            <h5 class="card-title" style="font-family:Roboto , sans-serif;line-height: 1.2">{{$news->titlela}}</h5>
+                            <hr>
+                            <p class="card-text">{!!$news->description1!!}</p>
+                            <p class="card-text">{!!$news->description2!!}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="wt-list-single-about-detail">
+                        <div class="text-left m-b30">
+                            <h4 class="widget-title"> دانشگاه های {{$news->country}}</h4>
+                            <div class="wt-separator sep-gradient-light"></div>
+                        </div>
+                        <div class="wt-similar-listing">
+                            @foreach($uniName->where('country',$news->country) as $university )
+                                <a href="{{route('university',['name' => $news->country,'uni'=>$university->title])}}">
+                                    <div class="wt-similar-listing-box clearfix mt-5">
+                                        <div class="wt-similar-listing-media">
+                                            @foreach($logos->where('university_id',$university->id) as $logo)
+                                                <img src="{{($logo->path)}}" alt=""  style="height: auto;width: 80%">
+                                            @endforeach
+                                        </div>
+                                        <div class="wt-similar-listing-info">
+                                            <div class="wt-similar-listing-header">
+                                                <h4 class="wt-list-panel-title m-t0 text-center"
+                                                    style="font-size:17px;font-family: IRANSansWeb , sans-serif;">{{$university->titlefa}}</h4>
+                                                <h5 class="wt-list-panel-title m-t0 text-center"
+                                                    style="font-size:15px;font-family: Roboto , sans-serif;">{{$university->titlela}}</h5>
                                             </div>
                                         </div>
-                                    @endforeach
-                                @endif
-                            </div>
-                            <div class="col-lg-3 col-md-5 col-sm-12 p-t50">
-                                <aside class="side-bar sticky-top">
-                                    <div class="widget bg-white  widget_services">
-                                        <div class="text-left m-b30">
-                                            <h4 class="widget-title">دسته بندی</h4>
-                                            <div class="wt-separator sep-gradient-light"></div>
-                                        </div>
-                                        <ul>
-                                            @foreach($exam as $exams)
-                                                <li>
-                                                    @if(isset($new))
-                                                    <a href="{{route('news-self',['sel' => $title,'exam'=>$new->exam])}}"
-                                                       style="font-size: 13px">{{$exams->title}}</a><span
-                                                        class="badge"></span>
-                                                        @endif
-                                                </li>
-                                            @endforeach
-                                        </ul>
                                     </div>
-                                    <div class="widget bg-white  widget_tag_cloud">
-                                        <div class="text-left m-b30">
-                                            <h4 class="widget-title">برچسب ها</h4>
-                                            <div class="wt-separator sep-gradient-light"></div>
-                                        </div>
-                                        <div class="tagcloud">
-                                            @foreach($exam as $exams)
-                                                @if(isset($new))
-                                                <a href="{{route('news-self',['sel' => $title,'exam'=>$new->exam])}}"
-                                                   style="font-size: 10px">{{$exams->title}}</a>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </aside>
-                            </div>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>

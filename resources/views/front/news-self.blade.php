@@ -1,7 +1,8 @@
 @extends('front.master.master')
 
 @section('nav')
-    <header class="site-header header-style-2 mobile-sider-drawer-menu"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <header class="site-header header-style-2 mobile-sider-drawer-menu">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <div class="main-bar-wraper  navbar-expand-lg">
             <div class="main-bar bg-white">
                 <div class="container">
@@ -38,12 +39,23 @@
                             <li class="">
                                 <a href="{{route('main')}}">خانه</a>
                             </li>
+                            <li class="">
+                                <a href="javascript:;">کشور ها</a>
+                                <ul class="sub-menu">
+                                    @foreach($country as $countries)
+                                        <li>
+                                            <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             <li>
                                 <a href="javascript:;">آزمون ها</a>
                                 <ul class="sub-menu">
                                     @foreach($exam as $exams)
                                         <li>
-                                            <a href="{{route('getExam',['name' => $exams->title])}}" style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}"
+                                               style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -72,8 +84,6 @@
                             </li>
                         </ul>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -99,83 +109,85 @@
     </div>
 @endsection
 
-
 @section('content')
-
     <div class="section-full small-device  p-tb80 bg-white">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-11 col-sm-12">
-                    <div class="blog-post blog-md date-style-1 blog-list-1 clearfix  m-b60 bg-white">
-{{--                        <div class="wt-post-media wt-img-effect">--}}
-{{--                            <a href="javascript:;"><img src="{{asset('/image/BG-14.jpg')}}"--}}
-{{--                                                        style="height: 350px;width: 100%" alt=""></a>--}}
-{{--                        </div>--}}
-                        <div class="row">
-                            <div class="wt-post-info col-lg-8 col-md-7 bg-white p-t30">
-                                @foreach($news->sortBy('examuni') as $new)
-                                    <div class=" wt-list-panel mt-1 m-b15 p-a15 bg-white shadow">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                @if(isset($new->photo->path))
-                                                <img class="news-img" src="{{$new->photo->path}}" alt="news">
-                                                @endif
+                <div class="col-lg-9 col-md-7 card card-body bg-white">
+                    @foreach($news->sortBy('examuni') as $new)
+                        <div class="container">
+                            <div class="row">
+                                @if(isset($new->photo->path))
+                                    <div class="col-md-2">
+                                        <img class="news-img img-responsive" src="{{$new->photo->path}}" alt="news">
+                                    </div>
+                                    <div class="col-md-10 newsdes p-3">
+                                        <div class="news-des">
+                                            <div class="m-b30 text-left">
+                                                <h4 class="wt-list-panel-title m-t0" style="font-size:16px;font-family: 'IRANSansWeb' , sans-serif;
+                                                        font-weight: bolder;line-height: 1.2">{{$new->titlefa}}</h4>
+                                                <h4 class="wt-list-panel-title m-t0" style="font-size:16px;font-family: Roboto  , sans-serif;
+                                                        font-weight: bolder;line-height: 1.2">{{$new->titlela}}</h4>
+                                                <div class="wt-separator sep-gradient-light mt-4"
+                                                     style="margin-top: -10px"></div>
                                             </div>
-                                            <div class="wt-list-single-about-detail col-md-9 newsdes">
-                                                <div class="m-b30 text-left">
-                                                    <h4 class="wt-list-panel-title m-t0" style="font-size:16px;font-family: IRANSans_Light_2 , sans-serif;
-                                                        font-weight: bolder;line-height: 1.5">{!!  nl2br($new->title)!!}</h4>
-                                                    <div class="wt-separator sep-gradient-light" style="margin-top: -8px"></div>
-                                                </div>
-                                                <p style="margin-top: -5px">{!! $new->description !!}</p>
-                                                <span class="pull-left text-danger" style="font-size: 15px;">
-                                                        <?php $v = new \Hekmatinasser\Verta\Verta($new->created_at) ?>
-                                                            {{ $v->formatDate()}}
-                                                </span>
-                                            </div>
+                                            <p style="margin-top: -20px">{!! $new->description1 !!}</p>
+                                            <a href="{{route('news-category',['title'=>$new->titlefa])}}"
+                                               class="text-info">ادامه خبر</a>
                                         </div>
                                     </div>
-                                @endforeach
-                                <div class="offset-3">
-                                  {{$news->links()}}
-                                  </div>
+                                @else
+                                    <div class="col-md-12 newsdes p-3">
+                                        <div class="news-des">
+                                            <div class="m-b30 text-left">
+                                                <h4 class="wt-list-panel-title m-t0" style="font-size:16px;font-family: 'IRANSansWeb' , sans-serif;
+                                                        font-weight: bolder;line-height: 1.2">{{$new->titlefa}}</h4>
+                                                <h4 class="wt-list-panel-title m-t0" style="font-size:16px;font-family: Roboto  , sans-serif;
+                                                        font-weight: bolder;line-height: 1.2">{{$new->titlela}}</h4>
+                                                <div class="wt-separator sep-gradient-light mt-4"
+                                                     style="margin-top: -20px"></div>
+                                            </div>
+                                            <p style="margin-top: -5px">{!! $new->description1 !!}</p>
+                                            <a href="{{route('news-category',['title'=>$new->titlefa])}}"
+                                               class="text-info">ادامه خبر</a>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
-                            <div class="col-lg-4 col-md-5 col-sm-12 p-t50">
-                                <aside class="side-bar sticky" style="position: sticky;">
-                                    <div class="widget bg-white  widget_services">
-                                        <div class="text-left m-b30">
-                                            <h4 class="widget-title">دسته بندی</h4>
-                                            <div class="wt-separator sep-gradient-light"></div>
-                                        </div>
-                                        <ul>
-                                            @foreach($exam as $exams)
-                                                <li><a href="{{route('news-self',['sel' => $title,'exam'=>$exams->title])}}"
-                                                       style="font-size: 13px">{{$exams->title}}</a><span
-                                                        class="badge"></span>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    <div class="widget bg-white  widget_tag_cloud">
-                                        <div class="text-left m-b30">
-                                            <h4 class="widget-title">برچسب ها</h4>
-                                            <div class="wt-separator sep-gradient-light"></div>
-                                        </div>
-                                        <div class="tagcloud">
-
-                                            @foreach($exam as $exams)
-                                                <a href="{{route('news-self',['sel' => $title,'exam'=>$exams->title])}}"
-                                                   style="font-size: 10px">{{$exams->title}}</a>
+                        </div>
+                        <hr style="margin-top: 1%;margin-bottom: 1%;background-color: #525252">
+                    @endforeach
+                </div>
+                <div class="col-md-3" style="padding-right: 40px">
+                    <div class="wt-list-single-about-detail">
+                        <div class="text-left m-b30">
+                            <h4 class="widget-title"> دانشگاه های {{$new->country}}</h4>
+                            <div class="wt-separator sep-gradient-light"></div>
+                        </div>
+                        <div class="wt-similar-listing">
+                            @foreach($uniName->where('country',$new->country) as $university )
+                                <a href="{{route('university',['name' => $new->country,'uni'=>$university->title])}}">
+                                    <div class="wt-similar-listing-box clearfix mt-5">
+                                        <div class="wt-similar-listing-media">
+                                            @foreach($logos->where('university_id',$university->id) as $logo)
+                                                <img src="{{($logo->path)}}" alt=""  style="height: auto;width: 80%">
                                             @endforeach
                                         </div>
+                                        <div class="wt-similar-listing-info">
+                                            <div class="wt-similar-listing-header">
+                                                <h4 class="wt-list-panel-title m-t0 text-center"
+                                                    style="font-size:17px;font-family: IRANSansWeb , sans-serif;">{{$university->titlefa}}</h4>
+                                                <h5 class="wt-list-panel-title m-t0 text-center"
+                                                    style="font-size:15px;font-family: Roboto , sans-serif;">{{$university->titlela}}</h5>
+                                            </div>
+                                        </div>
                                     </div>
-                                </aside>
-                            </div>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

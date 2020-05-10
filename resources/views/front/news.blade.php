@@ -53,7 +53,8 @@
                                 <ul class="sub-menu">
                                     @foreach($exam as $exams)
                                         <li>
-                                            <a href="{{route('getExam',['name' => $exams->title])}}" style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}"
+                                               style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -112,79 +113,54 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-4 col-md-6 col-sm-12 m-b30">
-                <div
-                    class="blog-post blog-grid-1 overlay-wraper post-overlay  large-date bg-cover bg-no-repeat bg-top-center"
-                    style="background-image:url({{asset('/image/news-exams.jpg')}})">
-                    <div class="overlay-main overlay-gradient"></div>
-                    <div class="blog-category"><span class="clr-red">آزمون</span></div>
-                    <div class="wt-post-info text-white">
-                        <div class="post-overlay-position">
-                            <div class="post-content-outer p-a30">
-                                <div class="wt-post-title ">
-                                    <h4 class="post-title"><a
-                                            href="{{route('news-category',['sel' => 'اخبار-آزمون ها'])}}"
-                                            class="text-white text-capitalize">اخبار آزمون های بین المللی</a></h4>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date  site-text-secondry">آخرین اخبار آزمون ها</li>
-                                        <li class="post-author"></li>
-                                    </ul>
+                <div class="news-head1">
+                    <h3 class="text-white text-center mt-4">اخبار آزمون ها</h3>
+                </div>
+                @if($news)
+                    @foreach($news->where('select','آزمون') as $new)
+                        <div class=" wt-list-panel mt-1 m-b1 p-a5 bg-white shadow">
+                            <div class="wt-list-single-about-detail">
+                                <div class="m-b30 text-left">
+                                    <a href="{{route('news-self',['sel' => 'آزمون','exam'=>$new->title])}}">
+                                        <h5 style="font-size: 15px; font-weight: 500;font-family: IRANSans_Light_2 , sans-serif"
+                                            class="wt-list-panel-title m-t0">{{$new->title}}</h5></a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 m-b30">
-                <div
-                    class="blog-post blog-grid-1 overlay-wraper post-overlay  large-date bg-cover bg-no-repeat bg-top-center"
-                    style="background-image:url({{asset('/image/news-university.jpg')}})">
-                    <div class="overlay-main overlay-gradient"></div>
-                    <div class="blog-category"><span class="clr-red">دانشگاه ها</span></div>
-                    <div class="wt-post-info text-white">
-                        <div class="post-overlay-position">
-                            <div class="post-content-outer p-a30">
-                                <div class="wt-post-title ">
-                                    <h4 class="post-title"><a
-                                            href="{{route('news-category',['sel' => 'اخبار-دانشگاه-ها'])}}"
-                                            class="text-white text-capitalize">اخبار دانشگاه ها</a></h4>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date  site-text-secondry">آخرین اخبار دانشگاه ها</li>
-                                        <li class="post-author"></li>
-                                    </ul>
-                                </div>
+                <div class="news-head2">
+                    <h3 class="text-white text-center mt-4">اخبار دانشگاه ها</h3>
+                </div>
+                @foreach($news->where('select','دانشگاه') as $new)
+                    <div class=" wt-list-panel mt-1 m-b1 p-a5 bg-white shadow">
+                        <div class="wt-list-single-about-detail">
+                            <div class="m-b30 text-left">
+                                <a href="{{route('news-self',['sel' => 'دانشگاه','exam'=>$new->title])}}">
+                                    <h5 style="font-size: 15px; font-weight: 500;font-family: IRANSans_Light_2 , sans-serif"
+                                        class="wt-list-panel-title m-t0">{{$new->title}}</h5></a>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 m-b30">
-                <div
-                    class="blog-post blog-grid-1 overlay-wraper post-overlay  large-date bg-cover bg-no-repeat bg-top-center"
-                    style="background-image:url({{asset('/image/news-period.jpg')}})">
-                    <div class="overlay-main overlay-gradient"></div>
-                    <div class="blog-category"><span class="clr-red">دوره ها</span></div>
-                    <div class="wt-post-info text-white">
-                        <div class="post-overlay-position">
-                            <div class="post-content-outer p-a30">
-                                <div class="wt-post-title ">
-                                    <h4 class="post-title"><a
-                                            href="{{route('news-category',['sel' => 'اخبار-دوره ها'])}}"
-                                            class="text-white text-capitalize">اخبار دوره ها</a></h4>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date  site-text-secondry">آخرین اخبار دوره ها</li>
-                                        <li class="post-author"></li>
-                                    </ul>
-                                </div>
+                <div class="news-head3">
+                    <h3 class="text-white text-center mt-4">اخبار دوره ها</h3>
+                </div>
+                @foreach($news->where('select','دوره') as $new)
+                    <div class=" wt-list-panel mt-1 m-b1 p-a5 bg-white shadow">
+                        <div class="wt-list-single-about-detail">
+                            <div class="m-b30 text-left">
+                                <a href="{{route('news-self',['sel' => 'دوره','exam'=>$new->title])}}">
+                                    <h5 style="font-size: 15px; font-weight: 500;font-family: IRANSans_Light_2 , sans-serif"
+                                        class="wt-list-panel-title m-t0">{{$new->title}}</h5></a>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

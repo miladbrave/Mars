@@ -205,7 +205,7 @@
     </header>
     <nav id="sidebar-admin-wraper">
         <div class="page-logo">
-            <a href="index.html"><img src="images/logo-light.png" alt=""></a>
+            <a href=""><img src="" alt=""></a>
         </div>
         <div class="admin-nav">
             <ul class="">
@@ -234,10 +234,12 @@
                 <li>
                     <a href=""> <i class="sl-icon-star "></i><span class="admin-nav-text">اخبار</span></a>
                     <ul class="sub-menu">
-                        <li><a href="{{route('news.titleIndex')}}"><i class="sl-icon-envelope-open "></i><span
+                        <li><a href="{{route('news.titleIndex')}}"><i class="sl-icon-list "></i><span
                                     class="admin-nav-text">متون</span></a></li>
-                        <li><a href="{{route('news.index')}}"><i class="sl-icon-envelope-open "></i><span
+                        <li><a href="{{route('news.index')}}"><i class="sl-icon-note "></i><span
                                     class="admin-nav-text">اخبار</span></a></li>
+                        <li><a href="{{route('news.vit.index')}}"><i class="sl-icon-magic-wand "></i><span
+                                    class="admin-nav-text">اخبار ویترین</span></a></li>
                     </ul>
                 </li>
                 <li>

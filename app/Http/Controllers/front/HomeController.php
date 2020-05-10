@@ -7,6 +7,7 @@ use App\cons;
 use App\Country;
 use App\evale;
 use App\exam;
+use App\Logo;
 use App\message;
 use App\news;
 use App\newstitle;
@@ -29,8 +30,9 @@ class HomeController extends Controller
         $examCountry = exam::distinct()->get(['country']);
         $uniCountry = university::distinct()->get(['country']);
         $uniName = university::all();
-        $news = news::orderBy('created_at', 'desc')->get();
-        return view('front.index', compact('slider','examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
+        $news = news::where('section_id', '<',6)->orderBy('created_at', 'desc')->get();
+        $logos =Logo::whereNotNull('section_id')->get();
+        return view('front.index', compact('logos','slider','examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
     }
 
     public function university($name,$uni)
@@ -44,7 +46,8 @@ class HomeController extends Controller
         $exam = exam::all();
         $uniCountry = university::distinct()->get(['country']);
         $uniName = university::with('photos')->get();
-        return view('front.university', compact('comment', 'uniSelf', 'examCountry', 'exam', 'uniCountry', 'uniName','country'));
+        $logos = Logo::with('university')->get();
+        return view('front.university', compact('logos','comment', 'uniSelf', 'examCountry', 'exam', 'uniCountry', 'uniName','country'));
     }
 
     public function uni($countries)
@@ -60,12 +63,13 @@ class HomeController extends Controller
         $news = news::where('title', 'LIKE', '%' . $countries . '%')->orderBy('created_at', 'desc')->get();
         $uniCountry = university::distinct()->get(['country']);
         $uniName = university::all();
-        return view('front.countryuniversity', compact('comment','exam','countryuni','examCountry', 'news', 'uniCountry', 'uniName', 'questions','country'));
+        $logos = Logo::with('university')->get();
+        return view('front.countryuniversity', compact('logos','comment','exam','countryuni','examCountry', 'news', 'uniCountry', 'uniName', 'questions','country'));
     }
 
     public function getExam($title)
     {
-                $country = Country::all();
+        $country = Country::all();
         $comment = comment::where('status', 1)
             ->where('parent_id', null)
             ->get();
@@ -125,7 +129,7 @@ class HomeController extends Controller
 
     public function consultation()
     {
-                $country = Country::all();
+//        $country = Country::all();
         $examCountry = exam::distinct()->get(['country']);
         $uniCountry = university::distinct()->get(['country']);
         $exam = exam::all();
@@ -261,7 +265,7 @@ class HomeController extends Controller
     public function news()
     {
         $country = Country::all();
-        $news = news::all();
+        $news = newstitle::all();
         $examCountry = exam::distinct()->get(['country']);
         $exam = exam::all();
         $uniCountry = university::distinct()->get(['country']);
@@ -283,32 +287,25 @@ class HomeController extends Controller
 //                ->orderBy('created_at', 'desc')->paginate(15);
 //        }
         $news = news::where('newsTitle', 'LIKE', '%' . $name . '%')
-            ->orderBy('created_at', 'desc')->paginate(15);
+            ->latest()->get();
         $examCountry = exam::distinct()->get(['country']);
         $exam = exam::all();
         $uniCountry = university::distinct()->get(['country']);
         $uniName = university::all();
-        return view('front.news-self', compact('title','examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
+        $logos = Logo::with('university')->get();
+        return view('front.news-self', compact('logos','title','examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
     }
 
     public function newscategory($title)
     {
-                $country = Country::all();
-        if ($title == 'اخبار-آزمون ها') {
-            $title = 'آزمون';
-        }
-        if ($title == 'اخبار-دانشگاه-ها') {
-            $title = 'دانشگاه';
-        }
-        if ($title == 'اخبار-دوره ها') {
-            $title = 'دوره';
-        }
-        $news = newstitle::where('select', 'LIKE', '%' . $title . '%')->orderBy('created_at', 'desc')->get();
+        $news = news::where('titlefa', 'LIKE', '%' . $title . '%')->first();
+        $country = Country::all();
         $examCountry = exam::distinct()->get(['country']);
         $exam = exam::all();
         $uniCountry = university::distinct()->get(['country']);
         $uniName = university::all();
-        return view('front.newsCategory', compact('examCountry', 'exam', 'uniCountry', 'uniName', 'news', 'title','country'));
+        $logos = Logo::with('university')->get();
+        return view('front.newsCategory', compact('logos','examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
     }
 
     public function about()
@@ -383,8 +380,9 @@ class HomeController extends Controller
         $examCountry = exam::distinct()->get(['country']);
         $exam = exam::all();
         $uniCountry = university::distinct()->get(['country']);
-        $uniName = university::all();
-        return view('front.country', compact('allcountry','examCountry', 'exam', 'uniCountry', 'uniName','country'));
+        $uniName = university::with(['logo'])->get();
+        $logos = Logo::with('university')->get();
+        return view('front.country', compact('logos','allcountry','examCountry', 'exam', 'uniCountry', 'uniName','country'));
     }
 
      public function cooming()

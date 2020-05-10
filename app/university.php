@@ -15,4 +15,9 @@ class university extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function logo()
+    {
+        return $this->hasOne(Logo::class);
+    }
 }

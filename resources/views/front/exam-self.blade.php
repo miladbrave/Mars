@@ -53,7 +53,8 @@
                                 <ul class="sub-menu">
                                     @foreach($exam as $exams)
                                         <li>
-                                            <a href="{{route('getExam',['name' => $exams->title])}}" style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}"
+                                               style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -82,8 +83,6 @@
                             </li>
                         </ul>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -121,33 +120,42 @@
              style="background-image:url({{asset('/front/images/background/bg-building.png')}})">
             <div class="container">
                 <div class="section-content mt-5">
-                    <div class=text-center">
-                        @foreach($examSelf as $exams)
-                            <div class=" wt-list-panel mt-5 m-b30  p-a20 bg-white shadow">
-                                <div class="wt-list-single-about-detail">
-                                    <div class="m-b30 text-left">
-                                        <h4 class="wt-list-panel-title m-t0">{{$exams->title}}</h4>
-                                        <div class="wt-separator sep-gradient-light"></div>
-                                    </div>
-                                    <p style="text-align: justify;">{!! $exams->description !!}</p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class=text-center">
+                                    @foreach($examSelf as $exams)
+                                        <div class=" wt-list-panel m-b30  p-a20 bg-white shadow">
+                                            <div class="wt-list-single-about-detail">
+                                                <div class="m-b30 text-left">
+                                                    <h4 class="wt-list-panel-title m-t0">{{$exams->title}}</h4>
+                                                    <div class="wt-separator sep-gradient-light"></div>
+                                                </div>
+                                                <p style="text-align: justify;">{!! $exams->description !!}</p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    <hr class="bg-danger mt-5 mb-5">
                                 </div>
                             </div>
-                        @endforeach
-                        <hr class="bg-danger mt-5 mb-5">
-{{--                            <div class="m-b30 text-left">--}}
-{{--                                <h4 class="wt-list-panel-title m-t0 text-danger">  اخبار : {{$exams->title}}</h4>--}}
-{{--                            </div>--}}
-{{--                        @foreach($news as $newses)--}}
-{{--                                <div class=" wt-list-panel mt-5 m-b30  p-a20 bg-white shadow">--}}
-{{--                                    <div class="wt-list-single-about-detail">--}}
-{{--                                        <div class="m-b30 text-left">--}}
-{{--                                            <h4 class="wt-list-panel-title m-t0">{{$newses->title}}</h4>--}}
-{{--                                            <div class="wt-separator sep-gradient-light"></div>--}}
-{{--                                        </div>--}}
-{{--                                        <p>{!! $newses->description !!}</p>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                        @endforeach--}}
+                            <div class="col-md-3">
+                                <div class="card card-body bg-white sticky" style="position: sticky;position: -webkit-sticky;top: 0;">
+                                    <div class="text-left m-b30 card-header">
+                                        <h4 class="widget-title text-center">آزمون های بین الملی</h4>
+                                    </div>
+                                    <div class="wt-similar-listing">
+                                        @foreach($exam as $exams )
+                                            <div class="text-center">
+                                                <a href="{{route('getExam',['title'=>$exams->title])}}">
+                                                <h6 class="wt-similar-listing-title" style="padding-top: 5%;font-size: 16px;
+                                                   font-family: Roboto, sans-serif ;">{{$exams->title}}</h6>
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     @if(Session::has('comment'))
@@ -159,7 +167,6 @@
                     <div class="container col-md-11 mt-5"
                          style="text-align: right ;direction: rtl;width: 100%;;padding: 25px;">
                         <div class="row">
-                            <!-- Comments Form -->
                             <div class="card my-4" style="width: 60%">
                                 <h5 class="card-header">نظرات</h5>
                                 <div class="card-body">

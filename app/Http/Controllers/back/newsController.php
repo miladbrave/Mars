@@ -4,6 +4,7 @@ namespace App\Http\Controllers\back;
 
 use App\comment;
 use App\exam;
+use App\Logo;
 use App\news;
 use App\newstitle;
 use App\photo;
@@ -19,41 +20,44 @@ class newsController extends Controller
         $news2 = news::all()->count();
         $com = comment::all()->count();
         $user = User::all()->count();
-        $news = news::with('photo')->orderBy('created_at','desc')->paginate(10);
-        return view('back.news.index', compact('news','news2','com','user'));
+        $news = news::with('photo')->orderBy('created_at', 'desc')->paginate(10);
+        return view('back.news.index', compact('news', 'news2', 'com', 'user'));
     }
 
 
     public function create()
     {
-                $newsTitle = newstitle::all();
+        $newsTitle = newstitle::all();
         $news2 = news::all()->count();
         $com = comment::all()->count();
         $user = User::all()->count();
         $exam = exam::all();
         $country = university::distinct()->get('country');
-        return view('back.news.create', compact('exam', 'country','news2','com','user','newsTitle'));
+        return view('back.news.create', compact('exam', 'country', 'news2', 'com', 'user', 'newsTitle'));
     }
 
 
     public function store(Request $request)
     {
         $news = new news();
-        $news->title = $request->title;
-        $news->description = $request->des;
+        $news->titlefa = $request->titlefa;
+        $news->titlela = $request->titlela;
+        $news->description1 = $request->des1;
+        $news->description2 = $request->des2;
         $news->exam = $request->exam;
         $news->country = $request->country;
         $news->examuni = $request->examuni;
         $news->select = $request->select;
+        $news->section_id = $request->number;
         $news->newsTitle = $request->newsTitle;
-
-//        $news->status = $request->status;
         $news->save();
 
-        $photo = explode(',', $request->input('photo_id')[0]);
-        $photos = photo::findOrFail($photo)->first();
-        $photos->news_id = $news->id;
-        $photos->save();
+        if ($request->input('photo_id')[0]) {
+            $photo = explode(',', $request->input('photo_id')[0]);
+            $photos = photo::findOrFail($photo)->first();
+            $photos->news_id = $news->id;
+            $photos->save();
+        }
 
         return redirect('administrator/news');
     }
@@ -73,27 +77,30 @@ class newsController extends Controller
         $news = news::with('photo')->findorFail($id);
         $exam = exam::all();
         $country = university::distinct()->get('country');
-        return view('back.news.edit', compact('news', 'exam', 'country','news2','com','user','newsTitle'));
+        return view('back.news.edit', compact('news', 'exam', 'country', 'news2', 'com', 'user', 'newsTitle'));
     }
 
     public function update(Request $request, $id)
     {
         $news = news::findOrFail($id);
-        $news->title = $request->title;
-        $news->description = $request->des;
+        $news->titlefa = $request->titlefa;
+        $news->titlela = $request->titlela;
+        $news->description1 = $request->des1;
+        $news->description2 = $request->des2;
         $news->exam = $request->exam;
         $news->country = $request->country;
         $news->examuni = $request->examuni;
         $news->select = $request->select;
+        $news->section_id = $request->number;
         $news->newsTitle = $request->newsTitle;
-
-//        $news->status = $request->status;
         $news->save();
 
-        $photo = explode(',', $request->input('photo_id')[0]);
-        $photos = photo::findOrFail($photo)->first();
-        $photos->news_id = $news->id;
-        $photos->save();
+        if ($request->input('photo_id')[0]) {
+            $photo = explode(',', $request->input('photo_id')[0]);
+            $photos = photo::findOrFail($photo)->first();
+            $photos->news_id = $news->id;
+            $photos->save();
+        }
 
         return redirect('administrator/news');
     }
@@ -104,7 +111,7 @@ class newsController extends Controller
         $photo = photo::findOrFail($news->photo->id);
         $photo->delete();
         $news->delete();
-         unlink(getcwd() . $photo->path );
+        unlink(getcwd() . $photo->path);
         return redirect('administrator/news');
     }
 
@@ -114,7 +121,7 @@ class newsController extends Controller
         $com = comment::all()->count();
         $user = User::all()->count();
         $news = newstitle::paginate(10);
-        return view('back.news.title.index', compact('news','news2','com','user'));
+        return view('back.news.title.index', compact('news', 'news2', 'com', 'user'));
     }
 
     public function createtitle()
@@ -124,7 +131,7 @@ class newsController extends Controller
         $user = User::all()->count();
         $exam = exam::all();
         $country = university::distinct()->get('country');
-        return view('back.news.title.create', compact('exam', 'country','news2','com','user'));
+        return view('back.news.title.create', compact('exam', 'country', 'news2', 'com', 'user'));
     }
 
     public function storetitle(Request $request)
@@ -146,7 +153,7 @@ class newsController extends Controller
         $news = newstitle::findorFail($id);
         $exam = exam::all();
         $country = university::distinct()->get('country');
-        return view('back.news.title.edit', compact('news', 'exam', 'country','news2','com','user'));
+        return view('back.news.title.edit', compact('news', 'exam', 'country', 'news2', 'com', 'user'));
     }
 
     public function updatetitle(Request $request, $id)
@@ -168,11 +175,72 @@ class newsController extends Controller
         return redirect('administrator/newsTitle');
     }
 
-     public function delete($id)
+    public function delete($id)
     {
         $photo = photo::findOrFail($id);
         $photo->delete();
-        unlink(getcwd() . $photo->path );
+        unlink(getcwd() . $photo->path);
         return back();
+    }
+
+    public function vitrineIndex()
+    {
+        $news2 = news::all()->count();
+        $com = comment::all()->count();
+        $user = User::all()->count();
+        $logos = Logo::whereNotNull('section_id')->get();
+        return view('back.news.vitrine.index', compact('logos', 'news2', 'com', 'user'));
+    }
+
+    public function vitrineCreate()
+    {
+        $news2 = news::all()->count();
+        $com = comment::all()->count();
+        $user = User::all()->count();
+        $logos = Logo::all();
+        return view('back.news.vitrine.create', compact('logos', 'news2', 'com', 'user', 'logos'));
+    }
+
+    public function vitrineStore(Request $request)
+    {
+        $logo = $request->file('logo');
+        $filename = time() . $logo->getClientOriginalName();
+        $original_name = $logo->getClientOriginalName();
+        $logo->move('photo', $filename);
+
+        $logo = new Logo();
+        $logo->original_name = $original_name;
+        $logo->path = $filename;
+        $logo->section_id = $request->number;
+        $logo->save();
+
+        return redirect()->route('news.vit.index');
+    }
+
+    public function vitrineedit($id)
+    {
+        $news2 = news::all()->count();
+        $com = comment::all()->count();
+        $user = User::all()->count();
+        $logos = Logo::where('id', $id)->first();
+        return view('back.news.vitrine.edit', compact('logos', 'news2', 'com', 'user', 'logos'));
+    }
+
+
+    public function vitrineupdate(Request $request, $id)
+    {
+        $pic = Logo::findOrFail($id);
+        if ($request->file('logo')) {
+            $logo = $request->file('logo');
+            $filename = time() . $logo->getClientOriginalName();
+            $original_name = $logo->getClientOriginalName();
+            $logo->move('photo', $filename);
+            $pic->original_name = $original_name;
+            $pic->path = $filename;
+        }
+        $pic->section_id = $request->number;
+        $pic->save();
+
+        return redirect()->route('news.vit.index');
     }
 }

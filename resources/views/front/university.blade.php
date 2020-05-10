@@ -54,7 +54,8 @@
                                 <ul class="sub-menu">
                                     @foreach($exam as $exams)
                                         <li>
-                                            <a href="{{route('getExam',['name' => $exams->title])}}" style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}"
+                                               style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -95,14 +96,14 @@
                 @foreach($uniSelf as $uniSelfs)
                     <div class="banner-title-outer">
                         <div class="banner-title-name">
-                            <h2 class="text-white">{{$uniSelfs->title}}</h2>
+                            <h2 class="text-white">{{$uniSelfs->titlefa}}</h2>
                         </div>
                     </div>
                     <div>
                         <ul class="wt-breadcrumb breadcrumb-style-2">
                             <li><a href="javascript:void(0);">خانه</a></li>
                             <li><a href="">دانشگاه ها</a></li>
-                            <li>{{$uniSelfs->title}}</li>
+                            <li>{{$uniSelfs->titlefa}}</li>
                         </ul>
                     </div>
             @endforeach
@@ -122,39 +123,72 @@
              style="background-image:url({{asset('/front/images/background/bg-building.png')}})">
             <div class="container">
                 <div class="section-content mt-5">
-                    <div class=text-center">
-                        @foreach($uniSelf as $uni)
-                            <div class=" wt-list-panel mt-5 m-b30  p-a20 bg-white shadow">
-                                <div class="wt-list-single-about-detail">
-                                    <div class="m-b30 text-left">
-                                        <h4 class="wt-list-panel-title m-t0" style="font-size:26px;font-family: IRANSans_Light_2 , sans-serif;">{{$uni->title}}</h4>
-                                        <div class="wt-separator sep-gradient-light"></div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class=text-center">
+                                @foreach($uniSelf as $uni)
+                                    <div class=" wt-list-panel mt-5 m-b30  p-a20 bg-white shadow">
+                                        <div class="wt-list-single-about-detail">
+                                            <div class="m-b30 text-left">
+                                                <h4 class="wt-list-panel-title m-t0"
+                                                    style="font-size:26px;font-family: IRANSansWeb , sans-serif;">{{$uni->titlefa}}</h4>
+                                                <h5 class="wt-list-panel-title m-t0"
+                                                    style="font-size:18px;font-family: Roboto , sans-serif;">{{$uni->titlela}}</h5>
+                                                <div class="wt-separator sep-gradient-light"></div>
+                                            </div>
+                                            <p>{!! $uni->description !!}</p>
+                                        </div>
                                     </div>
-                                    <p>{!! $uni->description !!}</p>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="container">
+                                    <div class="container">
+                                        <div class="container">
                                     <span onclick="this.parentElement.style.display='none'"
                                           class="closebtn">&times;</span>
-                                    <img id="expandedImg" style="width:100%;" class="img-fluid">
-                                    <div id="imgtext"></div>
-                                </div>
-                                <div class="row">
-                                    @foreach($uni->photos as $unis)
-                                        <div class="column">
-                                            <img src="{{($unis->path)}}" alt="Nature"
-                                                 onclick="myFunction(this);">
+                                            <img id="expandedImg" style="width:100%;" class="img-fluid">
+                                            <div id="imgtext"></div>
                                         </div>
+                                        <div class="row">
+                                            @foreach($uni->photos as $unis)
+                                                <div class="column">
+                                                    <img src="{{($unis->path)}}" alt="Nature"
+                                                         onclick="myFunction(this);">
+                                                </div>
+                                            @endforeach
+                                        </div>
+
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="wt-list-single-about-detail">
+                                <div class="text-left m-b30 mt-5">
+                                    <h4 class="widget-title"> دانشگاه های {{$uni->country}}</h4>
+                                    <div class="wt-separator sep-gradient-light"></div>
+                                </div>
+                                <div class="wt-similar-listing">
+                                    @foreach($uniName->where('country',$uni->country) as $university )
+                                        <a href="{{route('university',['name' => $university->country,'uni'=>$university->title])}}">
+                                            <div class="wt-similar-listing-box clearfix mt-5">
+                                                <div class="wt-similar-listing-media">
+                                                    @foreach($logos->where('university_id',$university->id) as $logo)
+                                                        <img src="{{($logo->path)}}" alt=""  style="height: auto;width: 80%">
+                                                    @endforeach
+                                                </div>
+                                                <div class="wt-similar-listing-info">
+                                                    <div class="wt-similar-listing-header">
+                                                        <h4 class="wt-list-panel-title m-t0 text-center"
+                                                            style="font-size:17px;font-family: IRANSansWeb , sans-serif;">{{$university->titlefa}}</h4>
+                                                        <h5 class="wt-list-panel-title m-t0 text-center"
+                                                            style="font-size:15px;font-family: Roboto , sans-serif;">{{$university->titlela}}</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     @endforeach
                                 </div>
-
                             </div>
-
-                        @endforeach
+                        </div>
                     </div>
-                    <hr class="bg-danger mt-5 mb-5">
-
                 </div>
 
                 @if(Session::has('comment'))

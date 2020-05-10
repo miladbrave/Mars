@@ -4,7 +4,7 @@
     <div class="content-admin-main">
         <div class="panel panel-default bg-white m-t30">
             <div class="panel-heading wt-panel-heading p-a20">
-                <h4 class="panel-tittle m-a0"> ویرایش آزمون جدید{{$exam->title}}</h4>
+                <h4 class="panel-tittle m-a0"> ویرایش {{$exam->title}}</h4>
             </div>
             <div class="panel-body wt-panel-body">
                 <div class="container dashboard-list-box list-box-with-icon">

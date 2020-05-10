@@ -4,7 +4,7 @@
     <div class="content-admin-main">
         <div class="panel panel-default bg-white m-t30">
             <div class="panel-heading wt-panel-heading p-a20">
-                <h4 class="panel-tittle m-a0">ایجاد آزمون جدید</h4>
+                <h4 class="panel-tittle m-a0">ایجاد دانشگاه جدید</h4>
             </div>
             <div class="panel-body wt-panel-body">
                 <div class="container dashboard-list-box list-box-with-icon">
@@ -15,8 +15,13 @@
                                 <form method="post" action="{{route('university.store')}}" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <div class="form-group">
-                                        <label>نام دانشگاه</label>
-                                        <input type="text" name="title" class="form-control"
+                                        <label>نام دانشگاه(فارسی)</label>
+                                        <input type="text" name="titlefa" class="form-control"
+                                               placeholder="نام دانشگاه را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>نام دانشگاه(لاتین)</label>
+                                        <input type="text" name="titlela" class="form-control"
                                                placeholder="نام دانشگاه را وارد کنید">
                                     </div>
                                     <div class="form-group">
@@ -32,6 +37,10 @@
                                         <label for="photo">تصویر</label>
                                         <input type="hidden" name="photo_id[]" id="product-photo">
                                         <div id="photo" class="dropzone"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="file">لوگو</label>
+                                        <input type="file" class="form-control-file" id="file" name="logo">
                                     </div>
                                     <hr>
                                     <button type="submit" onclick="productGallery()" class="btn-sm btn-success pull-left">ذخیره

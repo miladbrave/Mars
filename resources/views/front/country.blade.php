@@ -53,7 +53,8 @@
                                 <ul class="sub-menu">
                                     @foreach($exam as $exams)
                                         <li>
-                                            <a href="{{route('getExam',['name' => $exams->title])}}" style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
+                                            <a href="{{route('getExam',['name' => $exams->title])}}"
+                                               style="font-family: Roboto, sans-serif;float: left">{{$exams->title}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -117,20 +118,53 @@
         <div class="section-full p-80 p-b50 bg-white bg-no-repeat"
              style="background-image:url({{asset('/front/images/background/bg-building.png')}})">
             <div class="container">
-                <div class="section-content mt-5">
-                    <div class=text-center">
-                        @foreach($country as $countries)
-                            <div class=" wt-list-panel mt-5 m-b30  p-a20 bg-white shadow">
-                                <div class="wt-list-single-about-detail">
-                                    <div class="m-b30 text-left">
-                                        <h4 class="wt-list-panel-title m-t0">{{$countries->title}}</h4>
-                                        <div class="wt-separator sep-gradient-light"></div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="section-content mt-5">
+                            <div class=text-center">
+                                @foreach($country as $countries)
+                                    <div class=" wt-list-panel mt-5 m-b30  p-a20 bg-white shadow">
+                                        <div class="wt-list-single-about-detail">
+                                            <div class="m-b30 text-left">
+                                                <h4 class="wt-list-panel-title m-t0">{{$countries->title}}</h4>
+                                                <div class="wt-separator sep-gradient-light"></div>
+                                            </div>
+                                            <p>{!! $countries->des !!}</p>
+                                        </div>
                                     </div>
-                                    <p>{!! $countries->des !!}</p>
-                                </div>
+                                @endforeach
                             </div>
-                        @endforeach
-                        <hr class="bg-danger mt-5 mb-5">
+                        </div>
+                    </div>
+                    <div class="col-md-3 pr-5">
+                        <div class="wt-list-single-about-detail">
+                            <div class="text-left m-b30 mt-5">
+                                <h4 class="widget-title">دانشگاه های {{$countries->title}}</h4>
+                                <div class="wt-separator sep-gradient-light"></div>
+                            </div>
+                            <div class="wt-similar-listing">
+                                @foreach($uniName->where('country',$countries->title) as $university )
+                                    <div class="wt-similar-listing-box clearfix mt-5">
+                                        <a href="{{route('university',['name' => $university->country,'uni'=>$university->title])}}">
+                                            <div class="wt-similar-listing-media">
+                                                @foreach($logos->where('university_id',$university->id) as $logo)
+                                                    <img src="{{asset($logo->path)}}" alt="Logo"
+                                                         style="height: auto;width: 80%">
+                                                @endforeach
+                                            </div>
+                                            <div class="wt-similar-listing-info">
+                                                <div class="wt-similar-listing-header">
+                                                    <h4 class="wt-list-panel-title m-t0 text-center"
+                                                        style="font-size:17px;font-family: IRANSansWeb , sans-serif;">{{$university->titlefa}}</h4>
+                                                    <h5 class="wt-list-panel-title m-t0 text-center"
+                                                        style="font-size:15px;font-family: Roboto , sans-serif;">{{$university->titlela}}</h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

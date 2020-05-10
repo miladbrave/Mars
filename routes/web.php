@@ -30,7 +30,7 @@ Route::post('comment','front\HomeController@reply')->name('comment.reply');
 Route::get('question', 'front\HomeController@question')->name('question');
 Route::get('news', 'front\HomeController@news')->name('news');
 Route::get('news/{title}/{name}', 'front\HomeController@newSelf')->name('news-self');
-Route::get('newses/{self}', 'front\HomeController@newssearch')->name('news-search');
+Route::get('allNews/{self}', 'front\HomeController@newssearch')->name('news-search');
 Route::get('news/{title}', 'front\HomeController@newscategory')->name('news-category');
 Route::get('about', 'front\HomeController@about')->name('about');
 Route::get('contact', 'front\HomeController@contact')->name('contact');
@@ -46,17 +46,16 @@ Route::get('student','front\HomeController@student')->name('student');
 Route::get('university/{name}','front\HomeController@uni')->name('countryuni');
 
 
-
 Route::get('profile','front\profileController@index')->name('profile.index');
 Route::get('profile/message','front\profileController@message')->name('profile.message');
 Route::put('profile/update/{id}', 'front\profileController@update')->name('ins.profile.update');
 Route::get('profile/update', 'front\profileController@user')->name('ins.profile.user');
 Route::get('profile/class', 'front\profileController@class')->name('ins.profile.class');
 
-Route::get('in', function() {
-    Artisan::call('cache:clear');
-    return "Cache is cleared";
-});
+//Route::get('in', function() {
+//    Artisan::call('cache:clear');
+//    return "Cache is cleared";
+//});
 
 
 Route::group(['middleware' => 'admin'], function () {
@@ -75,6 +74,11 @@ Route::group(['middleware' => 'admin'], function () {
         Route::get('newsTitle/edit/{id}', 'back\newsController@edittitle')->name('news.edittitle');
         Route::patch('newsTitle/update/{id}', 'back\newsController@updatetitle')->name('news.updatetitle');
         Route::get('newsTitle/delete/{id}', 'back\newsController@deletetitle')->name('news.deletetitle');
+        Route::get('newsvit', 'back\newsController@vitrineIndex')->name('news.vit.index');
+        Route::get('newsvit/create', 'back\newsController@vitrineCreate')->name('news.vit.create');
+        Route::get('newsvit/edit/{id}', 'back\newsController@vitrineedit')->name('news.vit.edit');
+        Route::patch('newsvit/update/{id}', 'back\newsController@vitrineupdate')->name('news.vit.update');
+        Route::post('newsvit/save', 'back\newsController@vitrineStore')->name('news.vit.save');
         Route::resource('comment', 'back\commentController');
         Route::get('comment/action/{id}', 'back\commentController@action')->name('comment.action');
         Route::get('form/consultation', 'back\commentController@cons')->name('cons');
@@ -86,6 +90,7 @@ Route::group(['middleware' => 'admin'], function () {
         Route::get('message/{id}', 'back\commentController@messageRead')->name('messageRead');
         Route::delete('messageDestroy/{id}', 'back\commentController@messageDestroy')->name('messageDestroy');
         Route::get('uni/{id}', 'back\universityController@delete')->name('uni');
+        Route::get('uni/logo/{id}', 'back\universityController@logodelete')->name('uni.logo');
         Route::get('slider/action/{id}', 'back\sliderController@action')->name('slider.action');
         Route::get('list', 'back\instituteController@index')->name('ins.index');
         Route::get('list/video', 'back\instituteController@video')->name('ins.video');
@@ -98,6 +103,8 @@ Route::group(['middleware' => 'admin'], function () {
         Route::post('list/saveclass/{id}', 'back\instituteController@classtime')->name('ins.save.class');
         Route::delete('list/deleteclass/{id}', 'back\instituteController@classdelete')->name('ins.delete.class');
         Route::delete('list/deleteuser/{id}', 'back\instituteController@userdelete')->name('ins.delete.user');
+        Route::post('logo/{id}', 'back\photosController@updatelog')->name('logo.update');
+        Route::post('logo', 'back\photosController@save')->name('logo.save');
     });
 });
 

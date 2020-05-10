@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\back;
 
 use App\comment;
+use App\Logo;
 use App\news;
 use App\photo;
 use App\university;
@@ -33,15 +34,33 @@ class universityController extends Controller
 
     public function store(Request $request)
     {
+        if ($logo = $request->file('logo')) {
+            $logo = $request->file('logo');
+            $filename = time() . $logo->getClientOriginalName();
+            $original_name = $logo->getClientOriginalName();
+            $logo->move('photo', $filename);
+            $logo = new Logo();
+            $logo->original_name = $original_name;
+            $logo->path = $filename;
+            $logo->save();
+        }
+
         $university = new university();
-        $university->title = $request->title;
+        $university->titlefa = $request->titlefa;
+        $university->titlela = $request->titlela;
         $university->country = $request->country;
         $university->description = $request->des;
         $university->user_id = Auth()->user()->id;
         $university->save();
 
-        $photos = explode(',', $request->input('photo_id')[0]);
-        $university->photos()->sync($photos);
+        if ($request->input('photo_id')[0]) {
+            $photos = explode(',', $request->input('photo_id')[0]);
+            $university->photos()->sync($photos);
+        }
+        if ($logo) {
+            $logo->university_id = $university->id;
+            $logo->save();
+        }
 
         return redirect('administrator/university');
     }
@@ -57,19 +76,23 @@ class universityController extends Controller
         $com = comment::all()->count();
         $user = User::all()->count();
         $university = university::findOrFail($id);
-        return view('back.university.edit', compact('university', 'news2', 'com', 'user'));
+        $logos = Logo::where('university_id', $university->id)->first();
+        return view('back.university.edit', compact('university', 'news2', 'com', 'user', 'logos'));
     }
 
     public function update(Request $request, $id)
     {
         $university = university::findOrFail($id);
-        $university->title = $request->title;
+        $university->titlefa = $request->titlefa;
+        $university->titlela = $request->titlela;
         $university->country = $request->country;
         $university->description = $request->des;
         $university->save();
 
-        $photos = explode(',', $request->input('photo_id')[0]);
-        $university->photos()->sync($photos);
+        if ($request->input('photo_id')[0]) {
+            $photos = explode(',', $request->input('photo_id')[0]);
+            $university->photos()->sync($photos);
+        }
 
         return redirect('administrator/university');
     }
@@ -77,10 +100,10 @@ class universityController extends Controller
     public function destroy($id)
     {
         $university = university::findOrFail($id);
-        $photoid = university::with('photos')->where('id',$university->id)->first();
-        foreach ($photoid->photos as $photo){
-        unlink(getcwd() . $photo->path);
-        $photo->delete();
+        $photoid = university::with('photos')->where('id', $university->id)->first();
+        foreach ($photoid->photos as $photo) {
+            unlink(getcwd() . $photo->path);
+            $photo->delete();
         }
         $university->delete();
         return redirect('administrator/university');
@@ -92,6 +115,16 @@ class universityController extends Controller
         $photo = photo::findOrFail($id);
         $photo->delete();
         unlink(getcwd() . $photo->path);
+        return back();
+    }
+
+    public function logodelete($id)
+    {
+        $photo = logo::findOrFail($id);
+        if ($photo) {
+            $photo->delete();
+            unlink(getcwd() . $photo->path);
+        }
         return back();
     }
 }
