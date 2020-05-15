@@ -28,7 +28,7 @@
                             <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('تاریخ تولد') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birthday" type="text" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}"  autocomplete="name" autofocus>
+                                <input id="birthday" type="text" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}"  autocomplete="birthday" autofocus>
 
                                 @error('birthday')
                                 <span class="invalid-feedback" role="alert">
@@ -42,9 +42,23 @@
                             <label for="national_code" class="col-md-4 col-form-label text-md-right">{{ __('کد ملی') }}</label>
 
                             <div class="col-md-6">
-                                <input id="national_code" type="text" class="form-control @error('national_code') is-invalid @enderror" name="national_code" value="{{ old('national_code') }}"  autocomplete="name" autofocus>
+                                <input id="national_code" type="text" class="form-control @error('national_code') is-invalid @enderror" name="national_code" value="{{ old('national_code') }}"  autocomplete="national_code" autofocus>
 
                                 @error('national_code')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('شماره موبایل')}}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}"  autocomplete="phone" autofocus required>
+
+                                @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -56,7 +70,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('شهر') }}</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}"  autocomplete="name" autofocus>
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}"  autocomplete="city" autofocus>
 
                                 @error('city')
                                 <span class="invalid-feedback" role="alert">

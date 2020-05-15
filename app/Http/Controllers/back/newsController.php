@@ -12,6 +12,7 @@ use App\university;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class newsController extends Controller
 {
@@ -39,9 +40,20 @@ class newsController extends Controller
 
     public function store(Request $request)
     {
+        function make_slug($string, $separator = '-')
+        {
+            $string = trim($string);
+            $string = mb_strtolower($string, 'UTF-8');
+            $string = preg_replace("/[^a-z0-9_\s-ءاآؤئبپتثجچحخدذرزژسشصضطظعغفقكکگلمنوهی]/u", '', $string);
+            $string = preg_replace("/[\s-_]+/", ' ', $string);
+            $string = preg_replace("/[\s_]/", $separator, $string);
+            return $string;
+        }
+
         $news = new news();
         $news->titlefa = $request->titlefa;
         $news->titlela = $request->titlela;
+        $news->slug = make_slug($request->titlefa);
         $news->description1 = $request->des1;
         $news->description2 = $request->des2;
         $news->exam = $request->exam;
@@ -49,7 +61,8 @@ class newsController extends Controller
         $news->examuni = $request->examuni;
         $news->select = $request->select;
         $news->section_id = $request->number;
-        $news->newsTitle = $request->newsTitle;
+        $news->newsTitle = make_slug($request->newsTitle);
+
         $news->save();
 
         if ($request->input('photo_id')[0]) {
@@ -82,9 +95,20 @@ class newsController extends Controller
 
     public function update(Request $request, $id)
     {
+        function make_slug($string, $separator = '-')
+        {
+            $string = trim($string);
+            $string = mb_strtolower($string, 'UTF-8');
+            $string = preg_replace("/[^a-z0-9_\s-ءاآؤئبپتثجچحخدذرزژسشصضطظعغفقكکگلمنوهی]/u", '', $string);
+            $string = preg_replace("/[\s-_]+/", ' ', $string);
+            $string = preg_replace("/[\s_]/", $separator, $string);
+            return $string;
+        }
+
         $news = news::findOrFail($id);
         $news->titlefa = $request->titlefa;
         $news->titlela = $request->titlela;
+        $news->slug = make_slug($request->titlefa);
         $news->description1 = $request->des1;
         $news->description2 = $request->des2;
         $news->exam = $request->exam;
@@ -92,7 +116,7 @@ class newsController extends Controller
         $news->examuni = $request->examuni;
         $news->select = $request->select;
         $news->section_id = $request->number;
-        $news->newsTitle = $request->newsTitle;
+        $news->newsTitle = make_slug($request->newsTitle);
         $news->save();
 
         if ($request->input('photo_id')[0]) {
@@ -136,8 +160,19 @@ class newsController extends Controller
 
     public function storetitle(Request $request)
     {
+        function make_slug($string, $separator = '-')
+        {
+            $string = trim($string);
+            $string = mb_strtolower($string, 'UTF-8');
+            $string = preg_replace("/[^a-z0-9_\s-ءاآؤئبپتثجچحخدذرزژسشصضطظعغفقكکگلمنوهی]/u", '', $string);
+            $string = preg_replace("/[\s-_]+/", ' ', $string);
+            $string = preg_replace("/[\s_]/", $separator, $string);
+            return $string;
+        }
+
         $news = new newstitle();
         $news->title = $request->title;
+        $news->slug = make_slug($request->title);
         $news->exam = $request->exam;
         $news->country = $request->country;
         $news->select = $request->select;
@@ -158,8 +193,19 @@ class newsController extends Controller
 
     public function updatetitle(Request $request, $id)
     {
+        function make_slug($string, $separator = '-')
+        {
+            $string = trim($string);
+            $string = mb_strtolower($string, 'UTF-8');
+            $string = preg_replace("/[^a-z0-9_\s-ءاآؤئبپتثجچحخدذرزژسشصضطظعغفقكکگلمنوهی]/u", '', $string);
+            $string = preg_replace("/[\s-_]+/", ' ', $string);
+            $string = preg_replace("/[\s_]/", $separator, $string);
+            return $string;
+        }
+
         $news = newstitle::findOrfail($id);
         $news->title = $request->title;
+        $news->slug = make_slug($request->title);
         $news->exam = $request->exam;
         $news->country = $request->country;
         $news->select = $request->select;

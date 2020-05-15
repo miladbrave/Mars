@@ -251,7 +251,7 @@ class HomeController extends Controller
 
     public function newssearch($self)
     {
-        $news = news::where('title','LIKE', '%' . $self . '%')->first();
+        $news = news::where('slug','LIKE', '%' . $self . '%')->first();
         if ($news->select == 'آزمون')
             $first = 'اخبار-آزمون ها';
         if ($news->select == 'دانشگاه')
@@ -273,7 +273,7 @@ class HomeController extends Controller
         return view('front.news', compact('examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
     }
 
-    public function newSelf($title, $name)
+    public function newSelf($name)
     {
         $country = Country::all();
 //        if ($title == 'آزمون' || $title == 'دوره') {
@@ -293,12 +293,12 @@ class HomeController extends Controller
         $uniCountry = university::distinct()->get(['country']);
         $uniName = university::all();
         $logos = Logo::with('university')->get();
-        return view('front.news-self', compact('logos','title','examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
+        return view('front.news-self', compact('logos','examCountry', 'exam', 'uniCountry', 'uniName', 'news','country'));
     }
 
     public function newscategory($title)
     {
-        $news = news::where('titlefa', 'LIKE', '%' . $title . '%')->first();
+        $news = news::where('slug', 'LIKE', '%' . $title . '%')->first();
         $country = Country::all();
         $examCountry = exam::distinct()->get(['country']);
         $exam = exam::all();

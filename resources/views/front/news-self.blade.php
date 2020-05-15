@@ -132,8 +132,10 @@
                                                      style="margin-top: -10px"></div>
                                             </div>
                                             <p style="margin-top: -20px">{!! $new->description1 !!}</p>
-                                            <a href="{{route('news-category',['title'=>$new->titlefa])}}"
-                                               class="text-info">ادامه خبر</a>
+                                            @if($new->description2)
+                                                <a href="{{route('news-category',['title'=>$new->slug])}}"
+                                                   class="text-info">ادامه خبر</a>
+                                            @endif
                                         </div>
                                     </div>
                                 @else
@@ -148,8 +150,10 @@
                                                      style="margin-top: -20px"></div>
                                             </div>
                                             <p style="margin-top: -5px">{!! $new->description1 !!}</p>
-                                            <a href="{{route('news-category',['title'=>$new->titlefa])}}"
-                                               class="text-info">ادامه خبر</a>
+                                            @if($new->description2)
+                                                <a href="{{route('news-category',['title'=>$new->slug])}}"
+                                                   class="text-info">ادامه خبر</a>
+                                            @endif
                                         </div>
                                     </div>
                                 @endif
@@ -161,29 +165,33 @@
                 <div class="col-md-3" style="padding-right: 40px">
                     <div class="wt-list-single-about-detail">
                         <div class="text-left m-b30">
-                            <h4 class="widget-title"> دانشگاه های {{$new->country}}</h4>
+                            @if(isset($new->country))
+                                <h4 class="widget-title"> دانشگاه های {{$new->country}}</h4>
+                            @endif
                             <div class="wt-separator sep-gradient-light"></div>
                         </div>
                         <div class="wt-similar-listing">
-                            @foreach($uniName->where('country',$new->country) as $university )
-                                <a href="{{route('university',['name' => $new->country,'uni'=>$university->title])}}">
-                                    <div class="wt-similar-listing-box clearfix mt-5">
-                                        <div class="wt-similar-listing-media">
-                                            @foreach($logos->where('university_id',$university->id) as $logo)
-                                                <img src="{{($logo->path)}}" alt=""  style="height: auto;width: 80%">
-                                            @endforeach
-                                        </div>
-                                        <div class="wt-similar-listing-info">
-                                            <div class="wt-similar-listing-header">
-                                                <h4 class="wt-list-panel-title m-t0 text-center"
-                                                    style="font-size:17px;font-family: IRANSansWeb , sans-serif;">{{$university->titlefa}}</h4>
-                                                <h5 class="wt-list-panel-title m-t0 text-center"
-                                                    style="font-size:15px;font-family: Roboto , sans-serif;">{{$university->titlela}}</h5>
+                            @if(isset($new->country))
+                                @foreach($uniName->where('country',$new->country) as $university )
+                                    <a href="{{route('university',['name' => $new->country,'uni'=>$university->title])}}">
+                                        <div class="wt-similar-listing-box clearfix mt-5">
+                                            <div class="wt-similar-listing-media">
+                                                @foreach($logos->where('university_id',$university->id) as $logo)
+                                                    <img src="{{($logo->path)}}" alt="" style="height: auto;width: 80%">
+                                                @endforeach
+                                            </div>
+                                            <div class="wt-similar-listing-info">
+                                                <div class="wt-similar-listing-header">
+                                                    <h4 class="wt-list-panel-title m-t0 text-center"
+                                                        style="font-size:17px;font-family: IRANSansWeb , sans-serif;">{{$university->titlefa}}</h4>
+                                                    <h5 class="wt-list-panel-title m-t0 text-center"
+                                                        style="font-size:15px;font-family: Roboto , sans-serif;">{{$university->titlela}}</h5>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            @endforeach
+                                    </a>
+                                @endforeach
+                                @endif
                         </div>
                     </div>
                 </div>

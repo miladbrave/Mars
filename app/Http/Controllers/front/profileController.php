@@ -31,13 +31,15 @@ class profileController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'phone' => 'required|unique:users,phone,' . $user->id,
             'national_code' => 'required|numeric',
         ], [
-
             'name.required' => 'نام و نام خانوادگی را وارد کنید.',
             'email.required' => 'ایمیل را وارد کنید',
             'email.email' => 'ایمیل معتبر وارد کنید',
             'email.unique' => 'این ایمیل قبلا ثبت شده است',
+            'phone.unique' => 'این شماره تماس قبلا ثبت شده است',
+            'phone.required' => 'شماره تماس را وارد کنید.',
             'national_code.required' => 'کد ملی وارد کنید',
             'national_code.numeric' => ' کد ملی باید عدد باشد',
         ]);
@@ -47,12 +49,13 @@ class profileController extends Controller
         $user->email = $request->email;
         $user->birthday = $request->birthday;
         $user->national_code = $request->national_code;
+        $user->phone = $request->phone;
         $user->city = $request->city;
         if ($request->password)
             $user->password = Hash::make($request->password);
-
         $user->save();
-        return redirect()->route('profile.index');
+
+        return back()->withSuccess('تغییرات با موفقیت اعمال گردید.');
     }
 
     public function user()

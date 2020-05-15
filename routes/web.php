@@ -29,7 +29,7 @@ Route::post('comment/{postId}','front\HomeController@comment')->name('comment.ex
 Route::post('comment','front\HomeController@reply')->name('comment.reply');
 Route::get('question', 'front\HomeController@question')->name('question');
 Route::get('news', 'front\HomeController@news')->name('news');
-Route::get('news/{title}/{name}', 'front\HomeController@newSelf')->name('news-self');
+Route::get('newstitles/{name}', 'front\HomeController@newSelf')->name('news-self');
 Route::get('allNews/{self}', 'front\HomeController@newssearch')->name('news-search');
 Route::get('news/{title}', 'front\HomeController@newscategory')->name('news-category');
 Route::get('about', 'front\HomeController@about')->name('about');

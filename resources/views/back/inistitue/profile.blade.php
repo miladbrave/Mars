@@ -5,7 +5,6 @@
     <div class="content-admin-main">
         <div class="panel panel-default bg-white m-t30">
             @include('front.profile.alert.alert')
-
             <div class="panel-heading wt-panel-heading p-a20 bg-danger">
                 <h4 class="text-white">مشخصات فردی</h4>
             </div>
@@ -19,6 +18,7 @@
                                 <th class="text-center">نام و نام خانوادگی</th>
                                 <th class="text-center">تاریخ تولد</th>
                                 <th class="text-center">کد ملی</th>
+                                <th class="text-center">شَماره تماس</th>
                                 <th class="text-center">ایمیل</th>
                                 <th class="text-center">شهر</th>
                             </tr>
@@ -30,6 +30,7 @@
                                     <td class="text-center">{{$students->name}}</td>
                                     <td class="text-center">{{$students->birthday}}</td>
                                     <td class="text-center">{{$students->national_code}}</td>
+                                    <td class="text-center">{{$students->phone}}</td>
                                     <td class="text-center">{{$students->email}}</td>
                                     <td class="text-center">{{$students->city}}</td>
                                 @endforeach

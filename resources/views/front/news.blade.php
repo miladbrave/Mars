@@ -121,7 +121,7 @@
                         <div class=" wt-list-panel mt-1 m-b1 p-a5 bg-white shadow">
                             <div class="wt-list-single-about-detail">
                                 <div class="m-b30 text-left">
-                                    <a href="{{route('news-self',['sel' => 'آزمون','exam'=>$new->title])}}">
+                                    <a href="{{route('news-self',['name'=>$new->slug])}}">
                                         <h5 style="font-size: 15px; font-weight: 500;font-family: IRANSans_Light_2 , sans-serif"
                                             class="wt-list-panel-title m-t0">{{$new->title}}</h5></a>
                                 </div>
@@ -138,7 +138,7 @@
                     <div class=" wt-list-panel mt-1 m-b1 p-a5 bg-white shadow">
                         <div class="wt-list-single-about-detail">
                             <div class="m-b30 text-left">
-                                <a href="{{route('news-self',['sel' => 'دانشگاه','exam'=>$new->title])}}">
+                                <a href="{{route('news-self',['sel' => 'دانشگاه','exam'=>$new->slug])}}">
                                     <h5 style="font-size: 15px; font-weight: 500;font-family: IRANSans_Light_2 , sans-serif"
                                         class="wt-list-panel-title m-t0">{{$new->title}}</h5></a>
                             </div>
@@ -154,7 +154,7 @@
                     <div class=" wt-list-panel mt-1 m-b1 p-a5 bg-white shadow">
                         <div class="wt-list-single-about-detail">
                             <div class="m-b30 text-left">
-                                <a href="{{route('news-self',['sel' => 'دوره','exam'=>$new->title])}}">
+                                <a href="{{route('news-self',['sel' => 'دوره','exam'=>$new->slug])}}">
                                     <h5 style="font-size: 15px; font-weight: 500;font-family: IRANSans_Light_2 , sans-serif"
                                         class="wt-list-panel-title m-t0">{{$new->title}}</h5></a>
                             </div>

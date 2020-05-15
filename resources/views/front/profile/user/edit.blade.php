@@ -2,9 +2,9 @@
 
 @section('middle')
     @foreach($user as $users) @endforeach
-
     <div class="content-page">
         <div class="container" style="padding-left: 15%;padding-right: 15%;padding-top: 10%">
+            @include('front.profile.alert.alert')
             <form method="post" action="{{ route('ins.profile.update',['id' => $users->id]) }}">
                 <div class="modal-content" style="background-color: #b4b4b4">
                     @csrf
@@ -33,6 +33,16 @@
                                 @error('national_code')
                                 <span class="invalid-feedback" role="alert">
                                         <strong class="text-warning">{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group" @if($errors->has('phone')) has-error @endif>
+                                <label for="message-text" class="col-form-label text-danger">شماره تماس:</label>
+                                <input name="phone" type="number" class="form-control" id="recipient-name"
+                                       value="{{$users->phone}}">
+                                @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                        <h4 class="text-warning">{{ $message }}</h4>
                                     </span>
                                 @enderror
                             </div>

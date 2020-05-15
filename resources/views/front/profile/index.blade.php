@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="wrapper">
-        @foreach($user as $users) @endforeach
+    @foreach($user as $users) @endforeach
         <div class="topbar">
             <div class="topbar-left">
                 <a href="{{route('main')}}" class="logo"><span>مارس هلدینگ</span><i class="zmdi zmdi-layers"></i></a>
@@ -24,6 +24,7 @@
                 </div>
             </div>
         </div>
+
         <div class="left side-menu">
             <div class="sidebar-inner slimscrollleft">
                 <div class="user-box">

@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
     <meta name="author" content="Coderthemes">
+    <link rel="icon" href="{{asset('/image/mars-icon2.ico')}}" type="image/x-icon"/>
 
-    <link rel="shortcut icon" href="{{asset('front/assets/images/favicon.ico')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/front/images/favicon.png')}}"/>
 
     <title>مارس هلدینگ | پروفایل کاربری</title>
 
