@@ -52,140 +52,6 @@
                 </div>
                 <div class="header-right">
                     <ul class="header-widget-wrap">
-                        <li class="header-widget dashboard-message-dropdown">
-                            <div class="listkhoj-admin-messange wt-toogle-btn">
-                                <i class="im-icon-Envelope"></i>
-                                <span class="notification-animate">4</span>
-                            </div>
-                            <div class="dashboard-message-panel">
-                                <div class="dashboard-widgets-header">پیام کاربر</div>
-                                <div class="message-list dashboard-widget-scroll">
-                                    <ul>
-                                        <li class="clearfix">
-                                                <span class="msg-avtar">
-                                                    <img src="images/user-avtar/pic1.jpg" alt="">
-                                                </span>
-
-                                            <div class="msg-texting">
-                                                <strong>الکسا جانسون</strong>
-                                                <small class="msg-time">
-                                                    <span class="glyphicon glyphicon-time p-r-5"></span>12 دقیقه قبل
-                                                </small>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم...</p>
-                                            </div>
-                                        </li>
-                                        <li class="clearfix">
-                                                <span class="msg-avtar">
-                                                    <img src="images/user-avtar/pic2.jpg" alt="">
-                                                </span>
-
-                                            <div class="msg-texting">
-                                                <strong>یوهان اسمیت</strong>
-                                                <small class="msg-time">
-                                                    <span class="glyphicon glyphicon-time p-r-5"></span>12 دقیقه قبل
-                                                </small>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم...</p>
-                                            </div>
-                                        </li>
-                                        <li class="clearfix">
-                                                <span class="msg-avtar">
-                                                    <img src="images/user-avtar/pic3.jpg" alt="">
-                                                </span>
-
-                                            <div class="msg-texting">
-                                                <strong>بابی براون</strong>
-                                                <small class="msg-time">
-                                                    <span class="glyphicon glyphicon-time p-r-5"></span>12 دقیقه قبل
-                                                </small>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم...</p>
-                                            </div>
-                                        </li>
-                                        <li class="clearfix">
-                                                <span class="msg-avtar">
-                                                    <img src="images/user-avtar/pic4.jpg" alt="">
-                                                </span>
-
-                                            <div class="msg-texting">
-                                                <strong>دیوید دئو</strong>
-                                                <small class="msg-time">
-                                                    <span class="glyphicon glyphicon-time p-r-5"></span>12 دقیقه قبل
-                                                </small>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم...</p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="message-view-all">
-                                        <span>مشاهده همه</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="header-widget dashboard-noti-dropdown">
-                            <div class="listkhoj-admin-notification wt-toogle-btn">
-                                <i class="im-icon-Bell"></i>
-                                <span class="notification-animate">8</span>
-                            </div>
-
-                            <div class="dashboard-noti-panel">
-                                <div class="dashboard-widgets-header">شما 7 اعلان دارید</div>
-                                <div class="noti-list dashboard-widget-scroll">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <span class="noti-icon"><i class="sl-icon-bell"></i></span>
-                                                <span class="noti-texting">سفارش جدید دریافت شد</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="noti-icon"><i class="sl-icon-bell"></i></span>
-                                                <span class="noti-texting">استیو به عکس شما امتیاز داده است</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="noti-icon"><i class="sl-icon-bell"></i></span>
-                                                <span class="noti-texting">جان شما را به موارد دلخواه خود افزود</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="noti-icon"><i class="sl-icon-bell"></i></span>
-                                                <span class="noti-texting">سند جدید موجود است</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="noti-icon"><i class="sl-icon-bell"></i></span>
-                                                <span class="noti-texting"> تصویر جدید اضافه شد</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="noti-icon"><i class="sl-icon-bell"></i></span>
-                                                <span class="noti-texting">جلسه در 1 ساعت</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="noti-icon"><i class="sl-icon-bell"></i></span>
-                                                <span class="noti-texting">سرور 5 بار بیش از حد</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="noti-icon"><i class="sl-icon-bell"></i></span>
-                                                <span class="noti-texting">بیل در مورد پست خود نظر دهید</span>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                    <div class="noti-view-all">
-                                        <span>مشاهده همه</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
                         <li class="header-widget">
                             <div class="listing-user-outer dashboard-user-section">
                                 <div class="listing-user">
@@ -223,7 +89,12 @@
                             class="admin-nav-text">آزمون ها</span></a>
                 </li>
                 <li>
-                    <a href="{{route('country.index')}}"><i class="sl-icon-flag "></i><span class="admin-nav-text">کشور ها</span></a>
+                    <a href="javascript:;"><i class="sl-icon-flag "></i><span class="admin-nav-text">کشور ها</span></a>
+                    <ul class="sub-menu">
+                        <li><a href="{{route('country.index')}}"><i class="sl-icon-flag "></i><span class="admin-nav-text">کشور ها</span></a></li>
+                        <li><a href="{{route('country.title')}}"><i class="sl-icon-list "></i><span
+                                    class="admin-nav-text">منوها</span></a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{route('university.index')}}"><i class="sl-icon-wallet "></i><span class="admin-nav-text">دانشگاه ها</span></a>
@@ -232,7 +103,7 @@
                     <a href="{{route('question.index')}}"><i class="sl-icon-layers "></i><span class="admin-nav-text">سوالات</span></a>
                 </li>
                 <li>
-                    <a href=""> <i class="sl-icon-star "></i><span class="admin-nav-text">اخبار</span></a>
+                    <a href="javascript:;"> <i class="sl-icon-star "></i><span class="admin-nav-text">اخبار</span></a>
                     <ul class="sub-menu">
                         <li><a href="{{route('news.titleIndex')}}"><i class="sl-icon-list "></i><span
                                     class="admin-nav-text">متون</span></a></li>
@@ -246,7 +117,7 @@
                     <a href="{{route('comment.index')}}"><i class="sl-icon-heart "></i><span class="admin-nav-text">کامنت ها</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="sl-icon-plus "></i><span class="admin-nav-text">فرم ها</span></a>
+                    <a href="javascript:;"><i class="sl-icon-plus "></i><span class="admin-nav-text">فرم ها</span></a>
                     <ul class="sub-menu">
                         <li><a href="{{route('cons')}}"><i class="sl-icon-envelope-open "></i><span
                                     class="admin-nav-text">وقت مشاوره</span></a></li>
@@ -255,7 +126,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href=""><i class="sl-icon-diamond "></i><span class="admin-nav-text">آموزشگاه</span></a>
+                    <a href="javascript:;"><i class="sl-icon-diamond "></i><span class="admin-nav-text">آموزشگاه</span></a>
                     <ul class="sub-menu">
                         <li><a href="{{route('ins.index')}}"><i class="sl-icon-people"></i><span class="admin-nav-text">لیست نفرات</span></a></li>
                         <li><a href="{{route('ins.video')}}"><i class="sl-icon-anchor"></i><span class="admin-nav-text">کلاس آنلاین</span></a></li>

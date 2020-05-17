@@ -39,11 +39,20 @@
                                 <a href="{{route('main')}}">خانه</a>
                             </li>
                             <li class="">
-                                <a href="">کشور ها</a>
-                                <ul class="sub-menu">
+                                <a href="javascript:;">کشور ها</a>
+                                <ul class="sub-menu" style="width: 100%">
                                     @foreach($allcountry as $countries)
-                                        <li>
-                                            <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                        <li style="display:block;">
+                                            <a href="javascript:;">{{$countries->title}}</a>
+                                            <ul class="sub-menu">
+                                                @foreach($countryName as $menu)
+                                                    @if($menu->country_name == $countries->title)
+                                                        <li>
+                                                            <a href="{{route('country',['name'=>$menu->slug])}}">{{$menu->title}}</a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -92,20 +101,20 @@
         <div class="overlay-main bg-black opacity-07"></div>
         <div class="container">
             <div class="wt-bnr-inr-entry">
-                @foreach($country as $countries)
+                @if($country)
                     <div class="banner-title-outer">
                         <div class="banner-title-name">
-                            <h2 class="text-white">{{$countries->title}}</h2>
+                            <h2 class="text-white">{{$country->country_name}}</h2>
                         </div>
                     </div>
                     <div>
                         <ul class="wt-breadcrumb breadcrumb-style-2">
                             <li><a href="javascript:void(0);">خانه</a></li>
                             <li><a href="">کشور ها</a></li>
-                            <li>{{$countries->title}}</li>
+                            <li>{{$country->title}}</li>
                         </ul>
                     </div>
-                @endforeach
+                @endif
             </div>
         </div>
     </div>
@@ -120,49 +129,66 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="section-content mt-5">
-                            <div class=text-center">
-                                @foreach($country as $countries)
+                        @if($country)
+                            <div class="section-content mt-5">
+                                <div class=text-center">
                                     <div class=" wt-list-panel mt-5 m-b30  p-a20 bg-white shadow">
                                         <div class="wt-list-single-about-detail">
                                             <div class="m-b30 text-left">
-                                                <h4 class="wt-list-panel-title m-t0">{{$countries->title}}</h4>
+                                                <h4 class="wt-list-panel-title m-t0">{{$country->title}}</h4>
                                                 <div class="wt-separator sep-gradient-light"></div>
                                             </div>
-                                            <p>{!! $countries->des !!}</p>
+                                            <p>{!! $country->description !!}</p>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
+                        @endif
+                        <div class="card card-header">
+                            <ul class="row">
+                                @if($country)
+                                    @foreach($countryName->where('country_name',$country->country_name) as $name)
+                                        <div class="col-md-4">
+                                            <a href="{{route('country',['name'=>$name->title])}}" class="text-info">
+                                                <li class="mr-5">{{$name->title}}</li>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-3 pr-5">
                         <div class="wt-list-single-about-detail">
                             <div class="text-left m-b30 mt-5">
-                                <h4 class="widget-title">دانشگاه های {{$countries->title}}</h4>
+                                @if($country)
+                                <h4 class="widget-title">دانشگاه های {{$country->country_name}}</h4>
                                 <div class="wt-separator sep-gradient-light"></div>
+                                    @endif
                             </div>
                             <div class="wt-similar-listing">
-                                @foreach($uniName->where('country',$countries->title) as $university )
-                                    <div class="wt-similar-listing-box clearfix mt-5">
-                                        <a href="{{route('university',['name' => $university->country,'uni'=>$university->title])}}">
-                                            <div class="wt-similar-listing-media">
-                                                @foreach($logos->where('university_id',$university->id) as $logo)
-                                                    <img src="{{asset($logo->path)}}" alt="Logo"
-                                                         style="height: auto;width: 80%">
-                                                @endforeach
-                                            </div>
-                                            <div class="wt-similar-listing-info">
-                                                <div class="wt-similar-listing-header">
-                                                    <h4 class="wt-list-panel-title m-t0 text-center"
-                                                        style="font-size:17px;font-family: IRANSansWeb , sans-serif;">{{$university->titlefa}}</h4>
-                                                    <h5 class="wt-list-panel-title m-t0 text-center"
-                                                        style="font-size:15px;font-family: Roboto , sans-serif;">{{$university->titlela}}</h5>
+                                @if($country)
+                                    @foreach($uniName->where('country',$country->country_name) as $university )
+                                        <div class="wt-similar-listing-box clearfix mt-5">
+                                            <a href="{{route('university',['name' => $university->country,'uni'=>$university->title])}}">
+                                                <div class="wt-similar-listing-media">
+                                                    @foreach($logos->where('university_id',$university->id) as $logo)
+                                                        <img src="{{asset($logo->path)}}" alt="Logo"
+                                                             style="height: auto;width: 80%">
+                                                    @endforeach
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endforeach
+                                                <div class="wt-similar-listing-info">
+                                                    <div class="wt-similar-listing-header">
+                                                        <h4 class="wt-list-panel-title m-t0 text-center"
+                                                            style="font-size:17px;font-family: IRANSansWeb , sans-serif;">{{$university->titlefa}}</h4>
+                                                        <h5 class="wt-list-panel-title m-t0 text-center"
+                                                            style="font-size:15px;font-family: Roboto , sans-serif;">{{$university->titlela}}</h5>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>

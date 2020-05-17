@@ -59,8 +59,8 @@
                                             <label>متون اخبار</label>
                                             <select name="newsTitle" class="form-control" multiple>
                                                 @foreach($newsTitle as $newss)
-                                                    <option @if($newss->title == $news->newsTitle) selected
-                                                            @endif value="{{$newss->title}}">{{$newss->title}}</option>
+                                                    <option @if($newss->slug == $news->newsTitle) selected
+                                                            @endif value="{{$newss->titlefa}}">{{$newss->titlefa}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

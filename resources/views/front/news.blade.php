@@ -39,11 +39,18 @@
                                 <a href="{{route('main')}}">خانه</a>
                             </li>
                             <li class="">
-                                <a href="">کشور ها</a>
-                                <ul class="sub-menu">
+                                <a href="javascript:;">کشور ها</a>
+                                <ul class="sub-menu" style="width: 100%">
                                     @foreach($country as $countries)
-                                        <li>
-                                            <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                        <li style="display:block;">
+                                            <a href="javascript:;">{{$countries->title}}</a>
+                                            <ul class="sub-menu">
+                                                @foreach($countryMenu as $menu)
+                                                    @if($menu->country_name == $countries->title)
+                                                        <li><a href="{{route('country',['name'=>$menu->slug])}}">{{$menu->title}}</a></li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -123,7 +130,7 @@
                                 <div class="m-b30 text-left">
                                     <a href="{{route('news-self',['name'=>$new->slug])}}">
                                         <h5 style="font-size: 15px; font-weight: 500;font-family: IRANSans_Light_2 , sans-serif"
-                                            class="wt-list-panel-title m-t0">{{$new->title}}</h5></a>
+                                            class="wt-list-panel-title m-t0">{{$new->titlefa}}</h5></a>
                                 </div>
                             </div>
                         </div>

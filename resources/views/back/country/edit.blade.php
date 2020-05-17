@@ -25,11 +25,11 @@
 {{--                                        <input type="text" name="littledes" class="form-control"--}}
 {{--                                               value="{{$country->littledes}}">--}}
 {{--                                    </div>--}}
-                                    <div class="form-group">
-                                        <label>توضیح</label>
-                                        <textarea id="textareaDes" name="des" class="ckeditor form-control"
-                                        >{{$country->des}}</textarea>
-                                    </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label>توضیح</label>--}}
+{{--                                        <textarea id="textareaDes" name="des" class="ckeditor form-control"--}}
+{{--                                        >{{$country->des}}</textarea>--}}
+{{--                                    </div>--}}
                                     <div class="form-group">
                                         <label for="photo">تصویر</label>
                                         <input type="hidden" name="photo_id[]" id="product-photo">

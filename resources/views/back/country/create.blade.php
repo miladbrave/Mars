@@ -24,11 +24,11 @@
 {{--                                        <input type="text" name="littledes" class="form-control"--}}
 {{--                                               placeholder=" توضیح را وارد کنید..." required>--}}
 {{--                                    </div>--}}
-                                    <div class="form-group">
-                                        <label>توضیح</label>
-                                        <textarea id="textareaDes" name="des" class="ckeditor form-control"
-                                                  placeholder="توضیحات محصول را وارد کنید..."> </textarea>
-                                    </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label>توضیح</label>--}}
+{{--                                        <textarea id="textareaDes" name="des" class="ckeditor form-control"--}}
+{{--                                                  placeholder="توضیحات محصول را وارد کنید..."> </textarea>--}}
+{{--                                    </div>--}}
                                     <div class="form-group">
                                         <label for="photo">تصویر پرچم</label>
                                         <input type="hidden" name="photo_id[]" id="product-photo">

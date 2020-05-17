@@ -194,7 +194,7 @@
                                 <div class="col-md-2 col-sm-4">
                                     <div class="form-group">
                                         <label for="class" class="mt-2">نام کلاس</label>
-                                        <input type="text" class="form-control" name="title" id="class">
+                                        <input type="text" class="form-control" name="title" id="class" required>
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-sm-4">
@@ -218,7 +218,7 @@
                                 <div class="col-md-2 col-sm-4">
                                     <div class="form-group">
                                         <label for="teacher" class="mt-2">استاد مربوطه</label>
-                                        <input type="text" class="form-control" name="teacher" id="teacher">
+                                        <input type="text" class="form-control" name="teacher" id="teacher" required>
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-sm-4">

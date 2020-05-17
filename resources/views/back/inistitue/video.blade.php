@@ -75,20 +75,20 @@
                                     <th class="text-center bg-danger">نام کلاس</th>
                                     <th class="text-center bg-danger">تاریخ ضبط کلاس</th>
                                     <th class="text-center bg-danger">استاد مربوطه</th>
-                                    <th class="text-center bg-danger">لینک</th>
                                     <th class="text-center bg-danger">جلسه</th>
+                                    <th class="text-center bg-danger">لینک</th>
                                     <th class="text-center bg-danger">توضیح</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($links->chunk(1) as $link)
-                                    <tr>
+                                    <a>
                                         @foreach($link as $linkss)
                                             <td class="text-center">{{$linkss->title}}</td>
                                             <td class="text-center">{{$linkss->date}}</td>
                                             <td class="text-center">{{$linkss->teacher}}</td>
                                             <td class="text-center">{{$linkss->session}}</td>
-                                            <td class="text-center">{{$linkss->link}}</td>
+                                            <td class="text-center textinfo"><a href="{{$linkss->link}}">{{'..'.substr($linkss->link,0,25)}}</a></td>
                                             <td class="text-center">{{$linkss->des}}</td>
                                             <td>
                                                 <form method="post"

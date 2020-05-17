@@ -8318,7 +8318,6 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 	border-radius: 5px;
 }
 
-
 .header-nav .nav>li .sub-menu li {
 	border-bottom: 1px solid #f4f4f4;
 	position: relative;
@@ -8368,7 +8367,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 
 .header-nav .nav>li .sub-menu li:hover>.sub-menu {
-	right: 220px;
+	right: 71px;
 	margin: 0px;
 	opacity: 1;
 	top: -1px;

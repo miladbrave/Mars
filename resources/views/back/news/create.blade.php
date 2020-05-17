@@ -54,7 +54,7 @@
                                         <label>متون اخبار</label>
                                         <select name="newsTitle" class="form-control" multiple>
                                             @foreach($newsTitle as $news)
-                                                <option value="{{$news->title}}">{{$news->title}}</option>
+                                                <option value="{{$news->titlefa}}">{{$news->titlefa}}</option>
                                             @endforeach
                                         </select>
                                     </div>

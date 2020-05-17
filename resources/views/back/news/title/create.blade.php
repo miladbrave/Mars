@@ -16,7 +16,7 @@
                                     {{csrf_field()}}
                                     <div class="form-group">
                                         <label>موضوع</label>
-                                        <input type="text" name="title" class="form-control"
+                                        <input type="text" name="titlefa" class="form-control"
                                                placeholder=" عنوان را وارد کنید...">
                                     </div>
                                     <div class="form-group">
@@ -26,6 +26,17 @@
                                             @foreach($exam as $exams)
                                                 <option value="{{$exams->title}}">{{$exams->title}}</option>
                                             @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>نمایش در صفحه اول</label>
+                                        <select class="form-control" id="Select1" name="number">
+                                            <option value="6">هیچ کدام</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

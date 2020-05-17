@@ -4,8 +4,8 @@
     <div class="content-admin-main">
         <div class="panel panel-default bg-white m-t30">
             <div class="panel-heading wt-panel-heading p-a20">
-                <h4 class="panel-tittle m-a0">کشور ها</h4>
-                <a class="btn-sm btn-primary pull-left" href="{{route('country.create')}}"
+                <h4 class="panel-tittle m-a0">منوهای کشور</h4>
+                <a class="btn-sm btn-primary pull-left" href="{{route('country.createTitle')}}"
                    style="margin-top: -3%">جدید</a>
             </div>
             <div class="panel-body wt-panel-body">
@@ -16,22 +16,24 @@
                             <tr>
                                 <th class="text-center">شناسه</th>
                                 <th class="text-center">نام</th>
+                                <th class="text-center">کشور</th>
                                 <th class="text-center">عملیات</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($country as $countries)
+                            @foreach($countryTitles as $countryTitle)
                                 <tr>
-                                    <td class="text-center">{{$countries->id}}</td>
-                                    <td class="text-center"> {{$countries->title}}</td>
+                                    <td class="text-center">{{$countryTitle->id}}</td>
+                                    <td class="text-center"> {{$countryTitle->title}}</td>
+                                    <td class="text-center"> {{$countryTitle->country_name}}</td>
                                     <td class="text-center">
-                                        <form method="post" action="{{route('country.destroy',$countries->id)}}"
+                                        <form method="post" action="{{route('country.destroy',$countryTitle->id)}}"
                                               style="display: inline">
                                             {{csrf_field()}}
                                             {{ method_field('Delete')}}
                                             <button class="btn-sm btn-danger">حذف</button>
                                         </form>
-                                        <a href="{{route('country.edit',$countries->id)}}" class="btn-sm btn-warning">ویرایش</a>
+                                        <a href="{{route('country.editTitle',$countryTitle->id)}}" class="btn-sm btn-warning">ویرایش</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -39,9 +41,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
-            <div class="offset-3">
-                {{$country->links()}}
             </div>
         </div>
     </div>

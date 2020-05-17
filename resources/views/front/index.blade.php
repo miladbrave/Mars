@@ -40,10 +40,19 @@
                         </li>
                         <li class="">
                             <a href="javascript:;">کشور ها</a>
-                            <ul class="sub-menu">
+                            <ul class="sub-menu" style="width: 100%">
                                 @foreach($country as $countries)
-                                    <li>
-                                        <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                    <li style="display:block;">
+                                        <a href="javascript:;">{{$countries->title}}</a>
+                                        <ul class="sub-menu">
+                                            @foreach($countryMenu as $menu)
+                                                @if($menu->country_name == $countries->title)
+                                                    <li>
+                                                        <a href="{{route('country',['name'=>$menu->slug])}}">{{$menu->title}}</a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
                                     </li>
                                 @endforeach
                             </ul>
@@ -1717,10 +1726,10 @@
                                     @endif
                                 @endforeach
                                 <div class="overlay">
-                                    <div class="cities-slide-text text-white">
+                                    <div class="cities-slide-text text-white text-center">
                                         <div class="city-slide-content">
                                             @foreach($news->where('section_id',1) as $new)
-                                                <h4 class="cities-slide-name"
+                                                <h4 class="cities-slide-name text-center"
                                                     style="font-family: 'IRANSansWeb', sans-serif;">{{$new->titlefa}}</h4>
                                                 <h4 class="cities-slide-name"
                                                     style="font-family: Roboto, sans-serif;">{{$new->titlela}}</h4>
@@ -1730,11 +1739,14 @@
                                     <div class="cities-slide-overlay"></div>
                                     @if(isset($new->titlefa))
                                         @if($new->description2)
-                                        <a href="{{route('news-category',['title' => $new->slug])}}"
-                                           class="cities-slide-linking"></a>
+                                            <a href="{{route('news-category',['title' => $new->slug])}}"
+                                               class="cities-slide-linking"></a>
+                                        @elseif($new->description1)
+                                            <a href="{{route('news-search',['title' => $new->slug])}}"
+                                               class="cities-slide-linking"></a>
                                         @else
-                                        <a href="{{route('news-search',['title' => $new->slug])}}"
-                                           class="cities-slide-linking"></a>
+                                            <a href="{{route('news-self',['title'=>$new->slug])}}"
+                                               class="cities-slide-linking"></a>
                                         @endif
                                     @endif
                                 </div>
@@ -1751,7 +1763,7 @@
                                         @endif
                                     @endforeach
                                     <div class="overlay">
-                                        <div class="cities-slide-text text-white">
+                                        <div class="cities-slide-text text-white text-center">
                                             <div class="city-slide-content">
                                                 @foreach($news->where('section_id',2) as $new)
                                                     <h5 class="cities-slide-name"
@@ -1764,11 +1776,14 @@
                                         <div class="cities-slide-overlay"></div>
                                         @if(isset($new->titlefa))
                                             @if($new->description2)
-                                            <a href="{{route('news-category',['title' => $new->slug])}}"
-                                               class="cities-slide-linking"></a>
+                                                <a href="{{route('news-category',['title' => $new->slug])}}"
+                                                   class="cities-slide-linking"></a>
+                                            @elseif($new->description1)
+                                                <a href="{{route('news-search',['title' => $new->slug])}}"
+                                                   class="cities-slide-linking"></a>
                                             @else
-                                            <a href="{{route('news-search',['title' => $new->slug])}}"
-                                               class="cities-slide-linking"></a>
+                                                <a href="{{route('news-self',['title'=>$new->slug])}}"
+                                                   class="cities-slide-linking"></a>
                                             @endif
                                         @endif
                                     </div>
@@ -1795,11 +1810,14 @@
                                         <div class="cities-slide-overlay"></div>
                                         @if(isset($new->titlefa))
                                             @if($new->description2)
-                                            <a href="{{route('news-category',['title' => $new->slug])}}"
-                                               class="cities-slide-linking"></a>
+                                                <a href="{{route('news-category',['title' => $new->slug])}}"
+                                                   class="cities-slide-linking"></a>
+                                            @elseif($new->description1)
+                                                <a href="{{route('news-search',['title' => $new->slug])}}"
+                                                   class="cities-slide-linking"></a>
                                             @else
-                                            <a href="{{route('news-search',['title' => $new->slug])}}"
-                                               class="cities-slide-linking"></a>
+                                                <a href="{{route('news-self',['title'=>$new->slug])}}"
+                                                   class="cities-slide-linking"></a>
                                             @endif
                                         @endif
                                     </div>
@@ -1826,11 +1844,14 @@
                                         <div class="cities-slide-overlay"></div>
                                         @if(isset($new->titlefa))
                                             @if($new->description2)
-                                            <a href="{{route('news-category',['title' => $new->slug])}}"
-                                               class="cities-slide-linking"></a>
+                                                <a href="{{route('news-category',['title' => $new->slug])}}"
+                                                   class="cities-slide-linking"></a>
+                                            @elseif($new->description1)
+                                                <a href="{{route('news-search',['title' => $new->slug])}}"
+                                                   class="cities-slide-linking"></a>
                                             @else
-                                            <a href="{{route('news-search',['title' => $new->slug])}}"
-                                               class="cities-slide-linking"></a>
+                                                <a href="{{route('news-self',['title'=>$new->slug])}}"
+                                                   class="cities-slide-linking"></a>
                                             @endif
                                         @endif
                                     </div>
@@ -1857,11 +1878,14 @@
                                         <div class="cities-slide-overlay"></div>
                                         @if(isset($new->titlefa))
                                             @if($new->description2)
-                                            <a href="{{route('news-category',['title' => $new->slug])}}"
-                                               class="cities-slide-linking"></a>
+                                                <a href="{{route('news-category',['title' => $new->slug])}}"
+                                                   class="cities-slide-linking"></a>
+                                            @elseif($new->description1)
+                                                <a href="{{route('news-search',['title' => $new->slug])}}"
+                                                   class="cities-slide-linking"></a>
                                             @else
-                                            <a href="{{route('news-search',['title' => $new->slug])}}"
-                                               class="cities-slide-linking"></a>
+                                                <a href="{{route('news-self',['title'=>$new->slug])}}"
+                                                   class="cities-slide-linking"></a>
                                             @endif
                                         @endif
                                     </div>

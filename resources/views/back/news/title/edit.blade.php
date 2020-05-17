@@ -18,7 +18,7 @@
                                     <div class="form-group">
                                         <label>عنوان</label>
                                         <input type="text" name="title" class="form-control"
-                                               value="{{$news->title}}">
+                                               value="{{$news->titlefa}}">
                                     </div>
                                     <div class="form-group">
                                         <label>امتحان</label>
@@ -26,6 +26,18 @@
                                             @foreach($exam as $exams)
                                                 <option @if($exams->title==$news->exam) selected @endif value="{{$exams->title}}">{{$exams->title}}</option>
                                             @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>نمایش در صفحه اول</label>
+                                        <select class="form-control" id="Select1" name="number">
+                                            <option @if($news->section_id) checked @endif value="{{$news->section_id}}">{{$news->section_id}}</option>
+                                            <option value="6">هیچ کدام</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

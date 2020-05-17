@@ -41,10 +41,17 @@
                             </li>
                             <li class="">
                                 <a href="javascript:;">کشور ها</a>
-                                <ul class="sub-menu">
+                                <ul class="sub-menu" style="width: 100%">
                                     @foreach($country as $countries)
-                                        <li>
-                                            <a href="{{route('country',['name'=>$countries->title])}}">{{$countries->title}}</a>
+                                        <li style="display:block;">
+                                            <a href="javascript:;">{{$countries->title}}</a>
+                                            <ul class="sub-menu">
+                                                @foreach($countryMenu as $menu)
+                                                    @if($menu->country_name == $countries->title)
+                                                        <li><a href="{{route('country',['name'=>$menu->slug])}}">{{$menu->title}}</a></li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
                                         </li>
                                     @endforeach
                                 </ul>

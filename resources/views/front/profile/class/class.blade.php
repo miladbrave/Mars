@@ -98,7 +98,7 @@
                                                         <td class="text-center text-white">{{$linkss->date}}</td>
                                                         <td class="text-center text-white">{{$linkss->teacher}}</td>
                                                         <td class="text-center text-white">
-                                                            <a href="{{$linkss->link}}" class="text-danger">{{$linkss->link}}</a>
+                                                            <a href="{{$linkss->link}}" class="text-danger" target="_blank">{{'..'.substr($linkss->link,0,25)}}</a>
                                                         </td>
                                                         <td class="text-center text-white">{{$linkss->session}}</td>
                                                         <td class="text-center text-white">{{$linkss->des}}</td>

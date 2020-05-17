@@ -105,6 +105,11 @@ Route::group(['middleware' => 'admin'], function () {
         Route::delete('list/deleteuser/{id}', 'back\instituteController@userdelete')->name('ins.delete.user');
         Route::post('logo/{id}', 'back\photosController@updatelog')->name('logo.update');
         Route::post('logo', 'back\photosController@save')->name('logo.save');
+        Route::get('countryMenuTitle','back\countryController@submenuTitle')->name('country.title');
+        Route::get('countryMenuEdit/{id}','back\countryController@submenuedit')->name('country.editTitle');
+        Route::patch('countryMenuupdate/{id}','back\countryController@submenuupdate')->name('country.updateTitle');
+        Route::get('countryMenuCreate','back\countryController@submenuCreate')->name('country.createTitle');
+        Route::post('countryMenuSave','back\countryController@submenusave')->name('country.saveTitle');
     });
 });
 

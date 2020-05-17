@@ -171,10 +171,11 @@ class newsController extends Controller
         }
 
         $news = new newstitle();
-        $news->title = $request->title;
+        $news->titlefa = $request->title;
         $news->slug = make_slug($request->title);
         $news->exam = $request->exam;
         $news->country = $request->country;
+        $news->section_id = $request->number;
         $news->select = $request->select;
         $news->save();
         return redirect('administrator/newsTitle');
@@ -204,10 +205,11 @@ class newsController extends Controller
         }
 
         $news = newstitle::findOrfail($id);
-        $news->title = $request->title;
+        $news->titlefa = $request->title;
         $news->slug = make_slug($request->title);
         $news->exam = $request->exam;
         $news->country = $request->country;
+        $news->section_id = $request->number;
         $news->select = $request->select;
         $news->save();
         return redirect('administrator/newsTitle');
